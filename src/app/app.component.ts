@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ecx_website';
+  lists:boolean=false;
+  
+  onPrevClick(): void{
+  
+  }
+    // $('.hero__categories__all').on('click', function(){
+    //     $('.hero__categories ul').slideToggle(400);
+    // });
 }
