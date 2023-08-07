@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EcxWebsiteComponent } from './apps/ecx_website/ecx-website/ecx-website.component';
 
-import { LandpageComponent } from './landpage/landpage/landpage.component';
-import { BlogLandComponent } from './blog/blog-land/blog-land.component';
+
 
 const routes: Routes = [
-  {path:'',component:LandpageComponent },
-  {path:'blog',component:BlogLandComponent },
+  {path:'',component:EcxWebsiteComponent },
+
 ];
 
 

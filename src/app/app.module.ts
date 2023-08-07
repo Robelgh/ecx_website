@@ -3,8 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+
+import { EcxWebsiteModule } from './apps/ecx_website/ecx-website/ecx-website.module';
+import { EcxWebsiteComponent } from './apps/ecx_website/ecx-website/ecx-website.component';
 import { SharedModule } from './shared/shared.module';
+import { MarketDataComponent } from './modules/market-data/market-data.component';
+import { AboutUsComponent } from './modules/about-us/about-us.component';
+
 
 
 
@@ -12,13 +17,16 @@ import { SharedModule } from './shared/shared.module';
 @NgModule({
   declarations: [
     AppComponent,
-  
-    
+    EcxWebsiteComponent,
+    MarketDataComponent,
+    AboutUsComponent,
+
   ],
   imports: [
-    FormsModule,
     BrowserModule,
     AppRoutingModule,
+    EcxWebsiteModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

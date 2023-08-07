@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BlogLandComponent } from './blog-land.component';
+import { TopbarComponent } from './topbar.component';
 
-describe('BlogLandComponent', () => {
-  let component: BlogLandComponent;
-  let fixture: ComponentFixture<BlogLandComponent>;
+describe('TopbarComponent', () => {
+  let component: TopbarComponent;
+  let fixture: ComponentFixture<TopbarComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [BlogLandComponent]
+      declarations: [TopbarComponent]
     });
-    fixture = TestBed.createComponent(BlogLandComponent);
+    fixture = TestBed.createComponent(TopbarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

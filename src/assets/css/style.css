@@ -1,12 +1,4 @@
-/*!------------------------------------------------------------------
-[MAIN STYLESHEET]
 
-Template Name: Constra - Construction Html5 Template
-Description: Constra - Construction Html5 Template
--------------------------------------------------------------------*/
-/*------------------------------------------------------------------
-[TABLE OF CONTENTS]
--------------------------------------------------------------------*/
 @import url(https://fonts.googleapis.com/css?family=Montserrat:300,400,400i,500,500i,600,600i,700,700i,800|Open+Sans:400,400i,600,600i,700,700i,800&display=swap);
 /* Typography
 ================================================== */
@@ -670,6 +662,7 @@ ul.top-info li p.info-text {
 .header-one,
 .header-one .site-navigation {
   background: #23282d;
+  
 }
 
 .header-one .navbar-collapse {
@@ -694,7 +687,7 @@ ul.top-info li p.info-text {
 }
 
 .header-one .logo-area {
-  padding: 30px 0;
+  padding: 20px 0;
 }
 
 .navbar-fixed {
@@ -736,7 +729,7 @@ ul.navbar-nav > li.active > a {
 /*-- Logo --*/
 .logo img {
   width: auto;
-  height: 35px;
+  height: 55px;
 }
 
 .header-two .logo img {
@@ -1947,10 +1940,7 @@ ul.navbar-nav > li.header-get-a-quote:hover > a:after {
   transition: all 400ms;
 }
 
-.shuffle-item .project-img-container:hover img {
-  -webkit-transform: perspective(1px) scale3d(1.15, 1.15, 1);
-          transform: perspective(1px) scale3d(1.15, 1.15, 1);
-}
+
 
 .shuffle-item .project-img-container:after {
   opacity: 0;

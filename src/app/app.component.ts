@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ecx_website';
+  title = 'Ethiopia Commodity Exchange';
   lists:boolean=false;
   
   onPrevClick(): void{
