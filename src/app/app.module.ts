@@ -9,6 +9,12 @@ import { EcxWebsiteComponent } from './apps/ecx_website/ecx-website/ecx-website.
 import { SharedModule } from './shared/shared.module';
 import { MarketDataComponent } from './modules/market-data/market-data.component';
 import { AboutUsComponent } from './modules/about-us/about-us.component';
+import { CommoditiesComponent } from './modules/commodities/commodities.component';
+import { EcxBlogComponent } from './apps/ecx-blog/ecx-blog.component';
+import { BlogContentComponent } from './modules/blog-content/blog-content.component';
+import { BlogDetailComponent } from './modules/blog-detail/blog-detail.component';
+import { ServiceComponent } from './modules/service/service.component';
+
 
 
 
@@ -20,6 +26,12 @@ import { AboutUsComponent } from './modules/about-us/about-us.component';
     EcxWebsiteComponent,
     MarketDataComponent,
     AboutUsComponent,
+    CommoditiesComponent,
+    EcxBlogComponent,
+    BlogContentComponent,
+    BlogDetailComponent,
+    ServiceComponent
+  
 
   ],
   imports: [
@@ -29,6 +41,14 @@ import { AboutUsComponent } from './modules/about-us/about-us.component';
     SharedModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+
+  
+    CommoditiesComponent,
+        BlogContentComponent,
+        BlogDetailComponent,
+        ServiceComponent
+  ]
 })
 export class AppModule { }

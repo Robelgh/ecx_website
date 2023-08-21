@@ -1905,10 +1905,10 @@ ul.navbar-nav > li.header-get-a-quote:hover > a:after {
 .shuffle-btn-group label {
   display: inline-block;
   color: #212121;
-  font-size: 14px;
-  padding: 6px 25px;
+  font-size: 12px;
+  padding: 6px 13px;
   padding-top: 10px;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   transition: all 0.3s;
   cursor: pointer;

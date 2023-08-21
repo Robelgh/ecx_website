@@ -5,6 +5,9 @@ import { TopbarComponent } from './components/topbar/topbar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BannerCarouselComponent } from './components/banner-carousel/banner-carousel.component';
 import { TickerComponent } from './components/ticker/ticker.component';
+import { ShortBannerComponent } from './components/short-banner/short-banner.component';
+
+
 
 
 
@@ -14,7 +17,9 @@ import { TickerComponent } from './components/ticker/ticker.component';
     TopbarComponent,
     HeaderComponent,
     BannerCarouselComponent,
-    TickerComponent
+    TickerComponent,
+    ShortBannerComponent
+    
   ],
   imports: [
     CommonModule
@@ -24,7 +29,9 @@ import { TickerComponent } from './components/ticker/ticker.component';
     TopbarComponent,
     HeaderComponent,
     BannerCarouselComponent,
-    TickerComponent
+    TickerComponent,
+    ShortBannerComponent
+    
   ]
 })
 export class SharedModule { }
