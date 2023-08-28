@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EcxWebsiteModule } from './apps/ecx_website/ecx-website/ecx-website.module';
 import { EcxWebsiteComponent } from './apps/ecx_website/ecx-website/ecx-website.component';
 import { SharedModule } from './shared/shared.module';
@@ -31,11 +31,10 @@ import { ServiceComponent } from './modules/service/service.component';
     BlogContentComponent,
     BlogDetailComponent,
     ServiceComponent
-  
-
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     EcxWebsiteModule,
     SharedModule

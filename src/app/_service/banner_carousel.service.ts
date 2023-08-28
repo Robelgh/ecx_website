@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { firstValueFrom } from 'rxjs';
 import { environment } from '../../environment/environment';
 import { Commodities } from '../_model/_commodities.model';
 
-const baseUrl = `${environment.apiUrl}/commodities`;
+const baseUrl = `${environment.apiUrl}/Image`;
 
 @Injectable({ providedIn: 'root' })
-export class CommoditiesService {
+export class BannerCarousel {
     constructor(private http: HttpClient) { }
 
-    getAll() {
-        return this.http.get<Commodities[]>(baseUrl);
+    async getAll() {
+        return await firstValueFrom(this.http.get(baseUrl));
     }
 
     getById(id: string) {
@@ -29,4 +29,8 @@ export class CommoditiesService {
     delete(id: string) {
         return this.http.delete(`${baseUrl}/${id}`);
     }
+
+    getImagePath(){
+        return 'https://localhost:7284/image/';
+      }
 }

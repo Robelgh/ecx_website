@@ -2765,6 +2765,13 @@ img.testimonial-thumb {
 }
 
 /*-- Team page --*/
+
+.team-slide-item-dxn
+{
+  display: flex;
+  flex-direction: row;
+}
+
 .team-slide .slick-slide {
   margin-left: 25px;
   padding-bottom: 60px;
@@ -3489,3 +3496,4 @@ label {
 }
 
 /*# sourceMappingURL=style.css.map */
+
