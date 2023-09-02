@@ -1,4 +1,33 @@
-<div class="banner-carousel banner-carousel-1 mb-0">
+<div *ngIf="images && images.length > 0" class="carouselContainer">
+    <img *ngFor="let image of images; let i=index"
+          [src]="image.imageSrc" 
+          [alt]="image"
+          [ngClass]="{'image-active':selectedIndex === i}"
+    >
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- <div class="banner-carousel banner-carousel-1 mb-0">
     <div class="banner-carousel-item" style="background-image:url(../../../../assets/images/slider-pages/green_mung_bean.jpg)">
       <div class="slider-content">
           <div class="container h-100">
@@ -50,4 +79,4 @@
           </div>
       </div>
     </div>
-  </div>
+  </div> -->
