@@ -18,6 +18,8 @@ interface carouselImage
 export class BannerCarouselComponent implements OnInit {
 
   @Input() images:carouselImage[] = []
+  @Input() indicators=true;
+  @Input() control= true;
 
   selectedIndex=0;
 
@@ -25,6 +27,11 @@ export class BannerCarouselComponent implements OnInit {
 
     console.log(this.images)
     
+  }
+
+  selectImage(index:number): void 
+  {
+    this.selectedIndex=index;
   }
 
 
