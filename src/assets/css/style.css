@@ -5,6 +5,15 @@
 body {
   background: #fff;
   color: #555;
+
+    --navbar-scroll: rgba(0, 0, 0, 0.5); 
+    --navbar-scroll-text: white;
+    --navbar-scroll-shadow: none; 
+    --add-chil: none;
+    --add-collap:none;
+
+
+
 }
 
 body,
@@ -852,7 +861,7 @@ ul.top-info-box > li.nav-search i {
   color: #999;
 }
 
-/* Main navigation */
+/* Main navigation
 .navbar-toggler {
   float: left;
   margin-top: 10px;
@@ -1204,7 +1213,7 @@ ul.navbar-nav > li > a {
 ul.navbar-nav > li.header-get-a-quote:hover > a:after {
   position: relative;
   content: no-close-quote;
-}
+} */
 
 /* Table of Content
 ==================================================
@@ -1694,11 +1703,30 @@ ul.navbar-nav > li.header-get-a-quote:hover > a:after {
 /* Services
 ================================================== */
 /* Service box */
-.ts-service-box .ts-service-icon i {
+
+.ts-service-box-content
+{
+  cursor: pointer;
+}
+.ts-service-box-content i img{
   font-size: 36px;
   float: left;
   color: #ffb600;
+  width:50px;
+  height:50px;
+  margin-right:2vh;
+  cursor: pointer;
 }
+
+.ts-service-box-content i 
+{
+  background-color:#ffb600;
+  pad: 2vh;
+  border-radius: 15px;
+}
+
+
+
 
 .ts-service-box .ts-service-box-content {
   margin-left: 62px;
@@ -3497,3 +3525,9 @@ label {
 
 /*# sourceMappingURL=style.css.map */
 
+button
+{
+  border-style:none;
+  padding:2vh;
+  border-radius:15px;
+}

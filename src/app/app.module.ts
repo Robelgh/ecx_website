@@ -14,8 +14,9 @@ import { EcxBlogComponent } from './apps/ecx-blog/ecx-blog.component';
 import { BlogContentComponent } from './modules/blog-content/blog-content.component';
 import { BlogDetailComponent } from './modules/blog-detail/blog-detail.component';
 import { ServiceComponent } from './modules/service/service.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 
@@ -35,16 +36,16 @@ import { ServiceComponent } from './modules/service/service.component';
   imports: [
     BrowserModule,
     HttpClientModule,
+    MatTabsModule,
     AppRoutingModule,
     EcxWebsiteModule,
-    SharedModule
+    SharedModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
   exports: [
-
-  
-    CommoditiesComponent,
+        CommoditiesComponent,
         BlogContentComponent,
         BlogDetailComponent,
         ServiceComponent

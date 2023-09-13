@@ -1,0 +1,46 @@
+.navbar {
+  background-color: var(--navbar-scroll);
+  transition: background-color 1s ease;
+  color: var(--navbar-scroll-text);
+  -webkit-box-shadow: var(--navbar-scroll-shadow);
+  box-shadow: var(--navbar-scroll-shadow);
+  font-weight: 700;
+  min-height: 13vh;
+}
+@media only screen and (max-width:1000px) {
+  .rud{ 
+    display: var(--add-collap); 
+    overflow-y: auto;   
+  }
+  
+}
+@media only screen and (min-width:1000px) {
+  .rud{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: vh;
+      
+  }
+  
+}
+
+.navbar-items {
+  color: var(--navbar-scroll-text);
+  margin-right: 5vh;
+  margin-top: 3vh;
+}
+
+.dropdown-hover:hover>.dropdown-menu {
+  display: inline-block;
+}
+
+.dropdown-hover>.dropdown-toggle:active {
+  /*Without this, clicking will make it sticky*/
+  pointer-events: none;
+}
+
+/* .nav-bar-item-dropdown{
+  display: var(--add-chil);
+} */
+

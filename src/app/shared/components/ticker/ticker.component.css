@@ -5,6 +5,8 @@
     overflow: hidden; /* HIDE SCROLL BAR */
     background: #eee;
     background-color: black;
+    position: fixed;
+    z-index: 1005;
   }
   .tickerNews
   {

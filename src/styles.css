@@ -17,4 +17,19 @@
     --breakpoint-xl: 1200px;
     --font-family-sans-serif:
     --font-family-monospace:  */
+
   }
+
+  
+
+  body
+  {
+    --navbar-scroll: white; 
+    --navbar-scroll-text: black;
+    --navbar-scroll-shadow: 0px 6px 12px -5px #000000; 
+    --add-chil: none;
+    --add-collap:none;
+    --mk-scrollable:scroll;
+  }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
