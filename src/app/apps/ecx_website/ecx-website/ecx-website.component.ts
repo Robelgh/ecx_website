@@ -14,7 +14,6 @@ export class EcxWebsiteComponent {
     private route: ActivatedRoute,
     private router: Router,
     ){}
-
   images = [
     {
       imageSrc:
@@ -38,6 +37,5 @@ export class EcxWebsiteComponent {
     },
   ]
 
- }
-
+}
 

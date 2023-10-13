@@ -1,7 +1,16 @@
-import { Component,Input } from '@angular/core';
+
+
+import { Component,Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import {BannerCarousel} from '../../../_service';
+
+interface carouselImage
+{
+  imageSrc:string;
+  imageAlt:string;
+}
+
 
 interface carouselImage
 {
@@ -14,7 +23,13 @@ interface carouselImage
   templateUrl: './banner-carousel.component.html',
   styleUrls: ['./banner-carousel.component.css']
 })
-export class BannerCarouselComponent {
+export class BannerCarouselComponent implements OnInit {
+
+
+
+  selectedIndex=0;
+
+  ngOnInit(): void {
 
   @Input() images:any=[];
   @Input() indicators=true;
@@ -27,10 +42,27 @@ export class BannerCarouselComponent {
   bannerCarousel:any=[];
   imagePath = this.service.getImagePath();
 
-  constructor(private service:BannerCarousel,private router: Router) {}
-  
-  async ngOnInit() {
+    console.log(this.images)
+    
+  }
+>>>>>>> 670609ff305575629db4a0a7e41fc8b2d62ac984
 
+  selectImage(index:number): void 
+  {
+    this.selectedIndex=index;
+  }
+
+
+
+//   getResponse:any={};
+//   bannerCarousel:any=[];
+//   imagePath = this.service.getImagePath();
+
+//   constructor(private service:BannerCarousel,private router: Router) {}
+  
+//   async ngOnInit() {
+
+<<<<<<< HEAD
     this.getResponse = (await this.service.getAll());
     this.bannerCarousel=this.getResponse.data;
 
@@ -43,6 +75,13 @@ export class BannerCarouselComponent {
       console.log(this.images)
     }
 }
+=======
+//     this.getResponse = (await this.service.getAll());
+//      this.bannerCarousel=this.getResponse.data;
+//     console.log(this.bannerCarousel)
+  
+// }
+>>>>>>> 670609ff305575629db4a0a7e41fc8b2d62ac984
 
    autoslideImages():  void{
       setInterval(()=>
