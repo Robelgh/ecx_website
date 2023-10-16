@@ -1,4 +1,5 @@
-<nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary" style="margin-top:7vh;">
+<nav [ngClass]="{'fixed-top bg-body-tertiary ' : isHome}" 
+     class="navbar  navbar-expand-lg navbarcustome">
   
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
@@ -20,9 +21,17 @@
         max-height: 70vh;
         
         " >
-        <li  class="nav-item">
-          <a class="nav-link navbar-items" href="#"></a>
+
+        <li class="nav-item">
+          <a [routerLink]="['/']"
+            class="nav-link  navbar-items"
+            role="button"
+          >
+            Home
+          </a>
+
         </li>
+   
         <li class="nav-item dropdown position-static">
           <a
             (click)="toggleMenu(0)"
@@ -47,22 +56,34 @@
             <div class="row my-4">
               <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
                 <div class="list-group list-group-flush">
-                  <a id="fg" href="" class="list-group-item list-group-item-action"><i
-                       class="fas fa-caret-right pe-2"></i>Company Profile</a>
-                  <a href="" class="list-group-item list-group-item-action"><i
+                  <a  [routerLink]="['/about']"
+                      [queryParams]="{ detail: 'Company Profile'}" 
+                      class="list-group-item list-group-item-action"><i
+                      class="fas fa-caret-right pe-2"></i>Company Profile</a>
+                  <a  [routerLink]="['/about']"
+                      [queryParams]="{ detail: 'Corporate Statement'}" 
+                      class="list-group-item list-group-item-action"><i
                       class="fas fa-caret-right pe-2"></i>Corporate Statement</a>
-                  <a href="" class="list-group-item list-group-item-action"><i
-                      class="fas fa-caret-right pe-2"></i>Executive Leadership</a>
-                  <a href="" class="list-group-item list-group-item-action"><i
-                      class="fas fa-caret-right pe-2"></i>Board of Directors</a>
+                  <a  [routerLink]="['/about']"
+                      [queryParams]="{ detail: 'Executive Leadership'}" 
+                      class="list-group-item list-group-item-action"><i
+                      class="fas fa-caret-right pe-2"></i>Executive Leadership</a> 
+                  <a  [routerLink]="['/about']"
+                      [queryParams]="{ detail: 'Board of Directors'}" 
+                      class="list-group-item list-group-item-action"><i
+                      class="fas fa-caret-right pe-2"></i>Board of Directors</a>   
                 </div>
               </div>
               <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
                 <div class="list-group list-group-flush">
-                  <a id="fg" href="" class="list-group-item list-group-item-action"><i
+                  <a  [routerLink]="['/about']"
+                       [queryParams]="{ detail: 'Social Responsibility'}" 
+                       class="list-group-item list-group-item-action"><i
                        class="fas fa-caret-right pe-2"></i>Social Responsibility</a>
-                  <a href="" class="list-group-item list-group-item-action"><i
-                      class="fas fa-caret-right pe-2"></i>Organization Structure</a>
+                  <a  [routerLink]="['/about']"
+                       [queryParams]="{ detail: 'Organization Structure'}" 
+                       class="list-group-item list-group-item-action"><i
+                       class="fas fa-caret-right pe-2"></i>Organizational Structure</a>
                 </div>
               </div>
             </div>
@@ -70,17 +91,60 @@
           </div>
           </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link navbar-items dropdown-toggle" href="#">About Us</a>
-        </li>
         <li class="nav-item dropdown position-static">
           <a
             (click)="toggleMenu(1)"
             class="nav-link dropdown-toggle navbar-items"
+            id="navbarDropdown"
+            role="button"
+          >
+            Services
+          </a>
+          <!-- Dropdown menu -->
+          <div
+            
+            class="dropdown-menu w-100 mt-0 nav-bar-item-dropdown"
+            aria-labelledby="navbarDropdown"
+            style="border-top-left-radius: 0; 
+            box-shadow:0px 6px 12px -5px #000000;
+            border-top-right-radius: 0; left: 0;display: block;"
+            *ngIf="menuExpanded === 1"
+            
+          >
+          <div class="container">
+            <div class="row my-4">
+              <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+                <div class="list-group list-group-flush">
+                  <a  [routerLink]="['/service']"
+                  [queryParams]="{ detail: 'Warehouse'}" 
+                  class="list-group-item list-group-item-action"><i
+                  class="fas fa-caret-right pe-2"></i>Warehouse</a>
+
+                  <a  [routerLink]="['/service']"
+                  [queryParams]="{ detail: 'Quality'}" 
+                  class="list-group-item list-group-item-action"><i
+                  class="fas fa-caret-right pe-2"></i>Quality</a>
+
+                  <a  [routerLink]="['/service']"
+                  [queryParams]="{ detail: 'Trade'}" 
+                  class="list-group-item list-group-item-action"><i
+                  class="fas fa-caret-right pe-2"></i>Trade</a>
+                
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          </div>
+        </li>
+        <li class="nav-item dropdown position-static">
+          <a
+            (click)="toggleMenu(2)"
+            class="nav-link dropdown-toggle navbar-items"
             id="navbarDropdown1"
             role="button"
           >
-            Mega menu
+           Media Center
           </a>
           <!-- Dropdown menu -->
           <div
@@ -90,35 +154,24 @@
             style="border-top-left-radius: 0; 
             box-shadow:0px 6px 12px -5px #000000;
             border-top-right-radius: 0; left: 0;display: block;"
-            *ngIf="menuExpanded === 1"
+            *ngIf="menuExpanded === 2"
             
           >
             <div class="container">
               <div class="row my-4">
                 <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
                   <div class="list-group list-group-flush">
-                    <a id="fg" href="" class="list-group-item list-group-item-action"><i
-                         class="fas fa-caret-right pe-2"></i>Dolor sit</a>
+                    <a  [routerLink]="['/media']"
+                    [queryParams]="{ detail: 'News'}" 
+                    class="list-group-item list-group-item-action"><i
+                    class="fas fa-caret-right pe-2"></i>News and Events</a>
                     <a href="" class="list-group-item list-group-item-action"><i
-                        class="fas fa-caret-right pe-2"></i>Amet consectetur</a>
+                        class="fas fa-caret-right pe-2"></i>Resources</a>
                     <a href="" class="list-group-item list-group-item-action"><i
-                        class="fas fa-caret-right pe-2"></i>Cras justo odio</a>
-                    <a href="" class="list-group-item list-group-item-action"><i
-                        class="fas fa-caret-right pe-2"></i>Adipisicing elit</a>
+                        class="fas fa-caret-right pe-2"></i>Announcements</a>
                   </div>
                 </div>
-                <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                  <div class="list-group list-group-flush">
-                    <a id="fg" href="" class="list-group-item list-group-item-action"><i
-                         class="fas fa-caret-right pe-2"></i>Dolor sit</a>
-                    <a href="" class="list-group-item list-group-item-action"><i
-                        class="fas fa-caret-right pe-2"></i>Amet consectetur</a>
-                    <a href="" class="list-group-item list-group-item-action"><i
-                        class="fas fa-caret-right pe-2"></i>Cras justo odio</a>
-                    <a href="" class="list-group-item list-group-item-action"><i
-                        class="fas fa-caret-right pe-2"></i>Adipisicing elit</a>
-                  </div>
-                </div>
+            
               </div>
               
             </div>
@@ -126,12 +179,12 @@
         </li>
         <li class="nav-item dropdown position-static">
           <a
-            (click)="toggleMenu(2)"
+            (click)="toggleMenu(3)"
             class="nav-link dropdown-toggle navbar-items"
             id="navbarDropdown2"
             role="button"
           >
-            Mega menu
+            Customer Support
           </a>
           <!-- Dropdown menu -->
           <div
@@ -140,7 +193,7 @@
             style="border-top-left-radius: 0; 
             box-shadow:0px 6px 12px -5px #000000;
             border-top-right-radius: 0; left: 0;display: block;"
-            *ngIf="menuExpanded === 2"
+            *ngIf="menuExpanded === 3"
             
           >
             <div class="container" >
@@ -148,37 +201,127 @@
                 <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
                   <div  class="list-group list-group-flush">
                     <a id="fg" href="" class="list-group-item list-group-item-action"><i
-                         class="fas fa-caret-right pe-2"></i>Dolor sit</a>
+                         class="fas fa-caret-right pe-2"></i>CRM Policy</a>
                     <a href="" class="list-group-item list-group-item-action"><i
-                        class="fas fa-caret-right pe-2"></i>Amet consectetur</a>
+                        class="fas fa-caret-right pe-2"></i>Membership</a>
                     <a href="" class="list-group-item list-group-item-action"><i
-                        class="fas fa-caret-right pe-2"></i>Cras justo odio</a>
+                        class="fas fa-caret-right pe-2"></i>Training and Certification</a>
                     <a href="" class="list-group-item list-group-item-action"><i
-                        class="fas fa-caret-right pe-2"></i>Adipisicing elit</a>
+                        class="fas fa-caret-right pe-2"></i>Commodity Deposit</a>
                   </div>
                 </div>
                 <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
                   <div class="list-group list-group-flush">
                     <a id="fg" href="" class="list-group-item list-group-item-action"><i
-                         class="fas fa-caret-right pe-2"></i>Dolor sit</a>
+                         class="fas fa-caret-right pe-2"></i>Grading</a>
                     <a href="" class="list-group-item list-group-item-action"><i
-                        class="fas fa-caret-right pe-2"></i>Amet consectetur</a>
+                        class="fas fa-caret-right pe-2"></i>WHR Financing</a>
                     <a href="" class="list-group-item list-group-item-action"><i
-                        class="fas fa-caret-right pe-2"></i>Cras justo odio</a>
+                        class="fas fa-caret-right pe-2"></i>Sale and Buy Order</a>
                     <a href="" class="list-group-item list-group-item-action"><i
-                        class="fas fa-caret-right pe-2"></i>Adipisicing elit</a>
+                        class="fas fa-caret-right pe-2"></i>Trade Ethics</a>
                   </div>
                 </div>
                 <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
                   <div class="list-group list-group-flush">
                     <a id="fg" href="" class="list-group-item list-group-item-action"><i
-                         class="fas fa-caret-right pe-2"></i>Dolor sit</a>
+                         class="fas fa-caret-right pe-2"></i>Trade Settlement</a>
                     <a href="" class="list-group-item list-group-item-action"><i
-                        class="fas fa-caret-right pe-2"></i>Amet consectetur</a>
+                        class="fas fa-caret-right pe-2"></i>Commodity Delivery</a>
                     <a href="" class="list-group-item list-group-item-action"><i
-                        class="fas fa-caret-right pe-2"></i>Cras justo odio</a>
+                        class="fas fa-caret-right pe-2"></i>Descipline and Enforcement</a>
+                   
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown position-static">
+          <a
+            (click)="toggleMenu(4)"
+            class="nav-link dropdown-toggle navbar-items"
+            id="navbarDropdown2"
+            role="button"
+          >
+            Market Data
+          </a>
+          <!-- Dropdown menu -->
+          <div
+            class="dropdown-menu w-100 mt-0 nav-bar-item-dropdown"
+            aria-labelledby="navbarDropdown"
+            style="border-top-left-radius: 0; 
+            box-shadow:0px 6px 12px -5px #000000;
+            border-top-right-radius: 0; left: 0;display: block;"
+            *ngIf="menuExpanded === 4"
+            
+          >
+            <div class="container" >
+              <div class="row my-4">
+                <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+                  <div  class="list-group list-group-flush">
+                    <a href="/marketdata" class="list-group-item list-group-item-action">Real Time Data</a>
+                    <a href="/marketdata" class="list-group-item list-group-item-action">Daily High and Low Price</a>
+                    <a href="/marketdata" class="list-group-item list-group-item-action">Daily Trade Data</a>
+                  
+                  </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+                  <div  class="list-group list-group-flush">
+                    <a href="/marketdata" href="" class="list-group-item list-group-item-action">Reports</a>
+                    <a href="/marketdata" class="list-group-item list-group-item-action">Historical Data</a>
+                  
+                  </div>
+                </div>
+            
+              </div>
+              
+            </div>
+          </div>
+        </li>
+
+        <li class="nav-item  position-static">
+          <a href="/contact"
+            class="nav-link  navbar-items"
+            role="button"
+          >
+            Contact Us
+          </a>
+       
+        </li>
+
+        <li class="nav-item dropdown position-static">
+          <a
+            (click)="toggleMenu(5)"
+            class="nav-link dropdown-toggle navbar-items"
+            id="navbarDropdown2"
+            role="button"
+          >
+            Career
+          </a>
+          <!-- Dropdown menu -->
+          <div
+            class="dropdown-menu w-100 mt-0 nav-bar-item-dropdown"
+            aria-labelledby="navbarDropdown"
+            style="border-top-left-radius: 0; 
+            box-shadow:0px 6px 12px -5px #000000;
+            border-top-right-radius: 0; left: 0;display: block;"
+            *ngIf="menuExpanded === 5"
+            
+          >
+            <div class="container" >
+              <div class="row my-4">
+                <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+                  <div  class="list-group list-group-flush">
+                    <a id="fg" href="" class="list-group-item list-group-item-action"><i
+                         class="fas fa-caret-right pe-2"></i>Job Opening</a>
                     <a href="" class="list-group-item list-group-item-action"><i
-                        class="fas fa-caret-right pe-2"></i>Adipisicing elit</a>
+                        class="fas fa-caret-right pe-2"></i>Online Application</a>
+                    <a href="" class="list-group-item list-group-item-action"><i
+                        class="fas fa-caret-right pe-2"></i>Career Result</a>
+                  
                   </div>
                 </div>
               </div>

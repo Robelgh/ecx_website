@@ -1,4 +1,65 @@
-<div class="banner-carousel banner-carousel-1 mb-0">
+<div *ngIf="bannerCarousel && bannerCarousel.length > 0" class="carouselContainer">
+  <img *ngFor="let image of bannerCarousel; let i=index"
+        [src]="imagePath + image.imgName" 
+        [alt]="image"
+        [ngClass]="{'image-active':selectedIndex === i}"   
+  >
+  
+  <!-- <div class="description">
+    <h2 class="slide-title" data-animation-in="slideInLeft">17 Years of excellence in</h2>
+    <h3 class="slide-sub-title" data-animation-in="slideInRight">Construction Industry</h3>
+    <p data-animation-in="slideInLeft" data-duration-in="1.2">
+        <a href="services.html" class="slider btn btn-primary">Our Services</a>
+        <a href="contact.html" class="slider btn btn-primary border">Contact Now</a>
+    </p>
+  </div> -->
+  <div *ngIf="indicators && autoSlide" class="carousel-dot-container">
+    <span *ngFor="let dot of images; let i=index" 
+           class="dot"
+           [ngClass]="{'active': selectedIndex === i}"
+           (click)="selectImage(i)">
+
+    </span>
+
+  </div>
+
+  <div *ngIf="controls  && autoSlide" class="btn-carousel btn-prev">
+     <button class="fas fa-arrow-circle-left icon-carousel icon-prev"
+             (click)="onPrevClick()"></button>
+  </div>
+
+  <div *ngIf="controls  && autoSlide" class="btn-carousel btn-next">
+    <button class="fas fa-arrow-circle-right icon-carousel icon-next"
+            (click)="onNextClick()"></button>
+ </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- <div class="banner-carousel banner-carousel-1 mb-0">
     <div class="banner-carousel-item" style="background-image:url(../../../../assets/images/slider-pages/green_mung_bean.jpg)">
       <div class="slider-content">
           <div class="container h-100">
@@ -50,4 +111,4 @@
           </div>
       </div>
     </div>
-  </div>
+  </div> -->

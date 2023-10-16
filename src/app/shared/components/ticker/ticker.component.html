@@ -1,9 +1,12 @@
-<div class="hwrap">
+<div class="hwrap" style="margin-bottom: 20vh;">
     <div class="tickerNews">Commodity Price</div>
-  <div class="hmove">
-    <div class="hitem">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-    <div class="hitem">Aliquam consequat varius consequat.</div>
-    <div class="hitem">Fusce dapibus turpis vel nisi malesuada sollicitudin.</div>
-    <div class="hitem">Pellentesque auctor molestie orci ut blandit.</div>
+  <div *ngFor="let item of data" class="hmove">
+        <div class="hitem">{{item.symbol}} &nbsp; {{item.clossingPrize}}  
+          <i *ngIf="item.change > 0" class="fa fa-caret-up increaseIcon" aria-hidden="true"></i>
+          <i *ngIf="item.change < 0" class="fa fa-caret-down decreaseIcon" aria-hidden="true"></i>
+          <i *ngIf="item.change === 0" class="fa fa-caret-up constantIcon" aria-hidden="true"></i>
+            <label *ngIf="item.change < 0">{{-1*item.change}}</label>
+            <label *ngIf="item.change >= 0">{{item.change}}</label>
+        </div>
   </div>
 </div>

@@ -6,6 +6,10 @@ import { ECXWebsiteRoutingModule } from './ecx-website-routing.module';
 
 
 
+import { MatTableModule } from "@angular/material/table"
+import { MatCardModule } from '@angular/material/card';
+
+
 
 @NgModule({
   declarations: [
@@ -14,8 +18,9 @@ import { ECXWebsiteRoutingModule } from './ecx-website-routing.module';
   imports: [
     CommonModule,
     SharedModule,
-    ECXWebsiteRoutingModule
-
+    ECXWebsiteRoutingModule,
+    MatTableModule,
+    MatCardModule
     
   ]
 })

@@ -6,6 +6,11 @@
   box-shadow: var(--navbar-scroll-shadow);
   font-weight: 700;
   min-height: 13vh;
+  top: 7vh;
+  z-index: 3000;
+  background-color: gray !important;
+  color: white;
+
 }
 @media only screen and (max-width:1000px) {
   .rud{ 
@@ -38,6 +43,29 @@
 .dropdown-hover>.dropdown-toggle:active {
   /*Without this, clicking will make it sticky*/
   pointer-events: none;
+}
+
+.navbarcustome
+{
+  position: fixed relative;
+  top: 6vh;
+  width: 100%;
+  border: 1px solid;
+  height: 10%;
+  z-index: 1001;
+}
+
+.navNotHome
+{
+  position:sticky !important;
+  height: 20vh;
+  background-color: white;
+  color: black;
+}
+
+.nav-item
+{
+  color: white !important;
 }
 
 /* .nav-bar-item-dropdown{

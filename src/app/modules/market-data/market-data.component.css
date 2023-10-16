@@ -2,3 +2,31 @@
 {
     margin-top: 4vh;
 }
+
+.searchHolder
+{
+  display: flex;
+  justify-content: end;
+  align-items: end;
+}
+
+.searchInput
+{
+  padding: 1vh;
+  border-radius: 15px;
+}
+
+.increaseIcon
+{
+  color:green;
+}
+
+.decreaseIcon
+{
+  color:red;
+}
+
+.constantIcon
+{
+  color:yellow;
+}

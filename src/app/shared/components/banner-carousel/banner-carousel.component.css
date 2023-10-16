@@ -1,0 +1,142 @@
+button
+{
+    border-style: none;
+    padding: 2vh;
+    background-color: #ffb600;
+    color: black;
+    border-radius: 15px;
+}
+.carouselContainer
+{
+    position: relative;
+    margin: auto;
+    text-align: center;
+    /* width: 100%; */
+    border-radius: 15px;
+    box-shadow: 0 6px 12px #dce1e1;
+    z-index: 1000;
+}
+
+.description
+{
+    top: 50%;
+    padding: 0;
+    position: absolute;
+    width: 100%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    z-index: 1001;
+    width: 700px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px #dce1e1;
+}
+
+.carouselContainer img 
+{
+    display: none;
+    border-radius: 15px;
+    height: 600px !important;
+    /* object-fit: cover; */
+    width: 100%;
+}
+
+
+.carouselContainer img.image-active
+{
+    display: block;
+    width: 100%;
+    height: 400px;
+
+}
+
+.carousel-dot-container 
+{
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin-bottom: 1rem;
+
+}
+
+.dot 
+{
+    cursor: pointer;
+    height: 13px;
+    width: 13px;
+    margin: 0 5px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: inline-block;
+    transition: opactiy 0.6;
+}
+
+.active,.dot:hover
+{
+    opacity:1;
+}
+
+/* .fade 
+{
+    animation-name: fade;
+    animation-duration: 1.5s;
+} */
+
+/* @keyframes fade {
+.fade 
+{
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+
+    from 
+    {
+        opacity: 0.4;
+    }
+
+    to 
+    {
+        opacity: 1;
+    }
+    
+} */
+
+.btn-carousel
+{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+    padding: 0;
+    /* color: #fff; */
+    text-align: center;
+    background-color: 0 0;
+    border: 0;
+    cursor: pointer !important;
+}
+
+.btn-prev
+{
+    left:0;
+    margin:4vh;
+    transition: all 0.15s ease;
+    cursor: pointer;
+}
+
+.btn-next
+{
+    right:0;
+    margin:4vh;
+    transition: all 0.15s ease;
+}
+
+
+

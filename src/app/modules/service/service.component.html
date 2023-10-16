@@ -1,4 +1,5 @@
-<section id="main-container" class="main-container pb-2">
+<div *ngIf="isHome">
+  <section id="main-container" class="main-container pb-2">
     <div class="container">
         <div class="row text-center">
             <div class="col-lg-12">
@@ -7,52 +8,96 @@
         </div>
       <div class="row">
   
-        <div class="col-lg-4 col-md-6 mb-5">
+        <div *ngFor="let item of services" class=" col-lg-4 col-md-6 mb-5">
           <div class="ts-service-box">
               <div class="ts-service-image-wrapper">
-                <img loading="lazy" class="w-100" src="../../../assets/images/services/service1.jpg" alt="service-image">
+                <img loading="lazy" class="img-fluid" 
+                [src]="imagePath + item.imgName" alt="project-slider-image" />
               </div>
               <div class="d-flex">
              
                 <div class="ts-service-info">
-                    <h3 class="service-box-title"><a routerLink="service">Warehouse</a></h3>
-                    <p>You have ideas, goals, and dreams. We have a culturally diverse, forward thinking team looking for talent like. Lorem ipsum dolor suscipit.</p>
-                    <a class="learn-more d-inline-block" routerLink="service" aria-label="service-details"><i class="fa fa-caret-right"></i> Learn more</a>
+                    <h3 class="service-box-title"><a routerLink="service">{{item.title}}</a></h3>
+                    <p>{{ (item?.description.length>200)? 
+                      (item?.description | slice:0:200)+'  .  .  .':
+                      (item?.description)}}</p>
+                    <a class="learn-more d-inline-block" 
+                       [routerLink]="['/service']"
+                       [queryParams]="{ detail: item.title}"
+                       aria-label="service-details"><i class="fa fa-caret-right"></i> Learn more</a>
                 </div>
               </div>
           </div><!-- Service1 end -->
         </div><!-- Col 1 end -->
   
-        <div class="col-lg-4 col-md-6 mb-5">
-          <div class="ts-service-box">
-              <div class="ts-service-image-wrapper">
-                <img loading="lazy" class="w-100" src="../../../assets/images/services/service2.jpg" alt="service-image">
-              </div>
-              <div class="d-flex">
-                <div class="ts-service-info">
-                    <h3 class="service-box-title"><a href="service-single.html">Quality</a></h3>
-                    <p>You have ideas, goals, and dreams. We have a culturally diverse, forward thinking team looking for talent like. Lorem ipsum dolor suscipit.</p>
-                    <a class="learn-more d-inline-block" href="service-single.html" aria-label="service-details"><i class="fa fa-caret-right"></i> Learn more</a>
-                </div>
-              </div>
-          </div><!-- Service2 end -->
-        </div><!-- Col 2 end -->
-  
-        <div class="col-lg-4 col-md-6 mb-5">
-          <div class="ts-service-box">
-              <div class="ts-service-image-wrapper">
-                <img loading="lazy" class="w-100" src="../../../assets/images/services/service3.jpg" alt="service-image">
-              </div>
-              <div class="d-flex">
-                <div class="ts-service-info">
-                    <h3 class="service-box-title"><a href="service-single.html">Trading</a></h3>
-                    <p>You have ideas, goals, and dreams. We have a culturally diverse, forward thinking team looking for talent like. Lorem ipsum dolor suscipit.</p>
-                    <a class="learn-more d-inline-block" href="service-single.html" aria-label="service-details"><i class="fa fa-caret-right"></i> Learn more</a>
-                </div>
-              </div>
-          </div><!-- Service3 end -->
-        </div><!-- Col 3 end -->
+    
   
       </div><!-- Main row end -->
     </div><!-- Conatiner end -->
   </section><!-- Main container end -->
+</div>
+
+  <div *ngIf="!isHome" class="detailAll">
+    <div class="body-inner">
+  
+      <app-ticker></app-ticker>
+      <app-header></app-header> 
+      <app-breadcrumbs [title]="data.title"></app-breadcrumbs>
+  
+    <section id="main-container" class="main-container">
+      <div class="container">
+        <div class="row">
+  
+          <div class="col-xl-3 col-lg-4">
+            <div class="sidebar sidebar-left">
+              <div class="widget">
+                <h3 class="widget-title">Categories</h3>
+                <ul *ngFor="let item of services "  class="nav service-menu">
+                  <li><a   [routerLink]="['/service']"
+                    [queryParams]="{ detail: item.title}">
+                    {{item.title}}
+                  </a></li>
+                </ul>
+              </div><!-- Widget end -->
+  
+  
+            </div><!-- Sidebar end -->
+          </div><!-- Sidebar Col end -->
+  
+          <div class="col-xl-8 col-lg-8">
+            <div class="content-inner-page">
+  
+              <h2 class="column-title mrt-0">{{data.title}}</h2>
+  
+              <div class="row">
+                <div class="col-md-12">
+                  <p>{{data.description}}</p>
+                </div><!-- col end -->
+              </div><!-- 1st row end-->
+  
+              <div class="gap-40"></div>
+  
+              <div id="page-slider" class="page-slider">
+                <div class="item">
+                  <img loading="lazy" class="img-fluid" 
+                       [src]="imagePath + data.imgName" alt="project-slider-image" />
+                </div>
+  
+              </div>
+  
+           
+  
+  
+  
+            </div><!-- Content inner end -->
+          </div><!-- Content Col end -->
+  
+  
+        </div><!-- Main row end -->
+      </div><!-- Conatiner end -->
+    </section><!-- Main container end -->
+  
+    <app-footer></app-footer>
+    </div>
+  </div>  
+

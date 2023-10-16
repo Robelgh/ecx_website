@@ -28,43 +28,23 @@ export class BannerCarouselComponent implements OnInit {
 
 
   selectedIndex=0;
-
-  ngOnInit(): void {
-
   @Input() images:any=[];
   @Input() indicators=true;
   @Input() controls= true;
   @Input() autoSlide= false;
   @Input() slideInterval=10000;
 
-  selectedIndex=0;
   getResponse:any={};
   bannerCarousel:any=[];
   imagePath = this.service.getImagePath();
 
-    console.log(this.images)
-    
-  }
->>>>>>> 670609ff305575629db4a0a7e41fc8b2d62ac984
-
-  selectImage(index:number): void 
-  {
-    this.selectedIndex=index;
-  }
-
-
-
-//   getResponse:any={};
-//   bannerCarousel:any=[];
-//   imagePath = this.service.getImagePath();
-
-//   constructor(private service:BannerCarousel,private router: Router) {}
+  constructor(private service:BannerCarousel,private router: Router) {}
   
-//   async ngOnInit() {
+  async ngOnInit() {
 
-<<<<<<< HEAD
     this.getResponse = (await this.service.getAll());
     this.bannerCarousel=this.getResponse.data;
+
 
     if(this.autoSlide)
     {
@@ -75,13 +55,11 @@ export class BannerCarouselComponent implements OnInit {
       console.log(this.images)
     }
 }
-=======
 //     this.getResponse = (await this.service.getAll());
 //      this.bannerCarousel=this.getResponse.data;
 //     console.log(this.bannerCarousel)
   
 // }
->>>>>>> 670609ff305575629db4a0a7e41fc8b2d62ac984
 
    autoslideImages():  void{
       setInterval(()=>

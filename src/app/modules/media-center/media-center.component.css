@@ -1,0 +1,37 @@
+.newsDescriptionHolder
+{
+    height: 28vh;
+    margin-bottom: 1vh;
+    /* overflow-y: hidden; */
+}
+
+.newsDescriptionHolderHeadline
+{
+    height: 20vh;
+    margin-bottom: 1vh;
+    /* overflow-y: hidden; */
+}
+
+.ts-service-info
+{
+    margin-bottom: 2vh;
+}
+
+.newsDescriptionHolderMin
+{
+    height: 10vh !important;
+    margin-bottom: 1vh;
+}
+
+.headlineImage
+{
+  
+}
+
+.headlineImage
+{
+  height: auto;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 7vh;
+}

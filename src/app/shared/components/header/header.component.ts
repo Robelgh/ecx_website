@@ -20,16 +20,20 @@ export class HeaderComponent {
 
  ngOnInit(): void {
 
+  document.body.style.setProperty('--navbar-scroll', "rgba(0, 0, 0, 0.5)");
+  document.body.style.setProperty('--navbar-scroll-text', "white");
+  document.body.style.setProperty('--navbar-scroll-shadow', "none");
+  document.body.style.setProperty('--img-back-ground', "invert(100%)");
+
   this.isHome=this.router.url === '/'
 
    window.addEventListener('scroll', this.scroll, true);
 
-   if(!this.isHome)
-   {
+   
     document.body.style.setProperty('--navbar-scroll', "white");
     document.body.style.setProperty('--navbar-scroll-text', "black");
-    document.body.style.setProperty('--navbar-scroll-shadow', "0px 6px 12px -5px #000000");
-   }
+    // document.body.style.setProperty('--navbar-scroll-shadow', "0px 6px 12px -5px #000000");
+   
  
 
     //document.body.style.setProperty('--navbar-scroll', "rgba(0, 0, 0, 0.5)");
@@ -53,9 +57,6 @@ export class HeaderComponent {
       
       if(index === this.menuExpanded) this.menuExpanded = -1;
       else this.menuExpanded = index;
-
-      console.log("index" + index)
-      console.log("menuexpanded" + this.menuExpanded)
     }, 0);
   }
   toggleCollpse() {
@@ -93,9 +94,9 @@ export class HeaderComponent {
 
    if(window.scrollY >= scrollHeigth){
      document.body.style.setProperty('--navbar-scroll', "white");
-     document.body.style.setProperty('--navbar-scroll-text', "black");
+    //  document.body.style.setProperty('--navbar-scroll-text', "black");
      document.body.style.setProperty('--navbar-scroll-shadow', "0px 6px 12px -5px #000000");
-   }else if(window.scrollY < scrollHeigth && !this.isHome){
+   }else if(window.scrollY < scrollHeigth){
      document.body.style.setProperty('--navbar-scroll', "rgba(0, 0, 0, 0.5)");
      document.body.style.setProperty('--navbar-scroll-text', "white");
      document.body.style.setProperty('--navbar-scroll-shadow', "none");
@@ -103,7 +104,7 @@ export class HeaderComponent {
 
    }
   }, 0);
-  console.log(this.isHome);
+
  }
  
   
