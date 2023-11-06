@@ -7,6 +7,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EcxWebsiteModule } from './apps/ecx_website/ecx-website/ecx-website.module';
 import { EcxWebsiteComponent } from './apps/ecx_website/ecx-website/ecx-website.component';
 import { SharedModule } from './shared/shared.module';
+import {MarketComponentsModule} from './modules/market-components/market-components.module';
+
+import { HistogramComponent } from './modules/market-components/histogram/histogram.component';
 import { MarketDataComponent } from './modules/market-data/market-data.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { AboutUsComponent } from './modules/about-us/about-us.component';
@@ -19,6 +22,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgChartsModule, NgChartsConfiguration } from 'ng2-charts';
 
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {FormsModule} from '@angular/forms';
+
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 import { MatTableModule } from "@angular/material/table"
 import { MatCardModule } from '@angular/material/card';
@@ -26,8 +34,8 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSortModule } from "@angular/material/sort";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MediaCenterComponent } from './modules/media-center/media-center.component';
-
-
+import { AnnouncementsComponent } from './modules/announcements/announcements.component';
+import { ResourcesComponent } from './modules/resources/resources.component';
 
 
 @NgModule({
@@ -42,7 +50,9 @@ import { MediaCenterComponent } from './modules/media-center/media-center.compon
     BlogDetailComponent,
     HeaderComponent,
     ServiceComponent,
-    MediaCenterComponent
+    MediaCenterComponent,
+    AnnouncementsComponent,
+    ResourcesComponent
   ],
   imports: [
     BrowserModule,
@@ -50,8 +60,10 @@ import { MediaCenterComponent } from './modules/media-center/media-center.compon
     AppRoutingModule,
     EcxWebsiteModule,
     SharedModule,
+    MarketComponentsModule,
     NgChartsModule,
     BrowserAnimationsModule,
+
 
     
     MatTabsModule,
@@ -59,7 +71,12 @@ import { MediaCenterComponent } from './modules/media-center/media-center.compon
     MatCardModule,
     MatPaginatorModule,
     MatSortModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    FormsModule,
+
+    CarouselModule
   ],
   providers: [{ provide: NgChartsConfiguration, useValue: { generateColors: false }}],
   bootstrap: [AppComponent],
@@ -68,7 +85,9 @@ import { MediaCenterComponent } from './modules/media-center/media-center.compon
         BlogContentComponent,
         BlogDetailComponent,
         ServiceComponent,
-        MediaCenterComponent
+        MediaCenterComponent,
+        AnnouncementsComponent,
+        ResourcesComponent
   ]
 })
 export class AppModule { }

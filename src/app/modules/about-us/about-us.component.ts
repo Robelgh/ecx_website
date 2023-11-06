@@ -23,11 +23,16 @@ export class AboutUsComponent {
   isHome!:boolean;
   isAbout!:boolean;
   isDetail!:boolean;
+  isBoardOfDirctories!:boolean;
+
+  switcher:boolean = false;
+  // isBoardOfDirctories!:booalean;
   getResponse:any={};
   params:any;
   data:any={};
   aboutus:any=[];
   parent:any=[];
+  boardOfDirectories:any=[];
   imagePath = this.service.getImagePath();
   aboutBanner:any=[]
 
@@ -35,17 +40,13 @@ export class AboutUsComponent {
 
   async ngOnInit () {
 
- 
-    
-   
- 
-
     this.route.params.subscribe(async params => {
 
-     
+       
 
       this.isHome=this.router.url == '/'
       this.isAbout=this.router.url === '/about'
+    
 
 
       this.getResponse = (await this.service.getAll());
@@ -55,10 +56,30 @@ export class AboutUsComponent {
       this.parent=this.getResponse.data;
       this.aboutBanner.push(this.parent);
 
+      this.getResponse=(await this.service.getBoardofDiroctories())
+      this.boardOfDirectories=this.getResponse.data;
+
+      console.log(this.boardOfDirectories)
+
       this.route.queryParamMap
       .subscribe(async (params) => {
         if(params.get('detail') != null ||  params.get('detail') != undefined) {
-          this.data= await this.aboutus.filter((a:any)=> a.title === params.get('detail'))[0];
+          if(params.get('detail') === "single detail")
+          {
+            const data={
+                title:params.get('name'),
+                description:params.get('description'),
+                imgName:params.get('imgName')
+            }
+
+            this.data=await data;
+            console.log(this.data)
+          }
+          else
+          {
+            this.data= await this.aboutus.filter((a:any)=> a.title === params.get('detail'))[0];
+            this.isBoardOfDirctories = this.data.title === "Board of Directors"
+          }
         }
         else
         {

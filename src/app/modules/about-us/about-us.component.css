@@ -1,0 +1,14 @@
+.headlineImage
+{
+  height: auto;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 7vh;
+  border-radius: 15px;
+}
+
+.listImage
+{
+  height: 30vh;
+  width:30vh
+}

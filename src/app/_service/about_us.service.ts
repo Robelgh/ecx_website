@@ -6,6 +6,7 @@ import { Commodities } from '../_model/_commodities.model';
 
 const baseUrl = `${environment.apiUrl}/Page/1150b2c8-82f4-4153-82c2-1a21e7fed01d/3eab9014-4e33-4d8b-a313-fa745837c157`;
 const baseUrlParent = `${environment.apiUrl}/PageCatagory/1150b2c8-82f4-4153-82c2-1a21e7fed01d`;
+const baseUrlBoard=`${environment.apiUrl}/BoardOfDirector`
 
 @Injectable({ providedIn: 'root' })
 export class AboutService {
@@ -38,4 +39,9 @@ export class AboutService {
     getImagePath(){
         return 'https://localhost:7284/image/';
       }
+    
+    async getBoardofDiroctories(){
+          return await firstValueFrom(this.http.get(baseUrlBoard));
+      }  
+ 
 }

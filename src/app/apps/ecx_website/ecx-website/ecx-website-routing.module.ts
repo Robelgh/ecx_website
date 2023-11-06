@@ -8,7 +8,8 @@ import { ServiceComponent } from 'src/app/modules/service/service.component';
 import { AboutUsComponent } from 'src/app/modules/about-us/about-us.component';
 import { MarketDataComponent } from 'src/app/modules/market-data/market-data.component';
 import { MediaCenterComponent } from 'src/app/modules/media-center/media-center.component';
-
+import { AnnouncementsComponent } from './../../../modules/announcements/announcements.component';
+import { ResourcesComponent } from 'src/app/modules/resources/resources.component';
 
 const routes: Routes = [
     {
@@ -21,7 +22,11 @@ const routes: Routes = [
             { path: 'service/:detail', component: ServiceComponent },
             { path: 'marketdata', component: MarketDataComponent },
             { path: 'marketdata/histogram', component: MarketDataComponent },
-            { path: 'media',component:MediaCenterComponent}
+            { path: 'Media',component:MediaCenterComponent},
+            { path: 'Announcements',component:AnnouncementsComponent},
+            { path: 'Resources',component:ResourcesComponent}
+            
+            
             // { path: 'service/detail', component: ServiceDetailComponent },
           
         ]

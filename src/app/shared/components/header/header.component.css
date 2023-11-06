@@ -8,8 +8,9 @@
   min-height: 13vh;
   top: 7vh;
   z-index: 3000;
-  background-color: gray !important;
+  background-color: #73a534 !important;
   color: white;
+
 
 }
 @media only screen and (max-width:1000px) {
@@ -66,6 +67,11 @@
 .nav-item
 {
   color: white !important;
+}
+
+.navbar-brand
+{
+  margin-top: 2vh;
 }
 
 /* .nav-bar-item-dropdown{

@@ -1,16 +1,3 @@
-.newsDescriptionHolder
-{
-    height: 28vh;
-    margin-bottom: 1vh;
-    /* overflow-y: hidden; */
-}
-
-.newsDescriptionHolderHeadline
-{
-    height: 20vh;
-    margin-bottom: 1vh;
-    /* overflow-y: hidden; */
-}
 
 .ts-service-info
 {
@@ -23,15 +10,24 @@
     margin-bottom: 1vh;
 }
 
-.headlineImage
+.newsDescriptionHolder
 {
-  
+    height: 28vh;
+    margin-bottom: 1vh;
+    /* overflow-y: hidden; */
 }
 
-.headlineImage
+
+.newsDescriptionHolderHeadline
 {
-  height: auto;
-  width: 80%;
-  margin: auto;
-  margin-bottom: 7vh;
+height: 20vh;
 }
+
+@media only screen and (max-width: 380px) {
+     .newsDescriptionHolderHeadline{
+        height: 100px;
+        margin-bottom: 200px;
+    }
+  }
+
+

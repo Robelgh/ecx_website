@@ -1,0 +1,57 @@
+<div class="tableHolder">
+    <table  matSort mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="Symbol">
+          <th mat-sort-header mat-header-cell *matHeaderCellDef> Symbol </th>
+          <td mat-cell *matCellDef="let element"> {{element.Symbol}} </td>
+        </ng-container>
+      
+        <!-- PY Column -->
+        <ng-container matColumnDef="PY">
+          <th mat-sort-header mat-header-cell *matHeaderCellDef> PY </th>
+          <td mat-cell *matCellDef="let element"> {{element.PY}} </td>
+        </ng-container>
+
+          <!-- PY WH -->
+          <ng-container matColumnDef="WH">
+            <th mat-sort-header mat-header-cell *matHeaderCellDef> WH </th>
+            <td mat-cell *matCellDef="let element"> {{element.WH}} </td>
+          </ng-container>
+
+             <!-- PY Mode -->
+             <ng-container matColumnDef="Mode">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef> Mode </th>
+                <td mat-cell *matCellDef="let element"> {{element.Mode}} </td>
+              </ng-container>
+
+                 <!--High -->
+             <ng-container matColumnDef="High">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef> High </th>
+                <td mat-cell *matCellDef="let element"> {{element.High}} </td>
+              </ng-container>
+
+                <!-- Low -->
+             <ng-container matColumnDef="Low">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef> Low </th>
+                <td mat-cell *matCellDef="let element"> {{element.Low}} </td>
+              </ng-container>
+
+                 <!-- Market -->
+             <ng-container matColumnDef="Market">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef> Market </th>
+                <td mat-cell *matCellDef="let element"> {{element.Market}} </td>
+              </ng-container>
+
+                     <!-- Ch -->
+             <ng-container matColumnDef="Ch">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef> Ch </th>
+                <td mat-cell *matCellDef="let element"> {{element.Ch}} </td>
+              </ng-container>
+
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+</div>

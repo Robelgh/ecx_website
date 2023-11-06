@@ -54,7 +54,8 @@
           >
           <div class="container">
             <div class="row my-4">
-              <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+              <div class="col-md-6 col-lg-6 mb-3 mb-lg-0">
+                
                 <div class="list-group list-group-flush">
                   <a  [routerLink]="['/about']"
                       [queryParams]="{ detail: 'Company Profile'}" 
@@ -74,7 +75,7 @@
                       class="fas fa-caret-right pe-2"></i>Board of Directors</a>   
                 </div>
               </div>
-              <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+              <div class="col-md-6 col-lg-6 mb-3 mb-lg-0">
                 <div class="list-group list-group-flush">
                   <a  [routerLink]="['/about']"
                        [queryParams]="{ detail: 'Social Responsibility'}" 
@@ -91,18 +92,18 @@
           </div>
           </div>
         </li>
+
         <li class="nav-item dropdown position-static">
           <a
             (click)="toggleMenu(1)"
             class="nav-link dropdown-toggle navbar-items"
-            id="navbarDropdown"
+            id="navbarDropdown2"
             role="button"
           >
-            Services
+          Services
           </a>
           <!-- Dropdown menu -->
           <div
-            
             class="dropdown-menu w-100 mt-0 nav-bar-item-dropdown"
             aria-labelledby="navbarDropdown"
             style="border-top-left-radius: 0; 
@@ -111,44 +112,45 @@
             *ngIf="menuExpanded === 1"
             
           >
-          <div class="container">
-            <div class="row my-4">
-              <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                <div class="list-group list-group-flush">
-                  <a  [routerLink]="['/service']"
-                  [queryParams]="{ detail: 'Warehouse'}" 
-                  class="list-group-item list-group-item-action"><i
-                  class="fas fa-caret-right pe-2"></i>Warehouse</a>
+            <div class="container" >
+              <div class="row my-4">
+                <div class="col-md-12 mb-3 mb-lg-0">
+                  <div class="list-group list-group-flush">
 
-                  <a  [routerLink]="['/service']"
-                  [queryParams]="{ detail: 'Quality'}" 
-                  class="list-group-item list-group-item-action"><i
-                  class="fas fa-caret-right pe-2"></i>Quality</a>
+                    <a  [routerLink]="['/service']"
+                    [queryParams]="{ detail: 'Warehouse'}" 
+                    class="list-group-item list-group-item-action"><i
+                    class="fas fa-caret-right pe-2"></i>Warehouse</a>
 
-                  <a  [routerLink]="['/service']"
-                  [queryParams]="{ detail: 'Trade'}" 
-                  class="list-group-item list-group-item-action"><i
-                  class="fas fa-caret-right pe-2"></i>Trade</a>
-                
-                </div>
+                    <a  [routerLink]="['/service']"
+                    [queryParams]="{ detail: 'Resources'}" 
+                    class="list-group-item list-group-item-action"><i
+                    class="fas fa-caret-right pe-2"></i>Quality</a>
+
+                    <a [routerLink]="['/service']"
+                    [queryParams]="{ detail: 'Trade'}" 
+                    class="list-group-item list-group-item-action"><i
+                    class="fas fa-caret-right pe-2"></i>Trade</a>
+                  </div>
+                </div>  
               </div>
+              
             </div>
-            
-          </div>
           </div>
         </li>
+
+
         <li class="nav-item dropdown position-static">
           <a
             (click)="toggleMenu(2)"
             class="nav-link dropdown-toggle navbar-items"
-            id="navbarDropdown1"
+            id="navbarDropdown2"
             role="button"
           >
-           Media Center
+            Media Center
           </a>
           <!-- Dropdown menu -->
           <div
-          
             class="dropdown-menu w-100 mt-0 nav-bar-item-dropdown"
             aria-labelledby="navbarDropdown"
             style="border-top-left-radius: 0; 
@@ -157,21 +159,28 @@
             *ngIf="menuExpanded === 2"
             
           >
-            <div class="container">
+            <div class="container" >
               <div class="row my-4">
-                <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+                <div class="col-md-12 col-lg-12 mb-3 mb-lg-0">
                   <div class="list-group list-group-flush">
-                    <a  [routerLink]="['/media']"
-                    [queryParams]="{ detail: 'News'}" 
+
+                    <a  [routerLink]="['/Media']"
+                    [queryParams]="{ detail: 'News and Events'}" 
                     class="list-group-item list-group-item-action"><i
                     class="fas fa-caret-right pe-2"></i>News and Events</a>
-                    <a href="" class="list-group-item list-group-item-action"><i
-                        class="fas fa-caret-right pe-2"></i>Resources</a>
-                    <a href="" class="list-group-item list-group-item-action"><i
-                        class="fas fa-caret-right pe-2"></i>Announcements</a>
+
+                    <a  [routerLink]="['/Resources']"
+                    [queryParams]="{ detail: 'Resources'}" 
+                    class="list-group-item list-group-item-action"><i
+                    class="fas fa-caret-right pe-2"></i>Resources</a>
+
+                    <a [routerLink]="['/Announcements']"
+                    [queryParams]="{ detail: 'announcements'}"
+                    class="list-group-item list-group-item-action"><i
+                    class="fas fa-caret-right pe-2"></i>Announcements</a>
                   </div>
                 </div>
-            
+             
               </div>
               
             </div>
@@ -239,14 +248,14 @@
           </div>
         </li>
 
-        <li class="nav-item dropdown position-static">
+        <li class="nav-item dropdown position-static">                
           <a
             (click)="toggleMenu(4)"
             class="nav-link dropdown-toggle navbar-items"
             id="navbarDropdown2"
             role="button"
           >
-            Market Data
+          Market Data
           </a>
           <!-- Dropdown menu -->
           <div
@@ -260,22 +269,39 @@
           >
             <div class="container" >
               <div class="row my-4">
-                <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                  <div  class="list-group list-group-flush">
-                    <a href="/marketdata" class="list-group-item list-group-item-action">Real Time Data</a>
-                    <a href="/marketdata" class="list-group-item list-group-item-action">Daily High and Low Price</a>
-                    <a href="/marketdata" class="list-group-item list-group-item-action">Daily Trade Data</a>
-                  
+                <div class="col-md-6 mb-6 mb-lg-0">
+                  <div class="list-group list-group-flush">
+
+                    <a  [routerLink]="['/marketdata']"
+                    [queryParams]="{ detail: 'Warehouse'}" 
+                    class="list-group-item list-group-item-action"><i
+                    class="fas fa-caret-right pe-2"></i>Real Time Data</a>
+
+                    <a  [routerLink]="['/marketdata']"
+                    [queryParams]="{ detail: 'Resources'}" 
+                    class="list-group-item list-group-item-action"><i
+                    class="fas fa-caret-right pe-2"></i>Daily High and Low Price</a>
+
+                    <a [routerLink]="['/marketdata']"
+                    [queryParams]="{ detail: 'Trade'}" 
+                    class="list-group-item list-group-item-action"><i
+                    class="fas fa-caret-right pe-2"></i>Daily Trade Data</a>
                   </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                  <div  class="list-group list-group-flush">
-                    <a href="/marketdata" href="" class="list-group-item list-group-item-action">Reports</a>
-                    <a href="/marketdata" class="list-group-item list-group-item-action">Historical Data</a>
-                  
+                </div> 
+                <div class="col-md-6 mb-6 mb-lg-0">
+                  <div class="list-group list-group-flush">
+
+                    <a  [routerLink]="['/marketdata']"
+                    [queryParams]="{ detail: 'Warehouse'}" 
+                    class="list-group-item list-group-item-action"><i
+                    class="fas fa-caret-right pe-2"></i>Reports</a>
+
+                    <a  [routerLink]="['/marketdata']"
+                    [queryParams]="{ detail: 'Resources'}" 
+                    class="list-group-item list-group-item-action"><i
+                    class="fas fa-caret-right pe-2"></i>Historical Data</a>
                   </div>
-                </div>
-            
+                </div>  
               </div>
               
             </div>
