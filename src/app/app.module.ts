@@ -24,7 +24,7 @@ import { NgChartsModule, NgChartsConfiguration } from 'ng2-charts';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
-import {FormsModule} from '@angular/forms';
+
 
 import { CarouselModule } from 'ngx-owl-carousel-o';
 
@@ -36,6 +36,9 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MediaCenterComponent } from './modules/media-center/media-center.component';
 import { AnnouncementsComponent } from './modules/announcements/announcements.component';
 import { ResourcesComponent } from './modules/resources/resources.component';
+import { PackagesComponent } from './modules/packages/packages.component';
+import { CheckoutComponent } from './modules/checkout/checkout.component';
+
 
 
 @NgModule({
@@ -52,7 +55,9 @@ import { ResourcesComponent } from './modules/resources/resources.component';
     ServiceComponent,
     MediaCenterComponent,
     AnnouncementsComponent,
-    ResourcesComponent
+    ResourcesComponent,
+    PackagesComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +69,6 @@ import { ResourcesComponent } from './modules/resources/resources.component';
     NgChartsModule,
     BrowserAnimationsModule,
 
-
     
     MatTabsModule,
     MatTableModule,
@@ -74,7 +78,7 @@ import { ResourcesComponent } from './modules/resources/resources.component';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    FormsModule,
+  
 
     CarouselModule
   ],
@@ -87,7 +91,9 @@ import { ResourcesComponent } from './modules/resources/resources.component';
         ServiceComponent,
         MediaCenterComponent,
         AnnouncementsComponent,
-        ResourcesComponent
+        ResourcesComponent,
+        PackagesComponent,
+        CheckoutComponent
   ]
 })
 export class AppModule { }

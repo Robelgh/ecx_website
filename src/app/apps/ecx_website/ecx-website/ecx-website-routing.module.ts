@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -10,6 +9,10 @@ import { MarketDataComponent } from 'src/app/modules/market-data/market-data.com
 import { MediaCenterComponent } from 'src/app/modules/media-center/media-center.component';
 import { AnnouncementsComponent } from './../../../modules/announcements/announcements.component';
 import { ResourcesComponent } from 'src/app/modules/resources/resources.component';
+import { PackagesComponent } from 'src/app/modules/packages/packages.component';
+import { CheckoutComponent } from 'src/app/modules/checkout/checkout.component';
+import { LoginComponent } from './../../../shared/components/login/login.component';
+import { SignupComponent } from 'src/app/shared/components/signup/signup.component';
 
 const routes: Routes = [
     {
@@ -24,7 +27,11 @@ const routes: Routes = [
             { path: 'marketdata/histogram', component: MarketDataComponent },
             { path: 'Media',component:MediaCenterComponent},
             { path: 'Announcements',component:AnnouncementsComponent},
-            { path: 'Resources',component:ResourcesComponent}
+            { path: 'Resources',component:ResourcesComponent},
+            { path: 'packages' ,component:PackagesComponent},
+            { path: 'checkout' ,component:CheckoutComponent},
+            { path: 'login',component:LoginComponent},
+            { path: 'signup',component:SignupComponent}
             
             
             // { path: 'service/detail', component: ServiceDetailComponent },

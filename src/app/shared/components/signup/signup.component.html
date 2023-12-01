@@ -1,0 +1,51 @@
+<div class="wrapper"
+     [ngClass]="{'positioner': signup}">
+    <div class="inner">
+        <form action="">
+            <div *ngIf="signup" class="imageHolder">
+                <img 
+               src="../../../../assets/images/logo/ECXLogo.png"
+               style="width: 10vh;"
+               class="img-background"
+           />
+           </div>
+           <div *ngIf="signup" class="title">
+            <h4>Registration Form</h4>
+           </div>
+            
+            <div class="form-group">
+                <div class="form-wrapper">
+                    <label for="">First Name</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="form-wrapper">
+                    <label for="">Last Name</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="form-wrapper">
+                <label for="">Phone Number</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-wrapper">
+                <label for="">Password</label>
+                <input type="password" class="form-control">
+            </div>
+            <div class="form-wrapper">
+                <label for="">Confirm Password</label>
+                <input type="password" class="form-control">
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> I caccept the Terms of Use & Privacy Policy.
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <button>Register Now</button>
+            <div *ngIf="signup" class="redirect">
+                <a (click)="onNavigate()">aleady have account ?</a>
+            </div>
+            
+        </form>
+    </div>
+</div>

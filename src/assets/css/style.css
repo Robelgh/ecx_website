@@ -3532,9 +3532,9 @@ label {
 
 button
 {
-  border-style:none;
-  padding:2vh;
-  border-radius:15px;
+  border: 1px solid var(--t-text-color);
+  background-color: var( --second-bg);
+  border-radius: 15px;
 }
 
 .description

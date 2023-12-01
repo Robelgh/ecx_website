@@ -1,0 +1,46 @@
+<div class="wrapper"
+     [ngClass]="{'positioner': login}">
+    <div class="inner">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div *ngIf="login" class="imageHolder">
+                <img 
+               src="../../../../assets/images/logo/ECXLogo.png"
+               style="width: 10vh;"
+               class="img-background"
+           />
+           </div>
+           <div class="title">
+            <h4 *ngIf="login">Login</h4>
+           </div>
+ 
+            <div class="form-wrapper">
+                <label for="">First Name</label>
+                <input type="text" 
+                       class="form-control"
+                       formControlName="firstname"  
+                       [ngClass]="{ 'is-invalid': submitted && f['firstname'].errors }">
+                       <div *ngIf="submitted && f['firstname'].errors" class="invalid-feedback">
+                        <div *ngIf="f['firstname'].errors['required']">First Name is required</div>
+                      </div>
+            </div>
+            <div class="form-wrapper">
+                <label for="">Password</label>
+                <input type="password" 
+                       class="form-control"
+                       formControlName="password"  
+                       [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+                       <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                        <div *ngIf="f['password'].errors['required']">Password is required</div>
+                      </div>
+            </div>
+       
+            <button>
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Login</button>
+            <div *ngIf="login" class="redirect">
+                <a (click)="onNavigate()">you don't have account ?</a>
+            </div>
+            
+        </form>
+    </div>
+</div>

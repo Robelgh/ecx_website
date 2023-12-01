@@ -9,6 +9,11 @@ import { BannerCarouselComponent } from './components/banner-carousel/banner-car
 import { TickerComponent } from './components/ticker/ticker.component';
 import { ShortBannerComponent } from './components/short-banner/short-banner.component';
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+
 
 @NgModule({
   declarations: [
@@ -17,12 +22,17 @@ import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.compo
     BannerCarouselComponent,
     TickerComponent,
     ShortBannerComponent,
-    BreadcrumbsComponent
+    BreadcrumbsComponent,
+    LoginComponent,
+    SignupComponent
+  
     
   ],
   imports: [
     CommonModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     FooterComponent,
@@ -30,7 +40,9 @@ import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.compo
     BannerCarouselComponent,
     TickerComponent,
     ShortBannerComponent,
-    BreadcrumbsComponent
+    BreadcrumbsComponent,
+    LoginComponent,
+    SignupComponent
     
   ]
 })

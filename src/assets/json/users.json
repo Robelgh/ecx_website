@@ -1,0 +1,35 @@
+[
+    {
+    "Id": 1,
+    "firstname": "Robel",
+    "lastname": "Gebrehiwot",
+    "email": "robelghw12@gmail.com",
+    "Password": "Testing1",
+    "LastModifiedBy": "robel",
+    "LastModifiedOn": "2020-09-14T16:08:35.853Z",
+    "CreatedBy": "robel",
+    "CreatedOn": "2020-09-14T16:08:35.853Z"
+   },
+   {
+    "Id": 2,
+    "firstname": "Hadera",
+    "lastname": "Teame",
+    "email": "robelghw12@gmail.com",
+    "Password": "Testing1",
+    "LastModifiedBy": "robel",
+    "LastModifiedOn": "2020-09-14T16:08:35.853Z",
+    "CreatedBy": "robel",
+    "CreatedOn": "2020-09-14T16:08:35.853Z"
+   },
+   {
+    "Id": 3,
+    "firstname": "Biruk",
+    "lastname": "Mamuye",
+    "email": "robelghw12@gmail.com",
+    "Password": "Testing1",
+    "LastModifiedBy": "robel",
+    "LastModifiedOn": "2020-09-14T16:08:35.853Z",
+    "CreatedBy": "robel",
+    "CreatedOn": "2020-09-14T16:08:35.853Z"
+   }
+]

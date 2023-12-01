@@ -24,9 +24,7 @@ interface carouselImage
   styleUrls: ['./banner-carousel.component.css']
 })
 export class BannerCarouselComponent implements OnInit {
-
-
-
+  
   selectedIndex=0;
   @Input() images:any=[];
   @Input() indicators=true;
@@ -51,15 +49,8 @@ export class BannerCarouselComponent implements OnInit {
       this.images=
       this.autoslideImages();
     }
-    {
-      console.log(this.images)
-    }
 }
-//     this.getResponse = (await this.service.getAll());
-//      this.bannerCarousel=this.getResponse.data;
-//     console.log(this.bannerCarousel)
-  
-// }
+
 
    autoslideImages():  void{
       setInterval(()=>

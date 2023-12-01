@@ -74,6 +74,19 @@
   margin-top: 2vh;
 }
 
+.loginbutton
+{
+  /* background-color: #73a534 !important; */
+  /* margin-top:3vh; */
+  color:black;
+  font-family:bold;
+  border: 1px solid #ffb600;
+  border-radius: 15px;
+  /* background-color: #ffb600; */
+  margin-right:1vh;
+  /* height: 3vh; */
+}
+
 /* .nav-bar-item-dropdown{
   display: var(--add-chil);
 } */
