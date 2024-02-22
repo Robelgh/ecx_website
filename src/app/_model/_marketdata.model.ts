@@ -1,19 +1,20 @@
-export class MarketDataModel {
-    id!: string;
-    createdBy!: string;
-    createdDate!: Date;
-    updatedDate!: Date;
-    updatedBy!: string;
-    customerName!: string;
-    driverName!: string;
-    license!: string;
-    truckPlate!: string;
-    trailer!: string;
-    truckType!: string;
-    weighingItem!: string;
-    grossWeight!: Number;
-    warehouse!: string;
-    bankSlip!: string;
-    weighbridgeServiceFee!: Number;
-    isDeleting: boolean = false;
+export interface MarketDataModel {
+    TradeDate: Date,
+    Symbol: string,
+    WarehouseCode: string,
+    ProductionYear: number,
+    OpeningPrice: number,
+    ClosingPrice: number,
+    DayHigh: number,
+    DayLow: number,
+    Difference: number,
+    VolumeInLot: number,
+    VolumeInQuintal: number,
+    PercentageChange: number,
+    PreviousClosing: number,
+    DateKey: number,
+    tday: number,
+    tmonth: number,
+    tyear: number
+    
 }

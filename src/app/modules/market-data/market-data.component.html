@@ -26,73 +26,98 @@
               <table  matSort mat-table [dataSource]="dataSource" class="mat-elevation-z8">
             
               <!-- Contract Column -->
-              <ng-container matColumnDef="contrat">
-                <th mat-sort-header mat-header-cell *matHeaderCellDef> contrat </th>
-                <td mat-cell *matCellDef="let element"> {{element.contrat}} </td>
+              <ng-container matColumnDef="TD">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef> TD </th>
+                <td mat-cell *matCellDef="let element" (mouseover)="highlightRow(element,-10)"> {{element.TradeDate}} </td>
               </ng-container>
+
+              <ng-container matColumnDef="SY">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef> SY </th>
+                <td mat-cell *matCellDef="let element; let i = index" (mouseover)="highlightRow(element,i)">
+                  <div class="">{{element.Symbol}}</div> 
+                  <div *ngIf="Descriptionelement == i" class="symbolDescription">description</div> 
+                </td>
+              </ng-container>
+              
             
               <!-- Month Column -->
-              <ng-container matColumnDef="tradeDate">
-                <th mat-sort-header mat-header-cell *matHeaderCellDef> tradeDate </th>
-                <td mat-cell *matCellDef="let element"> {{element.tradeDate}} </td>
+              <ng-container matColumnDef="WCODE">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef> WCODE </th>
+                <td mat-cell *matCellDef="let element"> {{element.WarehouseCode}} </td>
               </ng-container>
             
               <!-- Open Column -->
-              <ng-container matColumnDef="warehouse">
-                <th mat-sort-header mat-header-cell *matHeaderCellDef> warehouse </th>
-                <td mat-cell *matCellDef="let element"> {{element.warehouse}} </td>
+              <ng-container matColumnDef="PYEAR">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef> PYEAR </th>
+                <td mat-cell *matCellDef="let element"> {{element.ProductionYear}} </td>
               </ng-container>
             
-              <!-- High Column -->
-              <ng-container matColumnDef="productionYear">
-                <th mat-sort-header mat-header-cell *matHeaderCellDef> productionYear </th>
-                <td mat-cell *matCellDef="let element"> {{element.productionYear}} </td>
-              </ng-container>
+        
   
                <!-- Low Column -->
-               <ng-container matColumnDef="previousClosingPrize">
-                <th mat-sort-header mat-header-cell *matHeaderCellDef> previousClosingPrize </th>
-                <td mat-cell *matCellDef="let element"> {{element.previousClosingPrize}} </td>
+               <ng-container matColumnDef="OP">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef> OP </th>
+                <td mat-cell *matCellDef="let element"> {{element.OpeningPrice}} </td>
               </ng-container>
             
               <!-- Last Column -->
-              <ng-container matColumnDef="closingPrize">
-                <th mat-sort-header mat-header-cell *matHeaderCellDef> closingPrize </th>
-                <td mat-cell *matCellDef="let element"> {{element.closingPrize}} </td>
+              <ng-container matColumnDef="CP">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef> CP </th>
+                <td mat-cell *matCellDef="let element"> {{element.ClosingPrice}} </td>
               </ng-container>
   
                           <!-- Changes Column -->
-              <ng-container matColumnDef="maxPrice">
-                <th mat-sort-header mat-header-cell *matHeaderCellDef> maxPrice </th>
+              <ng-container matColumnDef="DH">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef> DH </th>
                 <td mat-cell *matCellDef="let element">
-                  <!-- <i *ngIf="element.maxPrice > 0" class="fa fa-caret-up increaseIcon" aria-hidden="true"></i>
-                  <i *ngIf="element.maxPrice < 0" class="fa fa-caret-down decreaseIcon" aria-hidden="true"></i>
-                  <i *ngIf="element.maxPrice === 0" class="fa fa-caret-up constantIcon" aria-hidden="true"></i>
-                    <label *ngIf="element.maxPrice < 0">{{-1*element.maxPrice}}</label>
-                    <label *ngIf="element.maxPrice >= 0">{{element.maxPrice}}</label> -->
-                    {{element.maxPrice}}
+                    {{element.DayHigh}}
                   </td>
               </ng-container>
   
                <!-- Time Column -->
-               <ng-container matColumnDef="minPrice">
-                <th mat-sort-header mat-header-cell *matHeaderCellDef> minPrice </th>
-                <td mat-cell *matCellDef="let element"> {{element.minPrice}} </td>
+               <ng-container matColumnDef="DL">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef> DL </th>
+                <td mat-cell *matCellDef="let element"> {{element.DayLow}} </td>
               </ng-container>
 
                <!-- Time Column -->
-               <ng-container matColumnDef="TradeVolume">
-                <th mat-sort-header mat-header-cell *matHeaderCellDef> TradeVolume </th>
-                <td mat-cell *matCellDef="let element"> {{element.TradeVolume}} </td>
+               <ng-container matColumnDef="DIFF">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef> DIFF </th>
+                <td mat-cell *matCellDef="let element">
+                      <i *ngIf="element.Difference > 0" class="fa fa-caret-up increaseIcon" aria-hidden="true"></i>
+                  <i *ngIf="element.Difference < 0" class="fa fa-caret-down decreaseIcon" aria-hidden="true"></i>
+                  <i *ngIf="element.Difference === 0" class="fa fa-caret-up constantIcon" aria-hidden="true"></i>
+                    <label *ngIf="element.Difference < 0">{{-1*element.Difference}}</label>
+                    <label *ngIf="element.Difference >= 0">{{element.Difference}}</label>
+                   </td>
+              </ng-container>
+
+
+
+                <!-- Time Column -->
+                <ng-container matColumnDef="VLOT">
+                  <th mat-sort-header mat-header-cell *matHeaderCellDef> VLOT </th>
+                  <td mat-cell *matCellDef="let element"> {{element.VolumeInLot}} </td>
+                </ng-container>
+                  <!-- Time Column -->
+               <ng-container matColumnDef="VQUINTAL">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef> VQUINTAL </th>
+                <td mat-cell *matCellDef="let element"> {{element.VolumeInQuintal}} </td>
+              </ng-container>
+              
+                  <!-- Time Column -->
+               <ng-container matColumnDef="PC">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef> PC </th>
+                <td mat-cell *matCellDef="let element"> {{element.PreviousClosing}} </td>
               </ng-container>
             
               <!-- Links Column -->
               <ng-container matColumnDef="Links">
-                <th mat-sort-header mat-header-cell *matHeaderCellDef> Graph </th>
+                <th mat-sort-header mat-header-cell *matHeaderCellDef> Links </th>
                 <td mat-cell *matCellDef="let element">
                   <a  [routerLink]="['/marketdata']"
                       [queryParams]="{ detail: 'histogram'}" >
-                    <i class="fa fa-line-chart" aria-hidden="true"></i> Graph
+                    <i class="fa fa-line-chart" aria-hidden="true"></i> Links
                   </a>
                 </td> 
               </ng-container>

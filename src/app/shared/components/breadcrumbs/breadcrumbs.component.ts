@@ -1,4 +1,5 @@
 import { Component,Input } from '@angular/core';
+import { Router, ActivatedRoute,ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-breadcrumbs',
@@ -8,15 +9,19 @@ import { Component,Input } from '@angular/core';
 export class BreadcrumbsComponent {
 
   @Input() title: any;
+  @Input() parent:any;
   @Input() image: any;
+  
 
   imageName:any;
 
 
   imagePath = 'https://localhost:7284/image/';
 
-  constructor() {
-  }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    ){}
 
   async ngOnInit ()
   {
@@ -24,6 +29,11 @@ export class BreadcrumbsComponent {
 
      console.log(this.imageName)
   }
+
+  onNavigate(navigateto : string) {
+    this.router.navigate([navigateto]);
+    console.log(navigateto)
+  } 
   
 
   

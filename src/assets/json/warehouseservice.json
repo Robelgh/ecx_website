@@ -1,0 +1,33 @@
+[
+    {
+    "id": 1,
+    "parent": "warehouse",
+    "title": "Fumigation",
+    "description": "This plan is for those who have a team already and running a large business.",
+     "image": ""
+   },
+
+   {
+    "id": 2,
+    "parent": "warehouse",
+    "title": "Cleaning",
+    "description": "This plan is for those who have a team already and running a large business.",
+     "image": ""
+   },
+
+   {
+    "id": 3,
+    "parent": "warehouse",
+    "title": "Weightbridge Service",
+    "description": "This plan is for those who have a team already and running a large business.",
+     "image": ""
+   },
+
+   {
+    "id": 4,
+    "parent": "warehouse",
+    "title": "Warehouse Recieve Finance",
+    "description": "This plan is for those who have a team already and running a large business.",
+     "image": ""
+   }
+]

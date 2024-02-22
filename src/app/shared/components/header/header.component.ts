@@ -101,7 +101,6 @@ export class HeaderComponent {
      document.body.style.setProperty('--navbar-scroll-text', "white");
      document.body.style.setProperty('--navbar-scroll-shadow', "none");
      document.body.style.setProperty('--img-back-ground', "invert(100%)");
-
    }
   }, 0);
 

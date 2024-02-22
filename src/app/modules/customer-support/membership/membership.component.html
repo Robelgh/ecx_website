@@ -1,0 +1,246 @@
+
+
+
+<div *ngIf="isHome" class="home">
+   
+    <section id="facts" class="facts-area dark-bg">
+      <div class="container">
+        <div class="facts-wrapper">
+            <div class="row">
+              <div class="col-md-3 col-sm-6 ts-facts">
+                  <div class="ts-facts-img">
+                    <img loading="lazy" src="images/icon-image/fact1.png" alt="facts-img">
+                  </div>
+                  <div class="ts-facts-content">
+                    <h2 class="ts-facts-num"><span class="counterUp" data-count="1789">30</span></h2>
+                    <h3 class="ts-facts-title">Total Warehouses</h3>
+                  </div>
+              </div><!-- Col end -->
+    
+              <div class="col-md-3 col-sm-6 ts-facts mt-5 mt-sm-0">
+                  <div class="ts-facts-img">
+                    <img loading="lazy" src="images/icon-image/fact2.png" alt="facts-img">
+                  </div>
+                  <div class="ts-facts-content">
+                    <h2 class="ts-facts-num"><span class="counterUp" data-count="647">550</span></h2>
+                    <h3 class="ts-facts-title">Staff Members</h3>
+                  </div>
+              </div><!-- Col end -->
+    
+              <div class="col-md-3 col-sm-6 ts-facts mt-5 mt-md-0">
+                  <div class="ts-facts-img">
+                    <img loading="lazy" src="images/icon-image/fact3.png" alt="facts-img">
+                  </div>
+                  <div class="ts-facts-content">
+                    <h2 class="ts-facts-num"><span class="counterUp" data-count="4000">20</span></h2>
+                    <h3 class="ts-facts-title">Total Trading Branches</h3>
+                  </div>
+              </div><!-- Col end -->
+    
+              <div class="col-md-3 col-sm-6 ts-facts mt-5 mt-md-0">
+                  <div class="ts-facts-img">
+                    <img loading="lazy" src="images/icon-image/fact4.png" alt="facts-img">
+                  </div>
+                  <div class="ts-facts-content">
+                    <h2 class="ts-facts-num"><span class="counterUp" data-count="44">30</span></h2>
+                    <h3 class="ts-facts-title">Commodities</h3>
+                  </div>
+              </div><!-- Col end -->
+    
+            </div> <!-- Facts end -->
+        </div>
+        <!--/ Content row end -->
+      </div>
+      <!--/ Container end -->
+    </section><!-- Facts end -->
+    <section id="ts-features" class="ts-features">
+        <div class="container">
+          <div class="row">
+              <div class="col-lg-6">
+                <div class="ts-intro">
+                  <h3 class="into-sub-title">{{parent.title}}</h3>
+                    <p> {{ (parent?.description.length>200)? 
+                         (parent?.description | slice:0:200)+'  .  .  .':
+                         (parent?.description)}}</p>
+                    <button routerLink="about">show more</button>
+                </div><!-- Intro box end -->
+      
+                <div class="gap-20"></div>
+      
+                <div class="row">
+                    <div *ngFor="let item of aboutus" class="col-md-6">
+                      <div class="ts-service-box">
+                          <div  [routerLink]="['/about']"
+                                [queryParams]="{ detail: item.title}"
+                                class="ts-service-box-content">
+                          <div class="service-box-title">  
+                              <i>
+                                <img [src]="imagePath + item.imgName">
+                              </i><h5>{{item.title}}<i class="fas fa-arrow-circle-right icon-carousel icon-next"></i></h5></div>
+                          </div>
+                      </div><!-- Service 1 end -->
+                    </div><!-- col end -->
+    
+                   
+                </div><!-- Content row 1 end -->
+    
+        
+              </div><!-- Col end -->
+      
+              <div class="col-lg-6 mt-4 mt-lg-0">
+                <h3 class="service-box-title">Values</h3>
+                <p>The Ethiopia Commodity Exchange (ECX) is a commodities exchange established April 2008 
+                  in Ethiopia. In Proclamation 2007-550, which created the ECX, its stated objective was 
+                  "to ensure the development of an efficient modern trading system" that would "protect 
+                  the rights and benefits of sellers, buyers, intermediaries, and the general public.</p>
+      
+                <div class="accordion accordion-group" id="our-values-accordion">
+                    <div class="card" (click)="toggleMenu(0)">
+                      <div  class="card-header p-0 bg-transparent" id="headingOne">
+                          <h2 class="mb-0">
+                            <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Objective
+                            </button>
+                          </h2>
+                      </div>
+                    
+                      <div *ngIf="menuExpanded === 0" id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#our-values-accordion">
+                          <div class="card-body">
+                            The Ethiopia Commodity Exchange (ECX) is a commodities exchange established 
+                            April 2008 in Ethiopia. In Proclamation 2007-550, which created the ECX, 
+                            its stated objective was "to ensure the development of an efficient modern 
+                            trading system" that would "protect the rights and benefits of sellers, 
+                            buyers, intermediaries, and the general public.
+                          </div>
+                      </div>
+                    </div>
+                    <div class="card" (click)="toggleMenu(1)">
+                      <div  class="card-header p-0 bg-transparent" id="headingTwo">
+                          <h2 class="mb-0">
+                            <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Mission
+                            </button>
+                          </h2>
+                      </div>
+                      <div *ngIf="menuExpanded === 1" id="collapseTwo" aria-labelledby="headingTwo" data-parent="#our-values-accordion">
+                          <div class="card-body">
+                            The Ethiopia Commodity Exchange (ECX) is a commodities exchange established 
+                            April 2008 in Ethiopia. In Proclamation 2007-550, which created the ECX, 
+                            its stated objective was "to ensure the development of an efficient modern 
+                            trading system" that would "protect the rights and benefits of sellers, buyers,
+                            intermediaries, and the general public.
+                          </div>
+                      </div>
+                    </div>
+    
+                    <div class="card" (click)="toggleMenu(2)">
+                      <div  class="card-header p-0 bg-transparent" id="headingTwo">
+                          <h2 class="mb-0">
+                            <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Vision
+                            </button>
+                          </h2>
+                      </div>
+                      <div *ngIf="menuExpanded === 2" id="collapseTwo" aria-labelledby="headingTwo" data-parent="#our-values-accordion">
+                          <div class="card-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidata
+                          </div>
+                      </div>
+                    </div>
+                
+                </div>
+                <!--/ Accordion end -->
+      
+              </div><!-- Col end -->
+          </div><!-- Row end -->
+        </div><!-- Container end -->
+      </section><!-- Feature are end -->
+  </div>
+  
+  <div *ngIf="!isHome" class="detailAll">
+    <div class="body-inner">
+  
+      <app-ticker></app-ticker>
+      <app-header></app-header> 
+      <app-breadcrumbs [title]="data.title" [image]="data.imgName"></app-breadcrumbs>
+  
+    <section id="main-container" class="main-container">
+      <div class="container">
+        <div class="row">
+  
+          <div class="col-xl-3 col-lg-4">
+            <div class="sidebar sidebar-left">
+              <div class="widget">
+                <h3 class="widget-title">Categories</h3>
+                <ul *ngFor="let item of aboutus "  class="nav service-menu">
+                  <li><a   [routerLink]="['/membership']"
+                    [queryParams]="{ detail: item.title}">
+                    {{item.title}}
+                  </a></li>
+                </ul>
+              </div><!-- Widget end -->
+  
+  
+            </div><!-- Sidebar end -->
+          </div><!-- Sidebar Col end -->
+  
+          <div class="col-xl-8 col-lg-8">
+            <div class="content-inner-page">
+  
+              <h2 class="column-title mrt-0">{{data.title}}</h2>
+  
+              <div class="row">
+                <div class="col-md-12">
+                  <p>{{data.description}}</p>
+                </div><!-- col end -->
+              </div><!-- 1st row end-->
+  
+              <div class="gap-40"></div>
+  
+              <div id="page-slider" class="page-slider">
+                <div class="item">
+                  <img loading="lazy" class="img-fluid headlineImage" style="width: 400vh; height:50vh" 
+                       [src]="imagePath + data.imgName" alt="project-slider-image" />
+                </div>
+  
+              </div>
+  
+            </div><!-- Content inner end -->
+           
+            <div *ngIf="isBoardOfDirctories">
+                <h3>Board of Directors</h3>
+                <div class="row">
+                    <div *ngFor="let item of boardOfDirectories; let i=index" class=" col-lg-4 col-md-6 mb-5">
+                                <div class="ts-service-box">
+                                    <div class="ts-service-image-wrapper">
+                                        <img loading="lazy" class="img-fluid listImage" 
+                                        [src]="imagePath + item.imgName" alt="project-slider-image" />
+                                    </div>
+                                    <div class="d-flex">
+                                    
+                                        <div class="ts-service-info">
+                                            <h3 class="service-box-title">{{item.name}}</h3>           
+                                            <a [routerLink]="['/about']"
+                                            [queryParams]="{ detail: 'single detail' , name : item.name , description : item.description , imgName : item.imgName}" 
+                                            class="list-group-item list-group-item-action">
+                                            <i class="fa fa-caret-right"></i> Learn more
+                                        </a>
+                                        </div>
+                                    </div>
+                                </div><!-- Service1 end -->
+                                </div><!-- Col 1 end -->
+                </div>
+              
+           </div><!-- Main row end -->
+          </div><!-- Content Col end -->
+  
+  
+        </div><!-- Main row end -->
+      </div><!-- Conatiner end -->
+    </section><!-- Main container end -->
+  
+      <app-footer></app-footer>
+    </div>
+  </div>
+  
+  

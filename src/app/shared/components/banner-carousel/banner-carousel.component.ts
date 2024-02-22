@@ -35,13 +35,16 @@ export class BannerCarouselComponent implements OnInit {
   getResponse:any={};
   bannerCarousel:any=[];
   imagePath = this.service.getImagePath();
+  loading!:boolean
 
   constructor(private service:BannerCarousel,private router: Router) {}
   
   async ngOnInit() {
 
+    this.loading = true;
     this.getResponse = (await this.service.getAll());
     this.bannerCarousel=this.getResponse.data;
+    this.getResponse.length ? this.loading=false : this.loading=true;
 
 
     if(this.autoSlide)

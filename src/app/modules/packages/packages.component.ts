@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-
+import {PackagesService} from '../../_service';
+import { Router, ActivatedRoute,ParamMap } from '@angular/router';
 
 
 @Component({
@@ -9,14 +10,29 @@ import { Component } from '@angular/core';
 })
 export class PackagesComponent {
 
-  constructor(
-   
-  ){}
-
+  getResponse:any={};
+  packages:any=[];
   title!:any;
+  isHome!:boolean;
+  params:any;
+  data:any={};
+  media:any=[];
+  parent:any=[];
+ 
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private service:PackagesService
+  ) {
+  }
 
   async ngOnInit () {
-    this.title="Packages";
+ 
+    this.getResponse = (await this.service.getpackages());
+    this.packages=this.getResponse;
+  
+    this.title="Packages"; 
   }
 
   async choosePackage() 

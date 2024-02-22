@@ -4,8 +4,8 @@ import { Observable, firstValueFrom } from 'rxjs';
 import { environment } from '../../environment/environment';
 import { Commodities } from '../_model/_commodities.model';
 
-const baseUrl = `${environment.apiUrl}/Page/1150b2c8-82f4-4153-82c2-1a21e7fed01d/3eab9014-4e33-4d8b-a313-fa745837c157`;
-const baseUrlParent = `${environment.apiUrl}/PageCatagory/1150b2c8-82f4-4153-82c2-1a21e7fed01d`;
+const baseUrl = `${environment.apiUrl}/ParentLookup/6c831f63-a1b3-48d8-851c-bea4aea61b84`;
+const baseUrlParent = `${environment.apiUrl}/ParentLookup/6c831f63-a1b3-48d8-851c-bea4aea61b84`;
 const baseUrlBoard=`${environment.apiUrl}/BoardOfDirector`
 
 @Injectable({ providedIn: 'root' })

@@ -57,26 +57,30 @@
       <div class="container">
         <div class="row">
             <div class="col-lg-6">
+              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
               <div class="ts-intro">
                 <h3 class="into-sub-title">{{parent.title}}</h3>
-                  <p> {{ (parent?.description.length>200)? 
+                  <p>
+                    {{(parent?.description.length>200)? 
                        (parent?.description | slice:0:200)+'  .  .  .':
-                       (parent?.description)}}</p>
+                       (parent?.description)}}
+                  </p>
                   <button routerLink="about">show more</button>
               </div><!-- Intro box end -->
     
               <div class="gap-20"></div>
     
               <div class="row">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                   <div *ngFor="let item of aboutus" class="col-md-6">
                     <div class="ts-service-box">
                         <div  [routerLink]="['/about']"
                               [queryParams]="{ detail: item.title}"
                               class="ts-service-box-content">
-                        <h3 class="service-box-title">  
+                        <div class="service-box-title">  
                             <i>
                               <img [src]="imagePath + item.imgName">
-                            </i>{{item.title}}<i class="fas fa-arrow-circle-right icon-carousel icon-next"></i></h3>
+                            </i><h5>{{item.title}}<i class="fas fa-arrow-circle-right icon-carousel icon-next"></i></h5></div>
                         </div>
                     </div><!-- Service 1 end -->
                   </div><!-- col end -->
@@ -172,6 +176,7 @@
           <div class="sidebar sidebar-left">
             <div class="widget">
               <h3 class="widget-title">Categories</h3>
+              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
               <ul *ngFor="let item of aboutus "  class="nav service-menu">
                 <li><a   [routerLink]="['/about']"
                   [queryParams]="{ detail: item.title}">
@@ -186,6 +191,7 @@
 
         <div class="col-xl-8 col-lg-8">
           <div class="content-inner-page">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
 
             <h2 class="column-title mrt-0">{{data.title}}</h2>
 
@@ -210,6 +216,7 @@
           <div *ngIf="isBoardOfDirctories">
               <h3>Board of Directors</h3>
               <div class="row">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                   <div *ngFor="let item of boardOfDirectories; let i=index" class=" col-lg-4 col-md-6 mb-5">
                               <div class="ts-service-box">
                                   <div class="ts-service-image-wrapper">

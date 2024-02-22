@@ -11,192 +11,34 @@
     <section id="main-container" class="main-container">
         <div class="cards">
 
-            <article class="plan [ card ]">
+            <article *ngFor="let item of packages" class="plan [ card ]">
                 <div class="inner">
-        
-                    <span class="pricing">
+                    <span class="">
                         <span>
-                            $56
+                            $ {{item.amount}}
                         </span>
                     </span>
-                    <h2 class="title">Weekly</h2>
-                    <p class="info">This plan is for those who have a team already and running a large business.</p>
+                    <h2 class="title">{{item.title}}</h2>
+                    <p class="info">{{item.description}}</p>
                     <ul class="features">
-                        <li>
+                        <li *ngFor="let character of item.characters" >
                             <span class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                                     <path fill="none" d="M0 0h24v24H0z" />
                                     <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" fill="currentColor" />
                                 </svg>
                             </span>
-                            <span><strong>20</strong> team members</span>
-                        </li>
-                        <li>
-                            <span class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                                    <path fill="none" d="M0 0h24v24H0z" />
-                                    <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" fill="currentColor" />
-                                </svg>
-                            </span>
-                            <span>Plan <strong>team meetings</strong></span>
-                        </li>
-                        <li>
-                            <span class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                                    <path fill="none" d="M0 0h24v24H0z" />
-                                    <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" fill="currentColor" />
-                                </svg>
-                            </span>
-                            <span>File sharing</span>
+                            <span>{{character.description}}</span>
                         </li>
                     </ul>
-                    <button class="button">
-                        Choose plan
-                    </button>
+                    <button [routerLink]="['/checkout']"
+                    [queryParams]="{ detail: 'checkout'}" 
+                    class="" (click)="choosePackage()">choose plan</button>
+            
                 </div>
             </article>
         
-            <article class="plan [ card ]">
-                <div class="inner">
-        
-                    <span class="pricing">
-                        <span>
-                            $106
-                        </span>
-                    </span>
-                    <h2 class="title">Monthly</h2>
-                    <p class="info">This plan is for those who have a team already and running a large business.</p>
-                    <ul class="features">
-                        <li>
-                            <span class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                                    <path fill="none" d="M0 0h24v24H0z" />
-                                    <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" fill="currentColor" />
-                                </svg>
-                            </span>
-                            <span><strong>20</strong> team members</span>
-                        </li>
-                        <li>
-                            <span class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                                    <path fill="none" d="M0 0h24v24H0z" />
-                                    <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" fill="currentColor" />
-                                </svg>
-                            </span>
-                            <span>Plan <strong>team meetings</strong></span>
-                        </li>
-                        <li>
-                            <span class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                                    <path fill="none" d="M0 0h24v24H0z" />
-                                    <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" fill="currentColor" />
-                                </svg>
-                            </span>
-                            <span>File sharing</span>
-                        </li>
-                    </ul>
-                    <button class="button">
-                        Choose plan
-                    </button>
-                </div>
-            </article>
-        
-            <article class="plan [ card ]">
-                <div class="inner">
-        
-                    <span class="pricing">
-                        <span>
-                            $196
-                        </span>
-                    </span>
-                    <h2 class="title">Quarter</h2>
-                    <p class="info">This plan is for those who have a team already and running a large business.</p>
-                    <ul class="features">
-                        <li>
-                            <span class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                                    <path fill="none" d="M0 0h24v24H0z" />
-                                    <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" fill="currentColor" />
-                                </svg>
-                            </span>
-                            <span><strong>20</strong> team members</span>
-                        </li>
-                        <li>
-                            <span class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                                    <path fill="none" d="M0 0h24v24H0z" />
-                                    <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" fill="currentColor" />
-                                </svg>
-                            </span>
-                            <span>Plan <strong>team meetings</strong></span>
-                        </li>
-                        <li>
-                            <span class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                                    <path fill="none" d="M0 0h24v24H0z" />
-                                    <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" fill="currentColor" />
-                                </svg>
-                            </span>
-                            <span>File sharing</span>
-                        </li>
-                    </ul>
-                    <button class="button">
-                        Choose plan
-                    </button>
-                </div>
-            </article>
-        
-            <article class="plan [ card ]">
-                <div class="inner">
-                    <span class="pricing">
-                        <span>
-                            $256
-                        </span>
-                    </span>
-                    <h2 class="title">Annual</h2>
-                    <p class="info">This plan is for those who have a team already and running a large business.</p>
-                    <ul class="features">
-                        <li>
-                            <span class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                                    <path fill="none" d="M0 0h24v24H0z" />
-                                    <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" fill="currentColor" />
-                                </svg>
-                            </span>
-                            <span><strong>20</strong> team members</span>
-                        </li>
-                        <li>
-                            <span class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                                    <path fill="none" d="M0 0h24v24H0z" />
-                                    <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" fill="currentColor" />
-                                </svg>
-                            </span>
-                            <span>Plan <strong>team meetings</strong></span>
-                        </li>
-                        <li>
-                            <span class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                                    <path fill="none" d="M0 0h24v24H0z" />
-                                    <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" fill="currentColor" />
-                                </svg>
-                            </span>
-                            <span>File sharing</span>
-                        </li>
-                    </ul>
-                    <button class="button">
-                        <ul class="nav service-menu">
-                            <li>
-                              <a [routerLink]="['/checkout']"
-                              [queryParams]="{ detail: 'checkout'}" 
-                              class="list-group-item list-group-item-action" (click)="choosePackage()">
-                                Choose plan</a>
-                            </li>
-                          </ul>
-                        
-                    </button>
-                </div>
-            </article>
+            
         
         </div>
     </section><!-- Main container end -->

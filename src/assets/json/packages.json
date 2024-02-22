@@ -1,0 +1,78 @@
+[
+    {
+   
+    "id": 1,
+    "title": "Weekly",
+    "amount": 80,
+    "description": "This plan is for those who have a team already and running a large business.",
+    "characters": [
+       { 
+        "packagetype": "Weekly",
+        "description": "20 team members"},
+        { 
+        "packagetype": "Weekly",
+         "description": "Plan team meetings"},
+        { 
+        "packagetype": "Weekly",
+         "description": "File sharing"}
+    ]
+   },
+
+   {
+   
+    "id": 2,
+    "title": "Monthly",
+    "amount": 180,
+    "description": "This plan is for those who have a team already and running a large business.",
+    "characters": [
+       { 
+        "packagetype": "Monthly",
+        "description": "20 team members"},
+        { 
+        "packagetype": "Monthly",
+         "description": "Plan team meetings"},
+        { 
+        "packagetype": "Monthly",
+         "description": "File sharing"}
+    ]
+   },
+
+   {
+   
+    "id": 3,
+    "title": "Quarter",
+    "amount": 280,
+    "description": "This plan is for those who have a team already and running a large business.",
+    "characters": [
+       { 
+        "packagetype": "Quarter",
+        "description": "20 team members"},
+        { 
+        "packagetype": "Quarter",
+         "description": "Plan team meetings"},
+        { 
+        "packagetype": "Quarter",
+         "description": "File sharing"}
+    ]
+   },
+
+   {
+   
+    "id": 3,
+    "title": "Annual",
+    "amount": 380,
+    "description": "This plan is for those who have a team already and running a large business.",
+    "characters": [
+       { 
+        "packagetype": "Annual",
+        "description": "20 team members"},
+        { 
+        "packagetype": "Annual",
+         "description": "Plan team meetings"},
+        { 
+        "packagetype": "Annual",
+         "description": "File sharing"}
+    ]
+   }
+ 
+]

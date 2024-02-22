@@ -42,7 +42,7 @@
   
       <app-ticker></app-ticker>
       <app-header></app-header> 
-      <app-breadcrumbs [title]="data.title"></app-breadcrumbs>
+      <app-breadcrumbs [title]="data.title" [parent]="parenttitle"></app-breadcrumbs>
   
     <section id="main-container" class="main-container">
       <div class="container">
@@ -53,8 +53,8 @@
               <div class="widget">
                 <h3 class="widget-title">Categories</h3>
                 <ul *ngFor="let item of services "  class="nav service-menu">
-                  <li><a   [routerLink]="['/service']"
-                    [queryParams]="{ detail: item.title}">
+                  <li><a  [routerLink]="['/service']"
+                          [queryParams]="{ detail: item.title}">
                     {{item.title}}
                   </a></li>
                 </ul>
@@ -64,7 +64,7 @@
             </div><!-- Sidebar end -->
           </div><!-- Sidebar Col end -->
   
-          <div class="col-xl-8 col-lg-8">
+          <div class="col-xl-9 col-lg-8">
             <div class="content-inner-page">
   
               <h2 class="column-title mrt-0">{{data.title}}</h2>
@@ -85,18 +85,19 @@
   
               </div>
   
-           
-  
-  
-  
             </div><!-- Content inner end -->
+            <div class="content-inner-page">
+              <app-warehouse-service [parenttitle]="parenttitle"></app-warehouse-service>
+            </div>
+           
+            
           </div><!-- Content Col end -->
-  
-  
         </div><!-- Main row end -->
       </div><!-- Conatiner end -->
     </section><!-- Main container end -->
-  
+    
+ 
+    
     <app-footer></app-footer>
     </div>
   </div>  

@@ -1,4 +1,5 @@
 <div *ngIf="bannerCarousel && bannerCarousel.length > 0" class="carouselContainer">
+  <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
   <img *ngFor="let image of bannerCarousel; let i=index"
         [src]="imagePath + image.imgName" 
         [alt]="image"
@@ -9,9 +10,7 @@
            class="dot"
            [ngClass]="{'active': selectedIndex === i}"
            (click)="selectImage(i)">
-
     </span>
-
   </div>
 
   <div *ngIf="controls  && autoSlide" class="btn-carousel btn-prev">

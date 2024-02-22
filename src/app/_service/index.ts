@@ -1,7 +1,7 @@
 export * from './commodities.service';
 export * from './banner_carousel.service';
 export * from './about_us.service';
-export * from './service.service';
+export * from './service/service.service';
 export * from './market_data.service';
 export * from './media_center.service';
 export * from './announcment.service';
@@ -9,6 +9,17 @@ export * from './resource.service';
 export * from './report.service';
 export * from './user.service';
 export * from './auth.service';
+export * from './packages.service';
+export * from './customer_support/membership.service';
+export * from './customer_support/commodity-delivery.service';
+export * from './customer_support/descipline-and-enforcement';
+export * from './customer_support/grading.service';
+export * from './customer_support/sale-and-buy-order.service';
+export * from './customer_support/trade-ethics.service';
+export * from './customer_support/trade-settlement.service';
+export * from './customer_support/whr-financing.service';
+export * from './customer_support/training-and-certification.service';
+export * from './customer_support/commodity-deposit.service';
+export * from './MasterIdGetter';
 
 // export * from './_news.service';
-
