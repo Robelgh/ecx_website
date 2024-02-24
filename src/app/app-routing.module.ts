@@ -7,8 +7,9 @@ const EcxBlogModule = () => import('./apps/ecx-blog/ecx-blog.module').then(x => 
 
 
 const routes: Routes = [
+  
   {path:'',loadChildren:EcxWebsiteModule },
-  {path:'news',loadChildren:EcxBlogModule},
+  // {path:'news',loadChildren:EcxBlogModule},
   {path: '**', redirectTo: '' }
  
 

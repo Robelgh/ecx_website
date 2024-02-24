@@ -50,7 +50,7 @@ const routes: Routes = [
 
             // { path: 'warehouse', component: SignupComponent},
             // { path: 'service/warehouse', pathMatch:'full', component: SignupComponent},
-            { path: 'marketdata', component: MarketDataComponent },
+            // { path: 'marketdata', component: MarketDataComponent },
             { path: 'marketdata/histogram', component: MarketDataComponent },
             { path: 'Media',component:MediaCenterComponent},
             { path: 'Announcements',component:AnnouncementsComponent},

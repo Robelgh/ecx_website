@@ -160,7 +160,7 @@ export class MarketDataComponent {
     });
 
     this.getResponse = await this.service.getAll();
-    console.log(this.getResponse)
+  
     for(let i=0 ; i< 7 ; i++)
     {
       this.dataOne.push(this.getResponse[i])
@@ -178,7 +178,6 @@ export class MarketDataComponent {
 
       this.route.queryParamMap.subscribe(async (params) => {
         if (params.get('detail') != null || params.get('detail') != undefined) {
-          console.log(params.get('detail'));
           this.switcher = params.get('detail');
         } else {
         }
@@ -207,8 +206,6 @@ export class MarketDataComponent {
 
   highlightRow(element: any, index : number)
   {
-    console.log(element)
-    console.log(index)
     this.Descriptionelement=index;
     // element.Symbol="HELLO"
   }

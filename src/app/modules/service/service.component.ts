@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { ServiceService } from '../../_service';
+import { MasterIdGetter } from '../../_service';
 
 @Component({
   selector: 'app-service',
@@ -11,7 +12,8 @@ export class ServiceComponent {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: ServiceService
+    private service: ServiceService,
+    private masterIdGetter: MasterIdGetter
   ) {}
 
   isHome!: boolean;
@@ -33,6 +35,9 @@ export class ServiceComponent {
     this.route.params.subscribe(async (params) => {
       this.isHome = this.router.url == '/';
       this.isService = this.router.url === '/service';
+
+      this.getResponse = await this.masterIdGetter.getParent('service');
+      this.parent = this.getResponse[0];
 
       this.getResponse = await this.service.getAll();
       this.services = this.getResponse.data;

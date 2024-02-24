@@ -61,7 +61,7 @@
               <div class="ts-intro">
                 <h3 class="into-sub-title">{{parent.title}}</h3>
                   <p>
-                    {{(parent?.description.length>200)? 
+                    {{(parent?.description?.length>200)? 
                        (parent?.description | slice:0:200)+'  .  .  .':
                        (parent?.description)}}
                   </p>
@@ -71,7 +71,7 @@
               <div class="gap-20"></div>
     
               <div class="row">
-                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                <!-- <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> -->
                   <div *ngFor="let item of aboutus" class="col-md-6">
                     <div class="ts-service-box">
                         <div  [routerLink]="['/about']"
@@ -178,10 +178,12 @@
               <h3 class="widget-title">Categories</h3>
               <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
               <ul *ngFor="let item of aboutus "  class="nav service-menu">
-                <li><a   [routerLink]="['/about']"
-                  [queryParams]="{ detail: item.title}">
-                  {{item.title}}
-                </a></li>
+                <li>
+                  <a   [routerLink]="['/about']"
+                       [queryParams]="{ detail: item.title}">
+                       {{item.title}}
+                  </a>
+              </li>
               </ul>
             </div><!-- Widget end -->
 
@@ -191,8 +193,7 @@
 
         <div class="col-xl-8 col-lg-8">
           <div class="content-inner-page">
-            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-
+            <!-- <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> -->
             <h2 class="column-title mrt-0">{{data.title}}</h2>
 
             <div class="row">

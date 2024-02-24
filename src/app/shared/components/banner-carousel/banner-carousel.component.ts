@@ -43,6 +43,7 @@ export class BannerCarouselComponent implements OnInit {
 
     this.loading = true;
     this.getResponse = (await this.service.getAll());
+    console.log(this.getResponse);
     this.bannerCarousel=this.getResponse.data;
     this.getResponse.length ? this.loading=false : this.loading=true;
 

@@ -41,17 +41,19 @@ export class AboutUsComponent {
 
   async ngOnInit() {
     this.route.params.subscribe(async (params) => {
-      this.loading = true;
+      // this.loading = true;
       this.isHome = this.router.url == '/';
       this.isAbout = this.router.url === '/about';
 
-      this.getResponse = await this.service.getAll();
-      this.aboutus = this.getResponse.data;
+      // this.getResponse = await this.service.getParent();
+      // console.log(this.getResponse)
+      // this.aboutus = this.getResponse.data;
 
-      this.getResponse = await this.masterIdGetter.getParentId('about');
-
+      this.getResponse = await this.masterIdGetter.getParent('about');
       this.parent = this.getResponse[0];
-      this.aboutBanner.push(this.parent);
+
+      this.getResponse = await this.service.getAllParentChild(this.parent.id);
+      this.aboutus=this.getResponse.data;
 
       this.getResponse = await this.service.getBoardofDiroctories();
       this.boardOfDirectories = this.getResponse.data;
