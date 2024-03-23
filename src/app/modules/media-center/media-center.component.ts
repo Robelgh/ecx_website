@@ -1,16 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MediaCenterService,BannerCarousel } from '../../_service';
 import { HttpClient } from '@angular/common/http';
 
 
+// @Directive({
+//   selector: '[media-center]'
+// })
 
 @Component({
   selector: 'app-media-center',
   templateUrl: './media-center.component.html',
   styleUrls: ['./media-center.component.css'],
 })
+
+
 export class MediaCenterComponent {
   
   isHome!: boolean;
@@ -19,6 +24,7 @@ export class MediaCenterComponent {
   loading!: boolean;
 
   pdfsrc!:string;
+  selectedImage!: string; // Initial selected image
   getResponse: any = {};
   galleryData: any = [];
   params: any;
@@ -44,13 +50,10 @@ export class MediaCenterComponent {
     private service: MediaCenterService,
     private galleryService: BannerCarousel,
     private http: HttpClient,
+    private el: ElementRef,
   ) {}
 
-
-
   async ngOnInit() {
-
-  
 
     this.route.params.subscribe(async (params) => {
       this.getResponse = await this.service.getAllPublication();
@@ -69,13 +72,16 @@ export class MediaCenterComponent {
       this.getResponse.data = this.getResponse.data.filter((x:any)=> x.isCarousel
       == false);
       this.galleryData=this.getResponse.data;
-      console.log(this.galleryData);
+      // this.galleryData.length > 0 ?  this.selectImage= this.galleryData[0].imgName:null
     });
   }
 
   DownloadFile(filenameorginal:string ,filenamenew:string):void{
 
-    this.downloadroute=this.service.downloadFile(filenameorginal,filenamenew)
-    
+    this.downloadroute=this.service.downloadFile(filenameorginal,filenamenew) 
+  }
+
+  selectImage(imageName: string) {
+    this.selectedImage = imageName;
   }
 }

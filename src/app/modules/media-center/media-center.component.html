@@ -108,10 +108,39 @@
                     <div class="widget galleryHolder">
                       <h3 class="widget-title">Gallery</h3>
                       <div class="row">
-                        <div class="col-md-3">
-                          <div class="gallery">
-                         
-                            
+                        <div class="col-md-12 col-lg-12 col-sm-12">
+                          <div
+                            *ngIf="galleryData.length > 0"
+                            class=""
+                          >
+                            <div class="container">
+                              <div class="img-container container">
+                                <img
+                                  class="mainImage"
+                                  *ngIf="selectedImage == null"
+                                  [src]="imagePath + galleryData[0].imgName"
+                                />
+                                <img
+                                  class="mainImage"
+                                  *ngIf="selectedImage != null"
+                                  [src]="imagePath + selectedImage"
+                                />
+
+                                <div class="img-prev text-center">
+                                  <div
+                                    *ngFor="let item of galleryData"
+                                    class="img-slide"
+                                  >
+                                    <img
+                                      (click)="selectImage(item.imgName)"
+                                      loading="lazy"
+                                      [src]="imagePath + item.imgName"
+                                      alt="project-slider-image"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                         <!-- col end -->
@@ -132,48 +161,8 @@
         </div>
         <!-- Main row end -->
 
-        <div class="sidebar sidebar-left">
-          <div class="widget">
-            <h3 class="widget-title">related</h3>
-          </div>
-        </div>
-        <div class="row">
-          <div *ngFor="let item of pages" class="col-lg-4 col-md-6 mb-5">
-            <div class="card">
-              <div class="card__header">
-                <img
-                  loading="lazy"
-                  class=""
-                  [src]="imagePath + item.imgName"
-                  alt="project-slider-image"
-                />
-              </div>
-              <div class="card__body">
-                <span class="tag tag-brown">about</span>
-                <h4>{{ item.title }}</h4>
-                <p>
-                  {{
-                    item?.description.length > 200
-                      ? (item?.description | slice : 0 : 200) + "  .  .  ."
-                      : item?.description
-                  }}
-                </p>
-              </div>
-              <div class="card__footer">
-                <div class="user">
-                  <a
-                    class="learn-more d-inline-block"
-                    [routerLink]="['/about']"
-                    [queryParams]="{ pages: item.title }"
-                    aria-label="service-details"
-                    ><i class="fa fa-caret-right"></i> Learn more</a
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Col 1 end -->
-        </div>
+       
+       
 
         <!-- Main row end -->
       </div>
