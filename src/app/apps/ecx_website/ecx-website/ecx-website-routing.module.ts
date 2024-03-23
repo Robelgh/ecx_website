@@ -11,7 +11,7 @@ import { AnnouncementsComponent } from './../../../modules/announcements/announc
 import { ResourcesComponent } from 'src/app/modules/resources/resources.component';
 import { PackagesComponent } from 'src/app/modules/packages/packages.component';
 import { CheckoutComponent } from 'src/app/modules/checkout/checkout.component';
-import { WarehouseServiceComponent } from 'src/app/modules/warehouse/warehouse-service/warehouse-service.component';
+// import { WarehouseServiceComponent } from 'src/app/modules/warehouse/warehouse-service/warehouse-service.component';
 import { MembershipComponent } from '../../../modules/customer-support/membership/membership.component';
 import { CommodityDeliveryComponent } from 'src/app/modules/customer-support/commodity-delivery/commodity-delivery.component';
 import { CommodityDepositComponent } from 'src/app/modules/customer-support/commodity-deposit/commodity-deposit.component';
@@ -25,47 +25,40 @@ import { WhrFinancingComponent } from 'src/app/modules/customer-support/whr-fina
 import { LoginComponent } from './../../../shared/components/login/login.component';
 import { SignupComponent } from 'src/app/shared/components/signup/signup.component';
 
+import { CommoditiesComponent } from './../../../modules/commodities/commodities.component';
 
 const routes: Routes = [
-    {
-        path: '', component: ECXWebsiteHome,
-        children: [
-            {path: '', component: EcxWebsiteComponent},
-            { path: 'about', component: AboutUsComponent },
-            { path: 'service', component: ServiceComponent },
-            { path: 'about/:detail', component: AboutUsComponent },
-            { path: 'service/:detail', component: ServiceComponent },
+  {
+    path: '',
+    component: ECXWebsiteHome,
+    children: [
+      { path: '', component: EcxWebsiteComponent },
 
-            { path: 'membership', component: MembershipComponent },
-            { path: 'whrfinancing', component: WhrFinancingComponent },
-            { path: 'commoditydelivery', component: CommodityDeliveryComponent },
-            { path: 'commoditydeposit', component: CommodityDepositComponent },
-            { path: 'desciplineenforcement', component: DesciplineAndEnforcementComponent },
-            { path: 'salebuyorder', component: SaleAndBuyOrderComponent },
-            { path: 'grading', component: GradingComponent },
-            { path: 'tradeethics', component: TradeEthicsComponent },
-            { path: 'tradesettlement', component: TradeSettlementComponent },
-            { path: 'trainingcertificate', component: TrainingAndCertificationComponent },
+      { path: 'about', component: AboutUsComponent },
+      { path: 'about/:detail', component: AboutUsComponent },
+      { path: 'about/:pages', component: AboutUsComponent },
+
+      { path: 'service', component: ServiceComponent },
+      { path: 'service/:detail', component: ServiceComponent },
+      { path: 'service/:pages', component: ServiceComponent },
+
+      { path: 'media', component: MediaCenterComponent },
+      { path: 'media/:detail', component: MediaCenterComponent },
+
+      { path: 'commodity', component: CommoditiesComponent },
+      { path: 'commodity/:contract', component: CommoditiesComponent },
 
 
-            // { path: 'warehouse', component: SignupComponent},
-            // { path: 'service/warehouse', pathMatch:'full', component: SignupComponent},
-            // { path: 'marketdata', component: MarketDataComponent },
-            { path: 'marketdata/histogram', component: MarketDataComponent },
-            { path: 'Media',component:MediaCenterComponent},
-            { path: 'Announcements',component:AnnouncementsComponent},
-            { path: 'Resources',component:ResourcesComponent},
-            { path: 'packages' ,component:PackagesComponent},
-            { path: 'checkout' ,component:CheckoutComponent},
-            { path: 'login',component:LoginComponent},
-            { path: 'signup',component:SignupComponent}
-        ]
-    }
+      { path: 'packages', component: PackagesComponent },
+      { path: 'checkout', component: CheckoutComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'signup', component: SignupComponent },
+    ],
+  },
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes),
-         ],
-    exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class ECXWebsiteRoutingModule { }
+export class ECXWebsiteRoutingModule {}

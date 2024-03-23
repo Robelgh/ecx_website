@@ -6,7 +6,7 @@ import { Commodities } from '../_model/_commodities.model';
 
 const baseUrl = `${environment.apiUrl}/ParentLookup/lan/0229b6bf-405a-470c-97bb-701df4ad0dab`;
 const baseUrlPageCatagory = `${environment.apiUrl}/PageCatagory`;
-const baseUrlBoard = `${environment.apiUrl}/BoardOfDirector`;
+const baseUrlPage = `${environment.apiUrl}/page`;
 
 @Injectable({ providedIn: 'root' })
 export class AboutService {
@@ -16,8 +16,12 @@ export class AboutService {
     return await firstValueFrom(this.http.get(baseUrl));
   }
 
-  async getAllParentChild(id: string) {
+  async getAllPageCatagories(id: string) {
     return await firstValueFrom(this.http.get(`${baseUrlPageCatagory}/parent/${id}`));
+  }
+
+  async getAllPage(id: string) {
+    return await firstValueFrom(this.http.get(`${baseUrlPage}/pageCatagory/${id}`));
   }
 
   getById(id: string) {
@@ -39,7 +43,4 @@ export class AboutService {
     return 'https://localhost:7284/image/';
   }
 
-  async getBoardofDiroctories() {
-    return await firstValueFrom(this.http.get(baseUrlBoard));
-  }
 }

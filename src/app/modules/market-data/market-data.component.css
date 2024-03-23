@@ -3,6 +3,8 @@
     margin-top: 4vh;
 }
 
+
+
 .searchHolder
 {
   display: flex;
@@ -31,15 +33,11 @@
   color:yellow;
 }
 
-.symbolDescription
-{
-  z-index: 1001;
-  border: 1px solid lightgrey;
-  padding:0 3vh 0 3vh ;
-  position: relative;
-  margin-top: -2vh;
-  
-}
 
+
+
+.mat-tab-label{
+  font-size: 1px !important;
+} 
 
 

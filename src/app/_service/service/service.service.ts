@@ -4,9 +4,9 @@ import { Observable, firstValueFrom } from 'rxjs';
 import { environment } from '../../../environment/environment';
 import { Commodities } from '../../_model/_commodities.model';
 
-const baseUrl = `${environment.apiUrl}/Page/37eb5e98-afca-41ca-8d47-cd7b7ab70cfe/47a13561-cf8e-474d-ae49-c5aa65205158`;
-const baseUrlParent = `${environment.apiUrl}/PageCatagory/37eb5e98-afca-41ca-8d47-cd7b7ab70cfe`;
-const baseUrlParentService = `assets/json/warehouseservice.json`;
+const baseUrl = `${environment.apiUrl}/ParentLookup/lan/0229b6bf-405a-470c-97bb-701df4ad0dab`;
+const baseUrlPageCatagory = `${environment.apiUrl}/PageCatagory`;
+const baseUrlPage = `${environment.apiUrl}/page`;
 
 @Injectable({ providedIn: 'root' })
 export class ServiceService {
@@ -14,11 +14,15 @@ export class ServiceService {
   constructor(private http: HttpClient) {}
 
   async getParent() {
-    return await firstValueFrom(this.http.get(baseUrlParent));
+    return await firstValueFrom(this.http.get(baseUrl));
   }
 
-  async getAll() {
-    return await firstValueFrom(this.http.get(baseUrl));
+  async getAllPageCatagories(id: string) {
+    return await firstValueFrom(this.http.get(`${baseUrlPageCatagory}/parent/${id}`));
+  }
+
+  async getAllPage(id: string) {
+    return await firstValueFrom(this.http.get(`${baseUrlPage}/pageCatagory/${id}`));
   }
 
   getById(id: string) {
@@ -38,20 +42,5 @@ export class ServiceService {
   }
   getImagePath() {
     return 'https://localhost:7284/image/';
-  }
-  async getParentService(parent: string) {
-    this.jsonDataResult = await firstValueFrom(
-      this.http.get(baseUrlParentService)
-    );
-    return this.jsonDataResult;
-  }
-
-  async getParentServiceById(id: any) {
-    this.jsonDataResult = await firstValueFrom(
-      this.http.get(baseUrlParentService)
-    );
-    return this.jsonDataResult
-      ? this.jsonDataResult.filter((item: any) => item.id == id)
-      : null;
   }
 }

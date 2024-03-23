@@ -139,7 +139,6 @@
           </div>
         </li>
 
-
         <li class="nav-item dropdown position-static">
           <a
             (click)="toggleMenu(2)"
@@ -161,31 +160,31 @@
           >
             <div class="container" >
               <div class="row my-4">
-                <div class="col-md-12 col-lg-12 mb-3 mb-lg-0">
+                <div class="col-md-12 mb-3 mb-lg-0">
                   <div class="list-group list-group-flush">
 
-                    <a  [routerLink]="['/Media']"
-                    [queryParams]="{ detail: 'News and Events'}" 
+                    <a  [routerLink]="['/media']"
+                    [queryParams]="{ detail: 'Warehouse'}" 
                     class="list-group-item list-group-item-action"><i
-                    class="fas fa-caret-right pe-2"></i>News and Events</a>
+                    class="fas fa-caret-right pe-2"></i>Warehouse</a>
 
-                    <a  [routerLink]="['/Resources']"
+                    <a  [routerLink]="['/media']"
                     [queryParams]="{ detail: 'Resources'}" 
                     class="list-group-item list-group-item-action"><i
-                    class="fas fa-caret-right pe-2"></i>Resources</a>
+                    class="fas fa-caret-right pe-2"></i>Quality</a>
 
-                    <a [routerLink]="['/Announcements']"
-                    [queryParams]="{ detail: 'announcements'}"
+                    <a [routerLink]="['/media']"
+                    [queryParams]="{ detail: 'Trade'}" 
                     class="list-group-item list-group-item-action"><i
-                    class="fas fa-caret-right pe-2"></i>Announcements</a>
+                    class="fas fa-caret-right pe-2"></i>Trade</a>
                   </div>
-                </div>
-             
+                </div>  
               </div>
               
             </div>
           </div>
         </li>
+      
         <li class="nav-item dropdown position-static">
           <a
             (click)="toggleMenu(3)"

@@ -1,111 +1,186 @@
-<div  class="detailAll">
-    <div class="body-inner">
-  
-      <app-ticker></app-ticker>
-      <app-header></app-header> 
-      <app-breadcrumbs [title]="title"></app-breadcrumbs>
-  
+<div class="detailAll">
+  <div class="body-inner">
+    <app-ticker></app-ticker>
+    <app-header></app-header>
+    <app-breadcrumbs
+      [title]="data.title"
+      [image]="data.imgName"
+    ></app-breadcrumbs>
+
     <section id="main-container" class="main-container">
       <div class="container">
         <div class="row">
-  
           <div class="col-xl-3 col-lg-4">
             <div class="sidebar sidebar-left">
-              <div class="widget">
-                <h3 class="widget-title">Categories</h3>
-
-                <ul class="nav service-menu">
+              <div *ngIf="publications.length" class="widget">
+                <h3 class="widget-title">Publications</h3>
+                <span
+                  *ngIf="loading"
+                  class="spinner-border spinner-border-sm mr-1"
+                ></span>
+                <ul *ngFor="let item of publications" class="attachedList">
                   <li>
-                    <a [routerLink]="['/Media']"
-                    [queryParams]="{ detail: 'News and Events'}" 
-                    class="list-group-item list-group-item-action">
-                     News and Events</a>
+                    <img src="../../../assets/images/attach.jpg" />
+                    <a
+                      (click)="DownloadFile(item.fileName, item.name)"
+                      download
+                      href="{{ downloadroute }}"
+                      >{{ item.name }}</a
+                    >
                   </li>
                 </ul>
-
-                <ul class="nav service-menu">
+              </div>
+              <div *ngIf="trainingDocument.length" class="widget">
+                <h3 class="widget-title">Training Dcuments</h3>
+                <span
+                  *ngIf="loading"
+                  class="spinner-border spinner-border-sm mr-1"
+                ></span>
+                <ul *ngFor="let item of trainingDocument" class="attachedList">
                   <li>
-                    <a [routerLink]="['/Resources']"
-                    [queryParams]="{ detail: 'Resources'}" 
-                    class="list-group-item list-group-item-action">Resources </a></li>
+                    <img src="../../../assets/images/attach.jpg" />
+                    <a
+                      (click)="DownloadFile(item.fileName, item.name)"
+                      download
+                      href="{{ downloadroute }}"
+                      >{{ item.name }}</a
+                    >
+                  </li>
                 </ul>
-
-                <ul class="nav service-menu">
+              </div>
+              <div *ngIf="brouchure.length" class="widget">
+                <h3 class="widget-title">Brouchure</h3>
+                <span
+                  *ngIf="loading"
+                  class="spinner-border spinner-border-sm mr-1"
+                ></span>
+                <ul *ngFor="let item of brouchure" class="attachedList">
                   <li>
-                    <a [routerLink]="['/Announcements']"
-                    [queryParams]="{ detail: 'Announcements'}" 
-                    class="list-group-item list-group-item-action">Announcements </a></li>
+                    <img src="../../../assets/images/attach.jpg" />
+                    <a
+                      (click)="DownloadFile(item.fileName, item.name)"
+                      download
+                      href="{{ downloadroute }}"
+                      >{{ item.name }}</a
+                    >
+                  </li>
                 </ul>
-                
-            
-              </div><!-- Widget end -->
-  
-  
-            </div><!-- Sidebar end -->
-          </div><!-- Sidebar Col end -->
+              </div>
 
-          
-             <div class="col-lg-8 col-xl-9">
-                <div class="ts-service-box">
-                    <div class="ts-service-image-wrapper headlineImage">
-                        <img loading="lazy" class="img-fluid" 
-                        [src]="imagePath + media[0].imgName" alt="project-slider-image" />
-                    </div>
-                    <div class="d-flex">
-                    
-                        <div class="ts-service-info headline">
-                            <h3 class="service-box-title"><a routerLink="service">{{media[0].title}}</a>&nbsp;&nbsp; {{media[0]?.createdDate.toString().split("T")[0]}}</h3>
-                            <div class="" >
-                              <div className='Contentinfo' [innerHTML]="(media[0]?.description.substring(0, 300)) + '...'">
-                              </div>       
-                            </div>  
-                            <a class="learn-more d-inline-block" 
-                            [routerLink]="['/service']"
-                            [queryParams]="{ detail: media[0].title}"
-                            aria-label="service-details"><i class="fa fa-caret-right"></i> See More</a>
+              <div *ngIf="research.length" class="widget">
+                <h3 class="widget-title">Research</h3>
+                <span
+                  *ngIf="loading"
+                  class="spinner-border spinner-border-sm mr-1"
+                ></span>
+                <ul *ngFor="let item of research" class="attachedList">
+                  <li>
+                    <img src="../../../assets/images/attach.jpg" />
+                    <a
+                      (click)="DownloadFile(item.fileName, item.name)"
+                      download
+                      href="{{ downloadroute }}"
+                      >{{ item.name }}</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <!-- Widget end -->
+            </div>
+            <!-- Sidebar end -->
+          </div>
+          <!-- Sidebar Col end -->
+
+          <div class="col-xl-9 col-lg-8">
+            <div class="content-inner-page">
+              <!-- <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> -->
+              <div class="widget">
+                <h3 class="widget-title">Announcement</h3>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <!-- <p>{{ data.description }}</p> -->
+                </div>
+                <div class="col-md-12 col-sm-12 col-lg-12">
+                  <div class="content-inner-page">
+                    <!-- <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> -->
+                    <div class="widget galleryHolder">
+                      <h3 class="widget-title">Gallery</h3>
+                      <div class="row">
+                        <div class="col-md-3">
+                          <div class="gallery">
+                         
+                            
+                          </div>
                         </div>
+                        <!-- col end -->
+                      </div>
                     </div>
-                </div><!-- Service1 end -->
+                  </div>
+                </div>
+                <!-- col end -->
+              </div>
+              <!-- 1st row end-->
+            </div>
+            <!-- Content inner end -->
 
-                    <div class="row">
-          
-                        <div *ngFor="let item of media; let i=index" class=" col-lg-4 col-md-6 mb-5">
-                        <div class="ts-service-box">
-                            <div class="ts-service-image-wrapper">
-                                <img loading="lazy" class="img-fluid" 
-                                [src]="imagePath + item.imgName" alt="project-slider-image" />
-                            </div>
-                            <div class="d-flex">
-                                <div class="ts-service-info">
-                                    <h3 class="service-box-title"><a routerLink="service">{{item.title}}</a></h3>
-                                    <div class="">
-                                        <p [innerHTML]="(item?.description.substring(0, 200)) + '...'"></p>   
-                                    </div>
-                                    <!-- <p>{{ (item?.description.length>200)? 
-                                    (item?.description | slice:0:200)+'  .  .  .':
-                                    (item?.description)}}</p> -->
-                                 
-                                    <a class="learn-more d-inline-block" 
-                                    [routerLink]="['/service']"
-                                    [queryParams]="{ detail: item.title}"
-                                    aria-label="service-details"><i class="fa fa-caret-right"></i> See More</a>
-                                </div>
-                            </div>
-                        </div><!-- Service1 end -->
-                        </div><!-- Col 1 end -->
-          
-            
-          
-                     </div><!-- Main row end -->
-           
+            <!-- Main row end -->
+          </div>
 
-             </div>
+          <!-- Content Col end -->
+        </div>
+        <!-- Main row end -->
 
+        <div class="sidebar sidebar-left">
+          <div class="widget">
+            <h3 class="widget-title">related</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div *ngFor="let item of pages" class="col-lg-4 col-md-6 mb-5">
+            <div class="card">
+              <div class="card__header">
+                <img
+                  loading="lazy"
+                  class=""
+                  [src]="imagePath + item.imgName"
+                  alt="project-slider-image"
+                />
+              </div>
+              <div class="card__body">
+                <span class="tag tag-brown">about</span>
+                <h4>{{ item.title }}</h4>
+                <p>
+                  {{
+                    item?.description.length > 200
+                      ? (item?.description | slice : 0 : 200) + "  .  .  ."
+                      : item?.description
+                  }}
+                </p>
+              </div>
+              <div class="card__footer">
+                <div class="user">
+                  <a
+                    class="learn-more d-inline-block"
+                    [routerLink]="['/about']"
+                    [queryParams]="{ pages: item.title }"
+                    aria-label="service-details"
+                    ><i class="fa fa-caret-right"></i> Learn more</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Col 1 end -->
+        </div>
 
-        </div><!-- Main row end -->
-      </div><!-- Conatiner end -->
-    </section><!-- Main container end -->
-  
+        <!-- Main row end -->
+      </div>
+      <!-- Conatiner end -->
+    </section>
+    <!-- Main container end -->
+
     <app-footer></app-footer>
-    </div>
+  </div>
 </div>

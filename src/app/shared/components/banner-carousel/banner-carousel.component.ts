@@ -41,9 +41,10 @@ export class BannerCarouselComponent implements OnInit {
   
   async ngOnInit() {
 
-    this.loading = true;
+    // this.loading = true;
     this.getResponse = (await this.service.getAll());
-    console.log(this.getResponse);
+    this.getResponse.data = this.getResponse.data.filter((x:any)=> x.isCarousel
+    == true);
     this.bannerCarousel=this.getResponse.data;
     this.getResponse.length ? this.loading=false : this.loading=true;
 

@@ -3535,6 +3535,7 @@ button
   border: 1px solid var(--t-text-color);
   background-color: var( --second-bg);
   border-radius: 15px;
+  margin: 2vh;
 }
 
 .description

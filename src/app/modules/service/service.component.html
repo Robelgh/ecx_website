@@ -8,7 +8,7 @@
         </div>
       <div class="row">
   
-        <div *ngFor="let item of services" class=" col-lg-4 col-md-6 mb-5">
+        <div *ngFor="let item of PageCatagories" class=" col-lg-4 col-md-6 mb-5">
           <div class="ts-service-box">
               <div class="ts-service-image-wrapper">
                 <img loading="lazy" class="img-fluid" 
@@ -36,68 +36,130 @@
   </section><!-- Main container end -->
 </div>
 
-  <div *ngIf="!isHome" class="detailAll">
-    <div class="body-inner">
-  
-      <app-ticker></app-ticker>
-      <app-header></app-header> 
-      <app-breadcrumbs [title]="data.title" [parent]="parenttitle"></app-breadcrumbs>
-  
+<div *ngIf="!isHome" class="detailAll">
+  <div class="body-inner">
+    <app-ticker></app-ticker>
+    <app-header></app-header>
+    <app-breadcrumbs
+      [title]="data.title"
+      [image]="data.imgName"
+    ></app-breadcrumbs>
+
     <section id="main-container" class="main-container">
       <div class="container">
         <div class="row">
-  
           <div class="col-xl-3 col-lg-4">
             <div class="sidebar sidebar-left">
               <div class="widget">
                 <h3 class="widget-title">Categories</h3>
-                <ul *ngFor="let item of services "  class="nav service-menu">
-                  <li><a  [routerLink]="['/service']"
-                          [queryParams]="{ detail: item.title}">
-                    {{item.title}}
-                  </a></li>
+                <span
+                  *ngIf="loading"
+                  class="spinner-border spinner-border-sm mr-1"
+                ></span>
+                <ul
+                  *ngFor="let item of PageCatagories"
+                  class="nav service-menu"
+                >
+                  <li>
+                    <a
+                      [routerLink]="['/service']"
+                      [queryParams]="{ detail: item.title }"
+                    >
+                      {{ item.title }}
+                    </a>
+                  </li>
                 </ul>
-              </div><!-- Widget end -->
-  
-  
-            </div><!-- Sidebar end -->
-          </div><!-- Sidebar Col end -->
-  
+              </div>
+              <!-- Widget end -->
+            </div>
+            <!-- Sidebar end -->
+          </div>
+          <!-- Sidebar Col end -->
+
           <div class="col-xl-9 col-lg-8">
             <div class="content-inner-page">
-  
+              <!-- <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> -->
               <h2 class="column-title mrt-0">{{data.title}}</h2>
-  
+
               <div class="row">
                 <div class="col-md-12">
-                  <p>{{data.description}}</p>
-                </div><!-- col end -->
-              </div><!-- 1st row end-->
-  
+                  <p>{{ data.description }}</p>
+                </div>
+                <!-- col end -->
+              </div>
+              <!-- 1st row end-->
+
               <div class="gap-40"></div>
-  
+
               <div id="page-slider" class="page-slider">
                 <div class="item">
-                  <img loading="lazy" class="img-fluid headlineImage" 
-                       [src]="imagePath + data.imgName" alt="project-slider-image" />
+                  <img
+                    loading="lazy"
+                    class="img-fluid headlineImage"
+                    style="width: 400vh; height: 50vh"
+                    [src]="imagePath + data.imgName"
+                    alt="project-slider-image"
+                  />
                 </div>
-  
               </div>
-  
-            </div><!-- Content inner end -->
-            <div class="content-inner-page">
-              <app-warehouse-service [parenttitle]="parenttitle"></app-warehouse-service>
             </div>
-           
-            
-          </div><!-- Content Col end -->
-        </div><!-- Main row end -->
-      </div><!-- Conatiner end -->
-    </section><!-- Main container end -->
-    
- 
-    
+            <!-- Content inner end -->
+
+            <!-- Main row end -->
+          </div>
+          <!-- Content Col end -->
+        </div>
+        <!-- Main row end -->
+
+        <div class="sidebar sidebar-left">
+          <div class="widget">
+            <h3 class="widget-title">related</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div *ngFor="let item of pages" class="col-lg-4 col-md-6 mb-5">
+            <div class="card">
+              <div class="card__header">
+                <img
+                  loading="lazy"
+                  class=""
+                  [src]="imagePath + item.imgName"
+                  alt="project-slider-image"
+                />
+              </div>
+              <div class="card__body">
+                <span class="tag tag-brown">Service</span>
+                <h4>{{ item.title }}</h4>
+                <p>
+                  {{
+                    item?.description.length > 200
+                      ? (item?.description | slice : 0 : 200) + "  .  .  ."
+                      : item?.description
+                  }}
+                </p>
+              </div>
+              <div class="card__footer">
+                <div class="user">
+                  <a
+                    class="learn-more d-inline-block"
+                    [routerLink]="['/service']"
+                    [queryParams]="{ pages: item.title }"
+                    aria-label="service-details"
+                    ><i class="fa fa-caret-right"></i> Learn more</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Col 1 end -->
+        </div>
+        <!-- Main row end -->
+      </div>
+      <!-- Conatiner end -->
+    </section>
+    <!-- Main container end -->
+
     <app-footer></app-footer>
-    </div>
-  </div>  
+  </div>
+</div>
 

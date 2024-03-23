@@ -11,7 +11,6 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^16.1.0",
-    "@angular/cdk": "^16.2.2",
     "@angular/common": "^16.1.0",
     "@angular/compiler": "^16.1.0",
     "@angular/core": "^16.1.0",
@@ -23,6 +22,7 @@
     "chart.js": "^4.4.0",
     "leaflet": "^1.9.4",
     "ng2-charts": "^5.0.3",
+    "ng2-pdf-viewer": "^10.0.0",
     "ngx-owl-carousel-o": "^16.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

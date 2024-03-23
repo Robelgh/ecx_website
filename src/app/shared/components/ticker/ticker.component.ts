@@ -1,4 +1,6 @@
 import { Component,OnInit } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import {MarketDatatService } from '../../../_service';;
 
 @Component({
   selector: 'app-ticker',
@@ -9,7 +11,8 @@ import { Component,OnInit } from '@angular/core';
 
 export class TickerComponent implements OnInit {
 
-   data=[
+  bannerCarousel:any=[];
+    data=[
     {
       symbol:"LUBPAA2",
       clossingPrize:4000,
@@ -52,10 +55,18 @@ export class TickerComponent implements OnInit {
     },
   ];
 
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private service: MarketDatatService // yourSubscription: Subscription
+  ) {
+ 
+  }
+
   async ngOnInit() {
    
-      console.log(this.data)
-      
+    this.bannerCarousel = (await this.service.GetScrollingData());
+    
      }
 
 }

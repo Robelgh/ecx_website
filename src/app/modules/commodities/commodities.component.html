@@ -1,89 +1,176 @@
-<section id="ts-team" class="ts-team">
-    <div class="container">
-      <div class="row text-center">
-          <div class="col-lg-12">
-            <h3 class="section-sub-title">Commodities</h3>
-            <div class="commodity" id="commodity">
-             <div class="comodityHolder">
-                 <owl-carousel-o [options]="customOptions">
+<section *ngIf="isHome" id="ts-team" class="ts-team">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-lg-12">
+        <h3 class="section-sub-title">Commodities</h3>
+        <div class="commodity" id="commodity">
+          <div class="comodityHolder">
+            <owl-carousel-o [options]="customOptions">
+              <ng-template carouselSlide *ngFor="let item of commodities">
+                <div class="cards">
+                  <div class="card__collection clear-fix">
+                    <div class="cards cards--two">
+                      <img
+                        [src]="imagePath + item.imgName"
+                        class="img-hover-zoom--brightness"
+                        alt="Cards Image"
+                      />
+                    </div>
+                  </div>
+                  <p>{{ item.name }}</p>
+
+                  <button 
+                      [routerLink]="['/commodity']"
+                      [queryParams]="{ contract: item.name }"
+                   >show more</button>
+                </div>
+              </ng-template>
               
-               <ng-template carouselSlide>
-                 <div class="cards">
-                   <div class="card__collection clear-fix">
-                   <div class="cards cards--two">
-                     <img src="../../../assets/images/commodity/image/Chana.jpg"
-                          class="img-hover-zoom--brightness" alt="Cards Image">
-                   </div>
-                   </div>
-                   <p>Chana</p>
-                 </div>  
-               </ng-template>
-               <ng-template carouselSlide>
-               <div class="cards">
-                 <div class="card__collection clear-fix">
-                 <div class="cards cards--two">
-                   <img src="../../../assets/images/commodity/image/Wheat.jpg"
-                        class="img-hover-zoom--brightness" alt="Cards Image">
-                 </div>
-                 </div>
-                 <p>Wheat</p>
-               </div>
-               
-               </ng-template>
-               <ng-template carouselSlide>
-               <div class="cards">
-                 <div class="card__collection clear-fix">
-                 <div class="cards cards--two">
-                   <img src="../../../assets/images/commodity/image/Soybean.jpg"
-                        class="img-hover-zoom--brightness" alt="Cards Image">
-                 </div>
-                 </div>
-                 <p>Soybean</p>
-               </div>
-               
-               </ng-template>
-               <ng-template carouselSlide>
-                   <div class="cards">
-                     <div class="card__collection clear-fix">
-                     <div class="cards cards--two">
-                       <img src="../../../assets/images/commodity/image/29-mm-Cotton.jpg"
-                           class="img-hover-zoom--brightness" alt="Cards Image">
-                     </div>
-                     </div>
-                     <p>Cotton</p>
-                   </div>
-                   
-               </ng-template>
-               <ng-template carouselSlide>
-                   <div class="cards">
-                     <div class="card__collection clear-fix">
-                     <div class="cards cards--two">
-                       <img src="../../../assets/images/commodity/image/Bajra.jpg"
-                           class="img-hover-zoom--brightness" alt="Cards Image">
-                     </div>
-                     </div>
-                     <p>Bajara</p>
-                   </div>
-                   
-               </ng-template>
-               <ng-template carouselSlide>
-                   <div class="cards">
-                     <div class="card__collection clear-fix">
-                     <div class="cards cards--two">
-                       <img src="../../../assets/images/commodity/image/Coffee.jpg"
-                           class="img-hover-zoom--brightness" alt="Cards Image">
-                     </div>
-                     </div>
-                     <p>Coffee</p>
-                   </div>
-                   
-               </ng-template>
-                 
-                 </owl-carousel-o>
-                 </div>
-             </div>
+            </owl-carousel-o>
           </div>
-      </div><!--/ Title row end -->
-  
-    </div><!--/ Container end -->
-  </section><!--/ Team end -->
+        </div>
+      </div>
+    </div>
+    <!--/ Title row end -->
+  </div>
+  <!--/ Container end -->
+</section>
+
+
+<div *ngIf="!isHome" class="detailAll">
+  <div class="body-inner">
+    <app-ticker></app-ticker>
+    <app-header></app-header>
+    <app-breadcrumbs
+      [parent]="parentTitle"
+      [title]="data.name"
+      [image]="data.imgName"
+    ></app-breadcrumbs>
+
+    <section id="main-container" class="main-container">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-3 col-lg-4">
+            <div class="sidebar sidebar-left">
+              <div class="widget">
+                <h3 class="widget-title">Commodities</h3>
+                <span
+                  *ngIf="loading"
+                  class="spinner-border spinner-border-sm mr-1"
+                ></span>
+                <ul
+                  *ngFor="let item of commodities"
+                  class="nav service-menu"
+                >
+                  <li>
+                    <a
+                      [routerLink]="['/commodity']"
+                      [queryParams]="{ contract: item.name }"
+                    >
+                    {{item.name}}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <!-- Widget end -->
+            </div>
+            <div class="widget">
+              <div class="widget Legends Desktop">
+                <h3 class="widget-title">Legends</h3>
+                <div class="legend-list">
+                  <ul class="nav service-menu">
+                    <li><label>Commodity Name  :  </label></li>
+                    <li><label>Symbol  :  </label></li>
+                    <li><label>Unit of Measurement  :  </label></li>
+                  </ul>
+              
+                </div>
+              </div>
+            </div>
+            <div class="widget">
+              <div class="widget Legends Desktop">
+                <h3 class="widget-title">Contract</h3>
+                <div class="legend-list">
+                   <p>Download the Contract</p>
+                </div>
+              </div>
+            </div>
+    
+         
+            <!-- Sidebar end -->
+          </div>
+          <!-- Sidebar Col end -->
+
+          <div class="col-xl-9 col-lg-8">
+            <div class="content-inner-page">
+              <!-- <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> -->
+              <h2 class="column-title mrt-0">{{ data.name }}</h2>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <p>{{ data.description }}</p>
+                </div>
+                <!-- col end -->
+              </div>
+              <!-- 1st row end-->
+
+              <div class="gap-40"></div>
+
+              <div id="page-slider" class="page-slider">
+                <div class="item">
+                  <img
+                    loading="lazy"
+                    class="img-fluid headlineImage"
+                    style="width: 400vh; height: 50vh"
+                    [src]="imagePath + data.imgName"
+                    alt="project-slider-image"
+                  />
+                </div>
+              </div>
+            </div>
+            <!-- Main row end -->
+          </div>
+          <!-- Content Col end -->
+        </div>
+        <div class="widget Legends mobile">
+          <h3 class="widget-title">Legends</h3>
+          <div class="legend-list">
+            <ul class="nav service-menu">
+              <div class="row">
+                 <li class="col-lg-12">Commodity Name</li>
+                 <li class="col-lg-12">reeg</li>
+                 <br/>
+              </div>
+              <div class="row">
+                <li class="col-lg-6">Symbol</li>
+                <li class="col-lg-6">rge</li>
+                <br/>
+             </div>
+
+             <div class="row">
+              <li class="col-lg-6">Unit of Measurement</li>
+              <li class="col-lg-6">erge</li>
+           </div>
+              <!-- <li><label>Commodity Name  :  </label></li>
+              <li><label>Symbol  :  </label></li>
+              <li><label>Unit of Measurement  :  </label></li> -->
+            </ul>
+        
+          </div>
+        </div>
+
+        <div class="widget Legends mobile">
+          <h3 class="widget-title">Contract</h3>
+          <div class="legend-list">
+             <p>Download the Contract</p>
+          </div>
+        </div>
+        <!-- Main row end -->
+      </div>
+      <!-- Conatiner end -->
+    </section>
+    <!-- Main container end -->
+
+    <app-footer></app-footer>
+  </div>
+</div>

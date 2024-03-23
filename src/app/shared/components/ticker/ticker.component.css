@@ -18,15 +18,17 @@
     width: 25vh;
   }
   /* (B) MOVING TICKER WRAPPER */
-  .hmove { display: flex; color: var(--t-text-color); }
+  .hmove { display: flex; gap:2em; color: var(--t-text-color); }
   
   /* (C) ITEMS - INTO A LONG HORIZONTAL ROW */
   .hitem {
     flex-shrink: 0;
-    width: 100%;
-    box-sizing: border-box;
+    width: 150px;
+    /* margin:2vh; */
+    /* box-sizing: border-box; */
     padding: 10px;
     text-align: center;
+    height:50px;
   }
    
   /* (D) ANIMATION - MOVE ITEMS FROM RIGHT TO LEFT */
@@ -35,8 +37,8 @@
     0% { transform: translate3d(100%, 0, 0); }
     100% { transform: translate3d(-800%, 0, 0); }
   }
-  .hmove { animation: tickerh linear 15s infinite; }
-  .hmove:hover { animation-play-state: paused; }
+  .hitem { animation: tickerh linear 15s infinite; }
+  .hitem:hover { animation-play-state: paused; }
 
   .increaseIcon
   {

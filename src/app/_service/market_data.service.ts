@@ -6,7 +6,8 @@ import { environment } from '../../environment/environment';
 
 // import { Agricultural } from '../_model/agricultural';
 
-const baseUrl = `assets/json/marketdata.json`;
+const baseUrl2 = `assets/json/marketdata.json`;
+const baseUrl = `${environment.apiUrl}/MarketData/scrollingdata`;
 
 @Injectable({ providedIn: 'root' })
 export class MarketDatatService {
@@ -14,12 +15,25 @@ export class MarketDatatService {
 
       
 
-    async getAll() {
-        let response= await firstValueFrom(this.http.get<any>(baseUrl));
+    async GetScrollingData() {
+        // let response= await firstValueFrom(this.http.get<any>(baseUrl));
+        // return [...new Set(response)]
+          return await firstValueFrom(this.http.get(baseUrl));
+       
+    }
+
+    async GetRealtimeData() {
+          return await firstValueFrom(this.http.get(`${baseUrl}/${"realtimedata"}`));
+       
+    }
+
     
+
+    async getAll() {
+        let response= await firstValueFrom(this.http.get<any>(baseUrl2));
         return [...new Set(response)]
-        //   return await firstValueFrom(this.http.get('https://jsonplaceholder.typicode.com/users'));
-        // return this.httpClient.get(baseUrl);
+        //   return await firstValueFrom(this.http.get(baseUrl));
+       
     }
 
     getById(id: string) {

@@ -58,22 +58,9 @@ export class MarketDataComponent {
   selectedCar!: string;
   Descriptionelement!: number;
 
-  foods: Food[] = [
-    { value: 'Weakly', viewValue: 'Weakly' },
-    { value: 'Monthly', viewValue: 'Monthly' },
-    { value: '6-month', viewValue: '6-month' },
-    { value: 'Anually', viewValue: 'Anually' },
-  ];
-
-  cars: Car[] = [
-    { value: 'volvo', viewValue: 'Volvo' },
-    { value: 'saab', viewValue: 'Saab' },
-    { value: 'mercedes', viewValue: 'Mercedes' },
-  ];
 
   displayedColumns: string[] = [
-    'TD',
-    'SY',
+    'Symbol',
     'WCODE',
     'PYEAR',
     'OP',
@@ -81,7 +68,6 @@ export class MarketDataComponent {
     'DH',
     'DL',
     'DIFF',
-    'VLOT',
     'VQUINTAL',
     'PC',
     'Links',

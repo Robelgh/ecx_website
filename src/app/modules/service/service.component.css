@@ -6,3 +6,71 @@
   margin-bottom: 7vh;
   border-radius: 15px;
 }
+
+  
+.card__body {
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	gap: .1rem;
+	/* height: 50px; */
+  }
+
+  .card__body p{
+
+	height: 15vh;
+  }
+  
+  
+  .tag {
+	align-self: flex-start;
+	padding: .25em .75em;
+	border-radius: 1em;
+	font-size: .75rem;
+  }
+  
+  .tag + .tag {
+	margin-left: .5em;
+  }
+  
+ 
+  
+  .tag-brown {
+	background:#ffb600;
+  background: linear-gradient(to bottom, #FFD194, #D1913C);
+	color: #fafafa;
+  }
+
+  .card__body h4 {
+	font-size: 1.5rem;
+	text-transform: capitalize;
+  }
+
+  .card__header img
+  {
+	display: flex;
+	align-items: center;
+	margin-left: auto;
+	margin-right: auto;
+	justify-content: center;
+     height: 20vh;
+	 width: 100%;
+  }
+  .card__footer {
+	display: flex;
+	padding: 1rem;
+	margin-top: auto;
+  }
+  
+  .user {
+	display: flex;
+	gap: .5rem;
+  }
+  
+  .user__image {
+	border-radius: 50%;
+  }
+  
+  .user__info > small {
+	color: #666;
+  }

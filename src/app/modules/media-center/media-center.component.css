@@ -1,33 +1,18 @@
 
-.ts-service-info
+
+.iconicImage
 {
-    margin-bottom: 2vh;
+  width:2vh;
+  height: 2vh;
 }
-
-.newsDescriptionHolderMin
+.attachedList
 {
-    height: 10vh !important;
-    margin-bottom: 1vh;
+display: flex;
+justify-content: flex-start;
+align-items:flex-start;
 }
-
-.newsDescriptionHolder
-{
-    height: 28vh;
-    margin-bottom: 1vh;
-    /* overflow-y: hidden; */
+.attachedList img { 
+    width: 2vh;
+    height: 2vh;
+    margin: 1vh;
 }
-
-
-.newsDescriptionHolderHeadline
-{
-height: 20vh;
-}
-
-@media only screen and (max-width: 380px) {
-     .newsDescriptionHolderHeadline{
-        height: 100px;
-        margin-bottom: 200px;
-    }
-  }
-
-
