@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable, firstValueFrom } from 'rxjs';
-import { AboutService } from '../../_service';
+import { GenericService } from '../../_service';
 import { MasterIdGetter } from '../../_service';
 import { filter } from 'rxjs/operators';
 
@@ -15,7 +15,7 @@ export class AboutUsComponent {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: AboutService,
+    private service: GenericService,
     private masterIdGetter: MasterIdGetter
   ) {}
 
@@ -23,7 +23,7 @@ export class AboutUsComponent {
   isAbout!: boolean;
   isDetail!: boolean;
   loading!: boolean;
-
+  parentTitle: any=null;
   switcher: boolean = false;
   catagoryId: any = null;
   getResponse: any = {};
@@ -37,6 +37,7 @@ export class AboutUsComponent {
   orderObj!: {};
 
   async ngOnInit() {
+    this.parentTitle="about"
     this.route.params.subscribe(async (params) => {
       // this.loading = true;
       this.isHome = this.router.url == '/';
@@ -49,6 +50,8 @@ export class AboutUsComponent {
         this.parent.id
       );
       this.PageCatagories = this.getResponse.data;
+     
+      // this.service.setData(this.PageCatagories );
 
       this.route.queryParamMap.subscribe(async (params) => {
         if (params.get('detail') != null || params.get('detail') != undefined) {
@@ -61,7 +64,7 @@ export class AboutUsComponent {
           this.loading = false;
         }
 
-        if (params.get('pages') != null || params.get('pages') != undefined) {
+       else if (params.get('pages') != null || params.get('pages') != undefined) {
           this.data = await this.pages.filter(
             (a: any) => a.title === params.get('pages')
           )[0];

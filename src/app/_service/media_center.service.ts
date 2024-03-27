@@ -10,6 +10,8 @@ const publicationUrl = `${environment.apiUrl}/Publication`;
 const trainingDocumentUrl = `${environment.apiUrl}/TrainingDoc`;
 const brouchureUrl = `${environment.apiUrl}/Brochure`;
 const reasearchUrl = `${environment.apiUrl}/Research`;
+const announcementsUrl = `${environment.apiUrl}/Announcement`;
+const newsUrl = `${environment.apiUrl}/News`;
 
 
 @Injectable({ providedIn: 'root' })
@@ -30,6 +32,14 @@ export class MediaCenterService {
 
     async  getAllBrouchure() {
         return await firstValueFrom(this.http.get(brouchureUrl));
+    }
+
+    async  getAllAnnouncements() {
+        return await firstValueFrom(this.http.get(announcementsUrl));
+    }
+
+    async  getAllNews() {
+        return await firstValueFrom(this.http.get(newsUrl));
     }
     
     async  getAllResearch() {

@@ -26,13 +26,10 @@ export class BreadcrumbsComponent {
   async ngOnInit ()
   {
      this.imageName=  this.imagePath + this.image
-
-     console.log(this.imageName)
   }
 
   onNavigate(navigateto : string) {
     this.router.navigate([navigateto]);
-    console.log(navigateto)
   } 
   
 

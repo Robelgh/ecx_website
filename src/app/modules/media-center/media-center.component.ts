@@ -24,6 +24,7 @@ export class MediaCenterComponent {
   loading!: boolean;
 
   pdfsrc!:string;
+  title!:string;
   selectedImage!: string; // Initial selected image
   getResponse: any = {};
   galleryData: any = [];
@@ -35,14 +36,13 @@ export class MediaCenterComponent {
   trainingDocument:any=[];
   brouchure:any=[];
   research:any=[];
+  announcements:any=[];
+  news:any=[];
   imagePath = this.service.getImagePath();
   downloadroute: string="";
   media: any = [];
   orderObj!: {};
 
-  
-
-  
 
   constructor(
     private route: ActivatedRoute,
@@ -56,6 +56,8 @@ export class MediaCenterComponent {
   async ngOnInit() {
 
     this.route.params.subscribe(async (params) => {
+      
+      this.title = "media"
       this.getResponse = await this.service.getAllPublication();
       this.publications = this.getResponse.data;
 
@@ -68,20 +70,28 @@ export class MediaCenterComponent {
       this.getResponse = await this.service.getAllResearch();
       this.research = this.getResponse.data;
 
+      this.getResponse = await this.service.getAllAnnouncements();
+      this.announcements = this.getResponse.data;
+
+      this.getResponse = await this.service.getAllNews();
+      this.news = this.getResponse.data;
+
       this.getResponse = (await this.galleryService.getAll());
       this.getResponse.data = this.getResponse.data.filter((x:any)=> x.isCarousel
       == false);
       this.galleryData=this.getResponse.data;
-      // this.galleryData.length > 0 ?  this.selectImage= this.galleryData[0].imgName:null
+      this.galleryData.length > 0 ?  this.selectedImage= this.galleryData[0].imgName:null
     });
   }
 
   DownloadFile(filenameorginal:string ,filenamenew:string):void{
 
-    this.downloadroute=this.service.downloadFile(filenameorginal,filenamenew) 
+    // this.downloadroute=this.service.downloadFile(filenameorginal,filenamenew) 
+    console.log("hello")
   }
 
-  selectImage(imageName: string) {
-    this.selectedImage = imageName;
+  ShowImage(imageName:string ,):void{
+       this.selectedImage = imageName;
   }
+
 }

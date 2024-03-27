@@ -10,7 +10,7 @@ import {
   interval,
 } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { AboutService, MarketDatatService } from '../../_service';
+import { GenericService, MarketDatatService } from '../../_service';
 import { MarketDataModel } from 'src/app/_model';
 
 interface Food {

@@ -9,7 +9,8 @@ const baseUrlPageCatagory = `${environment.apiUrl}/PageCatagory`;
 const baseUrlPage = `${environment.apiUrl}/page`;
 
 @Injectable({ providedIn: 'root' })
-export class AboutService {
+export class ServiceService {
+  jsonDataResult: any;
   constructor(private http: HttpClient) {}
 
   async getParent() {
@@ -17,11 +18,15 @@ export class AboutService {
   }
 
   async getAllPageCatagories(id: string) {
-    return await firstValueFrom(this.http.get(`${baseUrlPageCatagory}/parent/${id}`));
+    return await firstValueFrom(
+      this.http.get(`${baseUrlPageCatagory}/parent/${id}`)
+    );
   }
 
   async getAllPage(id: string) {
-    return await firstValueFrom(this.http.get(`${baseUrlPage}/pageCatagory/${id}`));
+    return await firstValueFrom(
+      this.http.get(`${baseUrlPage}/pageCatagory/${id}`)
+    );
   }
 
   getById(id: string) {
@@ -42,5 +47,4 @@ export class AboutService {
   getImagePath() {
     return 'https://localhost:7284/image/';
   }
-
 }

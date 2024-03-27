@@ -48,12 +48,13 @@
 
 .navbarcustome
 {
-  position: fixed relative;
+  
+  /* position: fixed relative;
   top: 6vh;
   width: 100%;
   border: 1px solid;
   height: 10%;
-  z-index: 1001;
+  z-index: 1001; */
 }
 
 .navNotHome
@@ -91,3 +92,26 @@
   display: var(--add-chil);
 } */
 
+.list-group a
+{
+  display: inline-block;
+}
+
+.list-group-flush a
+{
+  line-height: 3vh;
+}
+
+.listIcon
+{
+  display:inline-block;
+  width:400px;
+  /* background-color: red; */
+  padding: 2vh;
+  border:1px solid #ffb600;
+}
+
+li{
+  white-space: nowrap !important;
+  color: black !important;
+}

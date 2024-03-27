@@ -1,17 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, firstValueFrom } from 'rxjs';
-import { environment } from '../../../environment/environment';
-import { Commodities } from '../../_model/_commodities.model';
+import { Observable,BehaviorSubject, firstValueFrom } from 'rxjs';
+
+import { MasterIdGetter } from './MasterIdGetter'; 
+
+import { environment } from '../../environment/environment';
+import { Commodities } from '../_model/_commodities.model';
 
 const baseUrl = `${environment.apiUrl}/ParentLookup/lan/0229b6bf-405a-470c-97bb-701df4ad0dab`;
 const baseUrlPageCatagory = `${environment.apiUrl}/PageCatagory`;
 const baseUrlPage = `${environment.apiUrl}/page`;
 
 @Injectable({ providedIn: 'root' })
-export class ServiceService {
-  jsonDataResult: any;
-  constructor(private http: HttpClient) {}
+export class GenericService {
+  // private AboutCatagories= any[];
+  private sharedDataSubject = new BehaviorSubject<any>('Initial Data'); // Initial value
+  sharedData = this.sharedDataSubject.asObservable();
+  constructor(private http: HttpClient,private masterIdGetter: MasterIdGetter) {}
 
   async getParent() {
     return await firstValueFrom(this.http.get(baseUrl));
@@ -43,4 +48,24 @@ export class ServiceService {
   getImagePath() {
     return 'https://localhost:7284/image/';
   }
+
+   setData(newData: any) {
+    this.sharedDataSubject.next(newData);
+  }
+
+  getData() {
+    return this.sharedDataSubject.getValue(); // Get current value
+  }
+
+  fetchCatagories(parent: string) {
+    const promise1 = this.masterIdGetter.getParent(parent); // Replace with your service call
+    promise1.then((data) => {
+       const promise2=  this.getAllPageCatagories(data[0].id)
+       promise2.then((data2)=>{
+        this.setData(data2)
+       })
+    })
+  }
+
+
 }

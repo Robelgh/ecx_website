@@ -43,7 +43,6 @@
           </a>
           <!-- Dropdown menu -->
           <div
-            
             class="dropdown-menu w-100 mt-0 nav-bar-item-dropdown"
             aria-labelledby="navbarDropdown"
             style="border-top-left-radius: 0; 
@@ -53,38 +52,14 @@
             
           >
           <div class="container">
+
             <div class="row my-4">
-              <div class="col-md-6 col-lg-6 mb-3 mb-lg-0">
-                
-                <div class="list-group list-group-flush">
-                  <a  [routerLink]="['/about']"
-                      [queryParams]="{ detail: 'Company Profile'}" 
-                      class="list-group-item list-group-item-action"><i
-                      class="fas fa-caret-right pe-2"></i>Company Profile</a>
-                  <a  [routerLink]="['/about']"
-                      [queryParams]="{ detail: 'Corporate Statement'}" 
-                      class="list-group-item list-group-item-action"><i
-                      class="fas fa-caret-right pe-2"></i>Corporate Statement</a>
-                  <a  [routerLink]="['/about']"
-                      [queryParams]="{ detail: 'Executive Leadership'}" 
-                      class="list-group-item list-group-item-action"><i
-                      class="fas fa-caret-right pe-2"></i>Executive Leadership</a> 
-                  <a  [routerLink]="['/about']"
-                      [queryParams]="{ detail: 'Board of Directors'}" 
-                      class="list-group-item list-group-item-action"><i
-                      class="fas fa-caret-right pe-2"></i>Board of Directors</a>   
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-6 mb-3 mb-lg-0">
-                <div class="list-group list-group-flush">
-                  <a  [routerLink]="['/about']"
-                       [queryParams]="{ detail: 'Social Responsibility'}" 
-                       class="list-group-item list-group-item-action"><i
-                       class="fas fa-caret-right pe-2"></i>Social Responsibility</a>
-                  <a  [routerLink]="['/about']"
-                       [queryParams]="{ detail: 'Organization Structure'}" 
-                       class="list-group-item list-group-item-action"><i
-                       class="fas fa-caret-right pe-2"></i>Organizational Structure</a>
+              <div class="col-md-6 col-lg-6 mb-3 mb-lg-0" *ngFor="let category of Catagories ; let i = index">
+                <div class="list-group list-group-flush" *ngFor="let category of Catagories[i]">
+                  <a  [routerLink]="['/service']"
+                      [queryParams]="{ detail: category.title }" 
+                      class="list-group-item list-group-item-action"><li
+                      class="fas fa-caret-right pe-2">{{category.title}}</li></a> 
                 </div>
               </div>
             </div>
@@ -104,6 +79,7 @@
           </a>
           <!-- Dropdown menu -->
           <div
+            
             class="dropdown-menu w-100 mt-0 nav-bar-item-dropdown"
             aria-labelledby="navbarDropdown"
             style="border-top-left-radius: 0; 
@@ -112,77 +88,30 @@
             *ngIf="menuExpanded === 1"
             
           >
-            <div class="container" >
-              <div class="row my-4">
-                <div class="col-md-12 mb-3 mb-lg-0">
-                  <div class="list-group list-group-flush">
+               <div class="container">
 
-                    <a  [routerLink]="['/service']"
-                    [queryParams]="{ detail: 'Warehouse'}" 
-                    class="list-group-item list-group-item-action"><i
-                    class="fas fa-caret-right pe-2"></i>Warehouse</a>
-
-                    <a  [routerLink]="['/service']"
-                    [queryParams]="{ detail: 'Resources'}" 
-                    class="list-group-item list-group-item-action"><i
-                    class="fas fa-caret-right pe-2"></i>Quality</a>
-
-                    <a [routerLink]="['/service']"
-                    [queryParams]="{ detail: 'Trade'}" 
-                    class="list-group-item list-group-item-action"><i
-                    class="fas fa-caret-right pe-2"></i>Trade</a>
-                  </div>
-                </div>  
+            <div class="row my-4">
+              <div class="col-md-6 col-lg-6 mb-3 mb-lg-0" *ngFor="let category of Catagories ; let i = index">
+                <div class="list-group list-group-flush" *ngFor="let category of Catagories[i]">
+                  <a  [routerLink]="['/service']"
+                      [queryParams]="{ detail: category.title }" 
+                      class="list-group-item list-group-item-action"><li
+                      class="fas fa-caret-right pe-2">{{category.title}}</li></a> 
+                </div>
               </div>
-              
             </div>
+            
+          </div>
           </div>
         </li>
 
         <li class="nav-item dropdown position-static">
-          <a
-            (click)="toggleMenu(2)"
-            class="nav-link dropdown-toggle navbar-items"
-            id="navbarDropdown2"
-            role="button"
-          >
-            Media Center
-          </a>
-          <!-- Dropdown menu -->
-          <div
-            class="dropdown-menu w-100 mt-0 nav-bar-item-dropdown"
-            aria-labelledby="navbarDropdown"
-            style="border-top-left-radius: 0; 
-            box-shadow:0px 6px 12px -5px #000000;
-            border-top-right-radius: 0; left: 0;display: block;"
-            *ngIf="menuExpanded === 2"
-            
-          >
-            <div class="container" >
-              <div class="row my-4">
-                <div class="col-md-12 mb-3 mb-lg-0">
-                  <div class="list-group list-group-flush">
-
-                    <a  [routerLink]="['/media']"
-                    [queryParams]="{ detail: 'Warehouse'}" 
-                    class="list-group-item list-group-item-action"><i
-                    class="fas fa-caret-right pe-2"></i>Warehouse</a>
-
-                    <a  [routerLink]="['/media']"
-                    [queryParams]="{ detail: 'Resources'}" 
-                    class="list-group-item list-group-item-action"><i
-                    class="fas fa-caret-right pe-2"></i>Quality</a>
-
-                    <a [routerLink]="['/media']"
-                    [queryParams]="{ detail: 'Trade'}" 
-                    class="list-group-item list-group-item-action"><i
-                    class="fas fa-caret-right pe-2"></i>Trade</a>
-                  </div>
-                </div>  
-              </div>
-              
-            </div>
-          </div>
+          <a [routerLink]="['/media']"
+          class="nav-link  navbar-items"
+          role="button"
+        >
+          Media
+        </a>
         </li>
       
         <li class="nav-item dropdown position-static">
@@ -204,56 +133,20 @@
             *ngIf="menuExpanded === 3"
             
           >
-            <div class="container" >
-              <div class="row my-4">
-                <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                  <div  class="list-group list-group-flush">
-                    <a id="fg" href="" class="list-group-item list-group-item-action"><i
-                         class="fas fa-caret-right pe-2"></i>CRM Policy</a>
-                    <a  [routerLink]="['/membership']"
-                        class="list-group-item list-group-item-action"><i
-                        class="fas fa-caret-right pe-2"></i>Membership</a>
-                    <a  [routerLink]="['/trainingcertificate']" 
-                        class="list-group-item list-group-item-action"><i
-                        class="fas fa-caret-right pe-2"></i>Training and Certification</a>
-                    <a  [routerLink]="['/commoditydeposit']" 
-                        class="list-group-item list-group-item-action"><i
-                        class="fas fa-caret-right pe-2"></i>Commodity Deposit</a>
-                  </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                  <div class="list-group list-group-flush">
-                    <a   [routerLink]="['/grading']" 
-                         class="list-group-item list-group-item-action"><i
-                         class="fas fa-caret-right pe-2"></i>Grading</a>
-                    <a   [routerLink]="['/whrfinancing']" 
-                         class="list-group-item list-group-item-action"><i
-                         class="fas fa-caret-right pe-2"></i>WHR Financing</a>
-                    <a   [routerLink]="['/salebuyorder']" 
-                         class="list-group-item list-group-item-action"><i
-                         class="fas fa-caret-right pe-2"></i>Sale and Buy Order</a>
-                    <a   [routerLink]="['/tradeethics']" 
-                         class="list-group-item list-group-item-action"><i
-                         class="fas fa-caret-right pe-2"></i>Trade Ethics</a>
-                  </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                  <div class="list-group list-group-flush">
-                    <a   [routerLink]="['/tradesettlement']" 
-                         class="list-group-item list-group-item-action"><i
-                         class="fas fa-caret-right pe-2"></i>Trade Settlement</a>
-                    <a   [routerLink]="['/commoditydelivery']" 
-                         class="list-group-item list-group-item-action"><i
-                         class="fas fa-caret-right pe-2"></i>Commodity Delivery</a>
-                    <a   [routerLink]="['/desciplineenforcement']" 
-                         class="list-group-item list-group-item-action"><i
-                         class="fas fa-caret-right pe-2"></i>Descipline and Enforcement</a>
-                   
-                  </div>
+          <div class="container">
+
+            <div class="row my-4">
+              <div class="col-md-6 col-lg-6 mb-3 mb-lg-0" *ngFor="let category of Catagories ; let i = index">
+                <div class="list-group list-group-flush" *ngFor="let category of Catagories[i]">
+                  <a  [routerLink]="['/support']"
+                      [queryParams]="{ detail: category.title }" 
+                      class="list-group-item list-group-item-action"><li
+                      class="fas fa-caret-right pe-2">{{category.title}}</li></a> 
                 </div>
               </div>
-              
             </div>
+            
+          </div>
           </div>
         </li>
 
