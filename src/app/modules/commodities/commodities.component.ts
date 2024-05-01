@@ -2,7 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
 import {CommoditiesService} from '../../_service';
 import { Router, ActivatedRoute,ParamMap } from '@angular/router';
-
+import { MediaCenterService,BannerCarousel } from '../../_service';
 
 import { OwlOptions } from 'ngx-owl-carousel-o';
 
@@ -22,9 +22,11 @@ export class CommoditiesComponent{
   loading!: boolean;
   params:any;
   data:any=[];
-  media:any=[];
+  contract:any=[];
   parent:any=[];
+  downloadroute: string="";
   imagePath = this.service.getImagePath();
+  
 
   mydata:any=['0','1','2','3','4']
 
@@ -56,8 +58,14 @@ export class CommoditiesComponent{
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service:CommoditiesService
+    private service:CommoditiesService,
+    private fileService: MediaCenterService
   ) {
+  }
+
+      
+  DownloadFile(filenameorginal:string ,filenamenew:string):void{
+    this.downloadroute=this.fileService.downloadFile(filenameorginal,filenamenew) 
   }
 
   async ngOnInit () {
@@ -76,11 +84,13 @@ export class CommoditiesComponent{
       .subscribe(async (params) => {
         if(params.get('contract') != null ||  params.get('contract') != undefined) {
           this.data= await this.commodities.filter((a:any)=> a.name === params.get('contract'))[0]
+          this.contract= await this.service.getContract(this.data.id)
+
+          console.log(this.contract.data[0])
         }
         else
         {
           this.data=this.commodities
-          console.log("hello parent")
         }        
       }
     );

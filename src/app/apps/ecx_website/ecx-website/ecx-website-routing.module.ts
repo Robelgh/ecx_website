@@ -10,7 +10,9 @@ import { MediaCenterComponent } from 'src/app/modules/media-center/media-center.
 import { CustomerSupportComponent } from 'src/app/modules/customer-support/customer-support.component';
 import { PackagesComponent } from 'src/app/modules/packages/packages.component';
 import { CheckoutComponent } from 'src/app/modules/checkout/checkout.component';
-// import { WarehouseServiceComponent } from 'src/app/modules/warehouse/warehouse-service/warehouse-service.component';
+import { CareerComponent } from 'src/app/modules/career/career.component';
+import { EcxAcademyComponent } from 'src/app/modules/ecx-academy/ecx-academy.component';
+import {ContactusComponent} from 'src/app/modules/contactus/contactus.component';
 
 import { LoginComponent } from './../../../shared/components/login/login.component';
 import { SignupComponent } from 'src/app/shared/components/signup/signup.component';
@@ -37,9 +39,27 @@ const routes: Routes = [
       { path: 'media/:pages', component: MediaCenterComponent },
 
       
-      { path: 'customersupport', component: CommoditiesComponent },
-      { path: 'customersupport/:detail', component: CommoditiesComponent },
-      { path: 'customersupport/:pages', component: CommoditiesComponent },
+
+
+      { path: 'marketdata', component: MarketDataComponent },
+      { path: 'marketdata/:detail', component: MarketDataComponent },
+      { path: 'marketdata/:pages', component: MarketDataComponent },
+      { path: 'marketdata/:data', component: MarketDataComponent },
+      { path: 'marketdata/:histograph', component: MarketDataComponent },
+      
+
+      { path: 'ecx-academy', component: EcxAcademyComponent },
+      { path: 'ecx-academy/:detail', component: EcxAcademyComponent },
+      { path: 'ecx-academy/:pages', component: EcxAcademyComponent },
+
+
+      { path: 'career', component: CareerComponent },
+      { path: 'career/:detail', component: CareerComponent },
+      { path: 'career/:pages', component: CareerComponent },
+
+      { path: 'contactus', component: ContactusComponent },
+      { path: 'contactus/:detail', component: ContactusComponent },
+      { path: 'contactus/:pages', component: ContactusComponent },
 
       { path: 'commodity', component: CommoditiesComponent },
       { path: 'commodity/:contract', component: CommoditiesComponent },

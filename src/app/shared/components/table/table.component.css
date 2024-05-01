@@ -1,0 +1,32 @@
+.tableHolder
+{
+  width: 100%;
+  overflow-x: scroll;
+}
+.increaseIcon
+{
+  color:green;
+}
+
+.decreaseIcon
+{
+  color:red;
+}
+
+.constantIcon
+{
+  color:yellow;
+}
+
+.Graph
+{
+    color:green;
+}
+
+.iconImage
+{
+  width: 4vh;
+  height: 4vh;
+  cursor: pointer;
+  color:green;
+}

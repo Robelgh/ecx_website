@@ -1,0 +1,175 @@
+<div *ngIf="!isHome" class="detailAll">
+    <div class="body-inner">
+      <app-ticker></app-ticker>
+      <app-header></app-header>
+      <app-breadcrumbs
+        [title]="detail[0]?.title"
+        [parent]="parentTitle"
+        [image]="data.imgName"
+      ></app-breadcrumbs>
+  
+      <section id="main-container" class="main-container">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-3 col-lg-4">
+              <div class="sidebar sidebar-left">
+                <div class="widget">
+                  <h3 class="widget-title">{{'Catagories' | translate}}</h3>
+                  <span
+                    *ngIf="loading"
+                    class="spinner-border spinner-border-sm mr-1"
+                  ></span>
+                  <ul
+                    *ngFor="let item of PageCatagories"
+                    class="nav service-menu"
+                  >
+                    <li>
+                      <a
+                        [routerLink]="['/career']"
+                        [queryParams]="{ detail: item.title }"
+                      >
+                        {{ item.title  }}
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <!-- Widget end -->
+                <div *ngIf="detail.length" class="widget">
+                    <div class="widget Legends Desktop">
+                      <h3 class="widget-title">{{'How to Apply' | translate}}</h3>
+                      <div class="legend-list">
+                        <ul class="nav service-menu">
+                          <li><label><strong>{{'Email' | translate}}</strong>  :  ecxhroffice@ecx.com.et </label></li>
+                          <li><label><strong>{{'Instruction' | translate}}</strong>  :Application letter, CV and scanned educational and work experience documents are expected to be attached to both email addresses.   </label></li>
+                          <li><label><strong>{{'Subject of The Email' | translate}}</strong>  : Position of The {{detail[0]?.type}} </label></li>
+                        </ul>
+                    
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <!-- Sidebar end -->
+            </div>
+            <!-- Sidebar Col end -->
+            <div *ngIf="detail.length" class="col-xl-9 col-lg-8">
+                <div class="content-inner-page">
+                  <!-- <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> -->
+                  <h2 class="column-title mrt-0">{{ detail[0].title }}</h2>
+    
+                  <div class="row">
+                    <div class="col-md-12">
+                      <p [innerHTML]="detail[0].description">
+                    </div>
+                    <!-- col end -->
+                  </div>
+                  <!-- 1st row end-->
+    
+                  <div class="gap-40"></div>
+                </div>
+                <!-- Content inner end -->
+    
+                <!-- Main row end -->
+              </div>
+  
+            <div class="col-xl-9 col-lg-8">
+              <div class="content-inner-page">
+                <!-- <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> -->
+                <h2 class="column-title mrt-0">{{ data.title }}</h2>
+
+                <div class="row container">
+                    <div *ngIf="detail.length" class="widget Legends mobile">
+                        <h3 class="widget-title">{{'How to Apply' | translate}}</h3>
+                        <div class="legend-list">
+                          <ul class="nav service-menu">
+                            <li><label><strong>{{"Email" | translate}}</strong>  :  ecxhroffice@ecx.com.et </label></li>
+                            <li><label><strong>{{"Instruction" | translate}}</strong>  :Application letter, CV and scanned educational and work experience documents are expected to be attached to both email addresses.   </label></li>
+                            <li><label><strong>{{"Subject of The Email" | translate}}</strong>  : Position of The {{detail[0]?.type}} </label></li>
+                          </ul>
+                      
+                        </div>
+                      </div>
+                </div>
+
+                <div *ngIf="data.length && !detail.length" class="sidebar sidebar-left mt-4">
+                    <div class="widget">
+                      <h3 class="widget-title">{{'related' | translate}}</h3>
+                    </div>
+                  </div>
+  
+                <div *ngIf="!detail.length" class="row">
+                    <div *ngFor="let item of data" class="col-lg-6 col-md-6 mb-5">
+                      <div class="card">
+                        
+                        <div class="card__body">
+                          <span class="tag tag-brown">{{item.type}}</span>
+                          <h5>{{ item.title }}</h5>
+                          <p [innerHTML]="item?.description.substring(0, 150)"> 
+                        </div>
+                        <div class="card__footer">
+                          <div class="cardfooter">
+                            <a
+                              class="learn-more d-inline-block"
+                              [routerLink]="['/career']"
+                              [queryParams]="{ pages: item.title }"
+                              aria-label="service-details"
+                              ><i class="fa fa-caret-right"></i>{{'show more' | translate}}</a
+                            >
+                            
+                            <a><label class="deadLine">{{'DeadLine' | translate}}</label>{{item?.expDate.toString().split("T")[0]}}</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Col 1 end -->
+                  </div>
+                <!-- 1st row end-->
+  
+              </div>
+              <!-- Content inner end -->
+  
+              <!-- Main row end -->
+            </div>
+
+          
+            <!-- Content Col end -->
+          </div>
+             <div *ngIf="data.length && detail.length" class="sidebar sidebar-left mt-4">
+            <div class="widget">
+              <h3 class="widget-title">{{'related' | translate}}</h3>
+            </div>
+          </div>
+
+        <div *ngIf="detail.length" class="row">
+            <div *ngFor="let item of data" class="col-lg-4 col-md-6 mb-5">
+              <div class="card">
+                
+                <div class="card__body">
+                  <span class="tag tag-brown">{{item.type}}</span>
+                  <h5>{{ item.title }}</h5>
+                  <p [innerHTML]="item?.description.substring(0, 150)"> 
+                </div>
+                <div class="card__footer">
+                  <div class="cardfooter">
+                    <a
+                      class="learn-more d-inline-block"
+                      [routerLink]="['/career']"
+                      [queryParams]="{ pages: item.title }"
+                      aria-label="service-details"
+                      ><i class="fa fa-caret-right"></i>{{'show more' | translate}}</a
+                    >
+                    
+                    <a><label class="deadLine">{{'DeadLine' | translate}}</label>{{item?.expDate.toString().split("T")[0]}}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Col 1 end -->
+        </div>
+        </div>
+        <!-- Conatiner end -->
+      </section>
+      <!-- Main container end -->
+  
+      <app-footer></app-footer>
+    </div>
+  </div>

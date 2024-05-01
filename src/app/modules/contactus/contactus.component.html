@@ -1,0 +1,137 @@
+<div class="detailAll">
+    <div class="body-inner">
+      <app-ticker></app-ticker>
+      <app-header></app-header>
+      <app-breadcrumbs
+        [title]="data.title"
+        [parent]="parentTitle"
+        [image]="data.imgName"
+      ></app-breadcrumbs>
+  
+      <section id="" class="">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-2 col-lg-4">
+              <div class="sidebar sidebar-left">
+                <div class="widget">
+                  <h3 class="widget-title">{{'catagories' | translate}}</h3>
+                  <span
+                    *ngIf="loading"
+                    class="spinner-border spinner-border-sm mr-1"
+                  ></span>
+                  <ul
+                    *ngFor="let item of PageCatagories"
+                    class="nav service-menu"
+                  >
+                    <li>
+                      <a
+                        [routerLink]="['/contactus']"
+                        [queryParams]="{ detail: item.title }"
+                      >
+                        {{ item.title  }}
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-10 col-lg-8">
+              <div class="row">
+                <div class="col-xl-12 col-lg-8">
+                  <div *ngIf="detail.length" class="col-xl-12 col-lg-8">
+                    <div class="content-inner-page">
+                
+                      <h2 *ngIf="!detail.length" class="column-title mrt-0">{{ data.title }}</h2>
+                      <h2 *ngIf="detail.length" class="column-title mrt-0">{{ data.title }}</h2>
+        
+                      <div class="row">
+                        <div class="col-md-12">
+                          <p [innerHTML]="data.description">
+                        </div>
+                        <!-- col end -->
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div *ngIf="detail.length" class="sidebar sidebar-left">
+                      <div class="widget">
+                        <h3 class="widget-title">{{'related' | translate}}</h3>
+                      </div>
+                    </div>
+      
+                    <div class="row">
+                        <div *ngFor="let item of pages" class="col-lg-4 col-md-6 mb-5">
+                          <div class="card">
+                            <div class="card__body">
+                              <span class="tag tag-brown">{{"contact us" | translate}}</span>
+                              <h5>{{ item.title }}</h5>
+                              <p [innerHTML]="item?.description.substring(0, 100) + '...' "> 
+                            </div>
+                            <div class="card__footer">
+                              <div class="user">
+                                <a
+                                  class="learn-more d-inline-block"
+                                  [routerLink]="['/contactus']"
+                                  [queryParams]="{ pages: item.title +','+ item.catagoryId,}"
+                                  aria-label="service-details"
+                                  ><i class="fa fa-caret-right"></i>{{'show more' | translate}}</a
+                                >
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                      <!-- col end -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Conatiner end -->
+      </section>
+   
+  
+      <app-footer></app-footer>
+    </div>
+  </div>
+<!-- <div class="col-xl-9 col-lg-8">
+                <div class="form container">
+                    <h3>Give us Feedback</h3>
+                    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                      <label for="">First Name*</label>
+                      <input type="text" 
+                             class="form-control"
+                             formControlName="firstname"  
+                             [ngClass]="{ 'is-invalid': submitted && f['firstname'].errors }">
+                             <div *ngIf="submitted && f['firstname'].errors" class="invalid-feedback">
+                            </div>
+                        
+                        <label for="">Last Name</label>
+                        <input type="text" 
+                               class="form-control"
+                               formControlName="lastname">
+                             
+                        <label for="">Email*</label>
+                        <input type="email" 
+                               class="form-control"
+                               formControlName="firstname"  
+                               [ngClass]="{ 'is-invalid': submitted && f['firstname'].errors }">
+                               <div *ngIf="submitted && f['firstname'].errors" class="invalid-feedback">
+                              </div>
+                        
+                        <label for="message">Message*</label><br>
+                        <textarea type="text" 
+                                  class="form-control"
+                                  formControlName="message"  
+                                  [ngClass]="{ 'is-invalid': submitted && f['firstname'].errors }"> </textarea>
+                                  <div *ngIf="submitted && f['message'].errors" class="invalid-feedback">
+                                  </div>
+                        <div class="center">
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                            <input type="submit" value="Submit">
+                        </div>
+                    </form>	
+                </div>
+</div> -->

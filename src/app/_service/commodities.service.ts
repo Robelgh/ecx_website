@@ -5,6 +5,7 @@ import { environment } from '../../environment/environment';
 import { Commodities } from '../_model/_commodities.model';
 
 const baseUrl = `${environment.apiUrl}/Commodity`;
+const baseUrlContract = `${environment.apiUrl}/ContractFile/commodity`;
 
 @Injectable({ providedIn: 'root' })
 export class CommoditiesService {
@@ -12,6 +13,11 @@ export class CommoditiesService {
 
     async getAll() {
         return await firstValueFrom(this.http.get(baseUrl));
+    }
+
+    async getContract(id:any)
+    {
+        return await firstValueFrom(this.http.get(`${baseUrlContract}/${id}`));
     }
 
     getById(id: string) {

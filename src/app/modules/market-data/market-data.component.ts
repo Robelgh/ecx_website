@@ -1,31 +1,25 @@
-import { Component, OnDestroy, OnInit, Input } from '@angular/core';
+import { Component, ViewChild, OnDestroy, OnInit, Input } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { NgFor } from '@angular/common';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {
-  Observable,
-  Observer,
-  firstValueFrom,
-  Subscription,
-  interval,
-} from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-import { GenericService, MarketDatatService } from '../../_service';
-import { MarketDataModel } from 'src/app/_model';
+  CommoditiesService,
+  GenericService,
+  MasterIdGetter,
+  MarketDatatService,
+} from '../../_service';
+import { ChangeDetectorRef } from '@angular/core';
 
-interface Food {
-  value: string;
-  viewValue: string;
-}
-
-interface Car {
-  value: string;
-  viewValue: string;
-}
-
-export interface ExampleTab {
-  label: string;
-  content: string;
+export interface PeriodicElement {
+  symbol: string;
+  warehouseCode: string;
+  productionYear: number;
+  dayHigh: number;
+  dayLow: number;
+  previousClosing: number;
+  closingPrice: number;
+  change: number;
 }
 
 @Component({
@@ -35,164 +29,142 @@ export interface ExampleTab {
 })
 export class MarketDataComponent {
   isHome!: boolean;
-  isMarket!: boolean;
+  loading!: boolean;
+  showdailyhighandlow: boolean = false;
+  showtabulardata: boolean = false;
+  showgrapgh: boolean = false;
+  showstatic: boolean = false;
   title!: any;
-
-  a!: number;
-  b!: number;
-  c!: number;
-  d!: number;
-  e!: number;
-  f!: number;
-
-  switcher!: any;
-  getResponse: any = {};
-  generatedNumber!: number;
-  
-  asyncTabs: Observable<ExampleTab[]>;
   dataSource: any;
+  commodity: any = [];
+  commodityMarketData: any = {};
+  symbolMarketData: any = [];
+  filteredsymbolData: any = [];
+  commodityFirst: any = null;
+  data: any = {};
+  splitStrings: any = [];
+  PageCatagories: any = [];
+  pages: any = [];
+  getResponse: any = {};
+  parent: any = [];
+  parentTitle: any =localStorage.getItem('lang') == 'አማ' ? 'የግብይት መረጃ' : 'market data';
+  imagePath = this.commodityService.getImagePath();
 
-  dataOne: MarketDataModel[] = [];
-  dataTwo: MarketDataModel[] = [];
-  selectedValue!: string;
-  selectedCar!: string;
-  Descriptionelement!: number;
-
+  // @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   displayedColumns: string[] = [
     'Symbol',
     'WCODE',
-    'PYEAR',
-    'OP',
-    'CP',
-    'DH',
-    'DL',
-    'DIFF',
-    'VQUINTAL',
-    'PC',
-    'Links',
+    'ProductionYear',
+    'DayHigh',
+    'DayLow',
+    'PreviousClosing',
+    'ClosingPrice',
+    'Change',
   ];
-
-  lineChart = {
-    labels: [
-      'day1',
-      'day2',
-      'day3',
-      'day4',
-      'day5',
-      'day6',
-      'day7',
-      'day8',
-      'day9',
-      'day10',
-      'day11',
-      'day12',
-      'day13',
-      'day14',
-      'day15',
-      'day16',
-      'day17',
-      'day18',
-      'day19',
-      'day20',
-      'day21',
-      'day22',
-      'day23',
-      'day24',
-      'day25',
-      'day26',
-      'day27',
-      'day28',
-      'day29',
-      'day30',
-    ],
-    datasets: [
-      {
-        data: [
-          10, 20, 30, 40, 50, 5, 80, 4, 56, 7, 4, 8, 9, 10, 3, 10, 20, 30, 40,
-          50, 5, 80, 4, 56, 7, 4, 8, 9, 10, 3,
-        ],
-        label: 'Closing price for Coffee',
-      },
-    ],
-  };
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: MarketDatatService // yourSubscription: Subscription
-  ) {
-    this.asyncTabs = new Observable((observer: Observer<ExampleTab[]>) => {
-      setTimeout(() => {
-        observer.next([
-          { label: 'Coffee', content: 'Content 1' },
-          { label: 'Sesame', content: 'Content 2' },
-          { label: 'Mungbean', content: 'Content 3' },
-          { label: 'Haricotbeen', content: 'Content 1' },
-          { label: 'Chickpeas', content: 'Content 2' },
-          { label: 'Soyabeans', content: 'Content 3' },
-          { label: 'SpeckledBeans', content: 'Content 2' },
-          { label: 'WhitePigeonPeas', content: 'Content 3' },
-        ]);
-      }, 1000);
-    });
-  }
+    private service: MarketDatatService,
+    private commodityService: CommoditiesService,
+    private cdr: ChangeDetectorRef,
+    private genericservice: GenericService,
+    private masterIdGetter: MasterIdGetter
+  ) {}
 
-  dataHolder!: MarketDataModel[];
+  @ViewChild(MatPaginator) paginatior!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   async ngOnInit() {
-    interval(1000).subscribe((x) => {
-      this.generateNumber();
-    });
-
-    this.getResponse = await this.service.getAll();
-  
-    for(let i=0 ; i< 7 ; i++)
-    {
-      this.dataOne.push(this.getResponse[i])
-    }
-    for(let i=7 ; i< 14 ; i++)
-    {
-      this.dataTwo.push(this.getResponse[i])
-    }
     this.isHome = this.router.url == '/';
-    this.isMarket = this.router.url === '/market';
-    this.title = 'Market data';
+
+    this.commodity = await this.commodityService.getAll();
+    this.commodity.data.length > 0
+      ? (this.commodityFirst =
+          this.commodity.data[this.commodity.data.length - 1].name)
+      : (this.commodityFirst = null);
 
     this.route.params.subscribe(async (params) => {
+      // this.loading = true;
       this.isHome = this.router.url == '/';
 
+      switch (localStorage.getItem('lang')) {
+        case 'eng':
+          this.getResponse = await this.masterIdGetter.getParent('ecx-academy');
+          break;
+        case 'አማ':
+          this.getResponse = await this.masterIdGetter.getParent('የግብይት መረጃ');
+          break;
+        default:
+      }
+      this.parent = this.getResponse[0];
+
+      this.getResponse = await this.genericservice.getAllPageCatagories(
+        this.parent.id
+      );
+      this.PageCatagories = this.getResponse.data;
+
       this.route.queryParamMap.subscribe(async (params) => {
+        if(params.get('histograph') != null || params.get('histograph') != undefined) {
+          this.showgrapgh=true;
+        } 
+        if (
+          params.get('data') != undefined ||
+          params.get('data') != null
+        ) {
+          this.showstatic = true;
+          if (params.get('data') === 'Dailyhighandlow') {
+            this.showtabulardata = false;
+            this.showdailyhighandlow = true;
+            this.showgrapgh = false;
+            this.title =this.title = localStorage.getItem('lang') == 'አማ' ? 'የቀኑ ከፍተኛና ዝቅተኛ' : 'Daily high and low';
+          }
+          if (params.get('data') === 'Tableau') {
+            this.showdailyhighandlow = false;
+            this.showtabulardata = true;
+            this.showgrapgh = false;
+            this.title = localStorage.getItem('lang') == 'አማ' ? 'ታብሉ' : 'Tableau';
+          }
+        }
         if (params.get('detail') != null || params.get('detail') != undefined) {
-          this.switcher = params.get('detail');
+          this.showtabulardata = false;
+          this.showdailyhighandlow = false;
+          this.showgrapgh = false;
+          this.showstatic = false;
+          this.data = await this.PageCatagories.filter(
+            (a: any) => a.title === params.get('detail')
+          )[0];
+          this.getResponse = await this.genericservice.getAllPage(this.data.id);
+          this.pages = this.getResponse.data;
+          this.loading = false;
+        } else if (
+          params.get('pages') != null ||
+          params.get('pages') != undefined
+        ) {
+          this.showtabulardata = false;
+          this.showdailyhighandlow = false;
+          this.showgrapgh = false;
+          this.showstatic = false;
+          this.splitStrings = params.get('pages')?.split(',');
+          this.getResponse = await this.genericservice.getAllPage(
+            this.splitStrings[1]
+          );
+          this.pages = this.getResponse.data;
+          this.data = await this.pages.filter(
+            (a: any) => a.title === this.splitStrings[0]
+          )[0];
         } else {
+          this.data = this.parent;
+          this.loading = false;
         }
       });
     });
   }
 
-  generateNumber(): void {
-    this.a = Math.round(Math.random()) * 2 - 1;
+  assignCommodity(commodity: string) {
+    this.commodityFirst = commodity;
 
-    if (this.a < 0) {
-      this.dataHolder = this.dataOne;
-      const ELEMENT_DATA: MarketDataModel[] = this.dataOne;
-      this.dataSource = new MatTableDataSource<MarketDataModel>(ELEMENT_DATA);
-    } else {
-      this.dataHolder = this.dataTwo;
-      const ELEMENT_DATA: MarketDataModel[] = this.dataTwo;
-      this.dataSource = new MatTableDataSource<MarketDataModel>(ELEMENT_DATA);
-    }
-  }
-
-  Filterchange(data: Event) {
-    const value = (data.target as HTMLInputElement).value;
-    this.dataSource.filter = value;
-  }
-
-  highlightRow(element: any, index : number)
-  {
-    this.Descriptionelement=index;
-    // element.Symbol="HELLO"
+    console.log(this.commodityFirst);
   }
 }

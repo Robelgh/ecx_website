@@ -1,37 +1,34 @@
-<nav [ngClass]="{'fixed-top bg-body-tertiary ' : isHome}" 
+<nav [ngClass]="{'fixed-top bg-body-tertiary navbarHome' : isHome}" 
      class="navbar  navbar-expand-lg navbarcustome">
-  
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
-      <img 
+      <img
         src="../../../../assets/images/logo/ECXLogo.png"
-        style="width: 10vh;"
+        style="width: 8vh"
         class="img-background"
       />
     </a>
-    <button  class="navbar-toggler px-0 ms-auto" type="button"
-        aria-controls="navbarExample3" aria-expanded="true"
-        aria-label="Toggle navigation"
-        (click)="toggleCollpse()"
-        >
-        <i class="fas fa-bars navbar-items"></i>
-      </button>
-    <div  class="rud collapse navbar-collapse" id="navbarScroll">
-      <ul  class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="
-        max-height: 70vh;
-        
-        " >
-
+    <button
+      class="navbar-toggler px-0 ms-auto"
+      type="button"
+      aria-controls="navbarExample3"
+      aria-expanded="true"
+      aria-label="Toggle navigation"
+      (click)="toggleCollpse()"
+    >
+      <i class="fas fa-bars navbar-items"></i>
+    </button>
+    <div class="rud collapse navbar-collapse" id="navbarScroll">
+      <ul
+        class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
+        style="max-height: 70vh"
+      >
         <li class="nav-item">
-          <a [routerLink]="['/']"
-            class="nav-link  navbar-items"
-            role="button"
-          >
-            Home
+          <a [routerLink]="['/']" class="nav-link navbar-items" role="button">
+            {{ "home" | translate }}
           </a>
-
         </li>
-   
+
         <li class="nav-item dropdown position-static">
           <a
             (click)="toggleMenu(0)"
@@ -39,32 +36,43 @@
             id="navbarDropdown"
             role="button"
           >
-            About Us
+            {{ "about us" | translate }}
           </a>
           <!-- Dropdown menu -->
           <div
             class="dropdown-menu w-100 mt-0 nav-bar-item-dropdown"
             aria-labelledby="navbarDropdown"
-            style="border-top-left-radius: 0; 
-            box-shadow:0px 6px 12px -5px #000000;
-            border-top-right-radius: 0; left: 0;display: block;"
+            style="
+              border-top-left-radius: 0;
+              box-shadow: 0px 6px 12px -5px #000000;
+              border-top-right-radius: 0;
+              left: 0;
+              display: block;
+            "
             *ngIf="menuExpanded === 0"
-            
           >
-          <div class="container">
-
-            <div class="row my-4">
-              <div class="col-md-6 col-lg-6 mb-3 mb-lg-0" *ngFor="let category of Catagories ; let i = index">
-                <div class="list-group list-group-flush" *ngFor="let category of Catagories[i]">
-                  <a  [routerLink]="['/service']"
-                      [queryParams]="{ detail: category.title }" 
-                      class="list-group-item list-group-item-action"><li
-                      class="fas fa-caret-right pe-2">{{category.title}}</li></a> 
+            <div class="container">
+              <div class="row my-4">
+                <div
+                  class="col-md-6 col-lg-6 mb-3 mb-lg-0"
+                  *ngFor="let category of Catagories; let i = index"
+                >
+                  <div
+                    class="list-group list-group-flush"
+                    *ngFor="let category of Catagories[i]"
+                  >
+                    <a
+                      [routerLink]="['/about']"
+                      [queryParams]="{ detail: category.title }"
+                      class="list-group-item list-group-item-action"
+                      ><li class="fas fa-caret-right pe-2">
+                        {{ category.title }}
+                      </li></a
+                    >
+                  </div>
                 </div>
               </div>
             </div>
-            
-          </div>
           </div>
         </li>
 
@@ -75,45 +83,56 @@
             id="navbarDropdown2"
             role="button"
           >
-          Services
+            {{ "service" | translate }}
           </a>
           <!-- Dropdown menu -->
           <div
-            
             class="dropdown-menu w-100 mt-0 nav-bar-item-dropdown"
             aria-labelledby="navbarDropdown"
-            style="border-top-left-radius: 0; 
-            box-shadow:0px 6px 12px -5px #000000;
-            border-top-right-radius: 0; left: 0;display: block;"
+            style="
+              border-top-left-radius: 0;
+              box-shadow: 0px 6px 12px -5px #000000;
+              border-top-right-radius: 0;
+              left: 0;
+              display: block;
+            "
             *ngIf="menuExpanded === 1"
-            
           >
-               <div class="container">
-
-            <div class="row my-4">
-              <div class="col-md-6 col-lg-6 mb-3 mb-lg-0" *ngFor="let category of Catagories ; let i = index">
-                <div class="list-group list-group-flush" *ngFor="let category of Catagories[i]">
-                  <a  [routerLink]="['/service']"
-                      [queryParams]="{ detail: category.title }" 
-                      class="list-group-item list-group-item-action"><li
-                      class="fas fa-caret-right pe-2">{{category.title}}</li></a> 
+            <div class="container">
+              <div class="row my-4">
+                <div
+                  class="col-md-6 col-lg-6 mb-3 mb-lg-0"
+                  *ngFor="let category of Catagories; let i = index"
+                >
+                  <div
+                    class="list-group list-group-flush"
+                    *ngFor="let category of Catagories[i]"
+                  >
+                    <a
+                      [routerLink]="['/service']"
+                      [queryParams]="{ detail: category.title }"
+                      class="list-group-item list-group-item-action"
+                      ><li class="fas fa-caret-right pe-2">
+                        {{ category.title }}
+                      </li></a
+                    >
+                  </div>
                 </div>
               </div>
             </div>
-            
-          </div>
           </div>
         </li>
 
         <li class="nav-item dropdown position-static">
-          <a [routerLink]="['/media']"
-          class="nav-link  navbar-items"
-          role="button"
-        >
-          Media
-        </a>
+          <a
+            [routerLink]="['/media']"
+            class="nav-link navbar-items"
+            role="button"
+          >
+            {{ "media" | translate }}
+          </a>
         </li>
-      
+
         <li class="nav-item dropdown position-static">
           <a
             (click)="toggleMenu(3)"
@@ -121,103 +140,111 @@
             id="navbarDropdown2"
             role="button"
           >
-            Customer Support
+            {{ "customer support" | translate }}
           </a>
           <!-- Dropdown menu -->
           <div
             class="dropdown-menu w-100 mt-0 nav-bar-item-dropdown"
             aria-labelledby="navbarDropdown"
-            style="border-top-left-radius: 0; 
-            box-shadow:0px 6px 12px -5px #000000;
-            border-top-right-radius: 0; left: 0;display: block;"
+            style="
+              border-top-left-radius: 0;
+              box-shadow: 0px 6px 12px -5px #000000;
+              border-top-right-radius: 0;
+              left: 0;
+              display: block;
+            "
             *ngIf="menuExpanded === 3"
-            
           >
-          <div class="container">
-
-            <div class="row my-4">
-              <div class="col-md-6 col-lg-6 mb-3 mb-lg-0" *ngFor="let category of Catagories ; let i = index">
-                <div class="list-group list-group-flush" *ngFor="let category of Catagories[i]">
-                  <a  [routerLink]="['/support']"
-                      [queryParams]="{ detail: category.title }" 
-                      class="list-group-item list-group-item-action"><li
-                      class="fas fa-caret-right pe-2">{{category.title}}</li></a> 
+            <div class="container">
+              <div class="row my-4">
+                <div
+                  class="col-md-6 col-lg-6 mb-3 mb-lg-0"
+                  *ngFor="let category of Catagories; let i = index"
+                >
+                  <div
+                    class="list-group list-group-flush"
+                    *ngFor="let category of Catagories[i]"
+                  >
+                    <a
+                      [routerLink]="['/support']"
+                      [queryParams]="{ detail: category.title }"
+                      class="list-group-item list-group-item-action"
+                      ><li class="fas fa-caret-right pe-2">
+                        {{ category.title }}
+                      </li></a
+                    >
+                  </div>
                 </div>
               </div>
             </div>
-            
-          </div>
           </div>
         </li>
 
-        <li class="nav-item dropdown position-static">                
+        <li class="nav-item dropdown position-static">
           <a
             (click)="toggleMenu(4)"
             class="nav-link dropdown-toggle navbar-items"
             id="navbarDropdown2"
             role="button"
           >
-          Market Data
+            {{ "market data" | translate }}
           </a>
           <!-- Dropdown menu -->
           <div
-            class="dropdown-menu w-100 mt-0 nav-bar-item-dropdown"
-            aria-labelledby="navbarDropdown"
-            style="border-top-left-radius: 0; 
-            box-shadow:0px 6px 12px -5px #000000;
-            border-top-right-radius: 0; left: 0;display: block;"
-            *ngIf="menuExpanded === 4"
-            
-          >
-            <div class="container" >
-              <div class="row my-4">
-                <div class="col-md-6 mb-6 mb-lg-0">
-                  <div class="list-group list-group-flush">
-
-                    <a  [routerLink]="['/marketdata']"
-                    [queryParams]="{ detail: 'Warehouse'}" 
-                    class="list-group-item list-group-item-action"><i
-                    class="fas fa-caret-right pe-2"></i>Real Time Data</a>
-
-                    <a  [routerLink]="['/marketdata']"
-                    [queryParams]="{ detail: 'Resources'}" 
-                    class="list-group-item list-group-item-action"><i
-                    class="fas fa-caret-right pe-2"></i>Daily High and Low Price</a>
-
-                    <a [routerLink]="['/marketdata']"
-                    [queryParams]="{ detail: 'Trade'}" 
-                    class="list-group-item list-group-item-action"><i
-                    class="fas fa-caret-right pe-2"></i>Daily Trade Data</a>
-                  </div>
-                </div> 
-                <div class="col-md-6 mb-6 mb-lg-0">
-                  <div class="list-group list-group-flush">
-
-                    <a  [routerLink]="['/marketdata']"
-                    [queryParams]="{ detail: 'Warehouse'}" 
-                    class="list-group-item list-group-item-action"><i
-                    class="fas fa-caret-right pe-2"></i>Reports</a>
-
-                    <a  [routerLink]="['/marketdata']"
-                    [queryParams]="{ detail: 'Resources'}" 
-                    class="list-group-item list-group-item-action"><i
-                    class="fas fa-caret-right pe-2"></i>Historical Data</a>
-                  </div>
-                </div>  
+          class="dropdown-menu w-100 mt-0 nav-bar-item-dropdown"
+          aria-labelledby="navbarDropdown"
+          style="
+            border-top-left-radius: 0;
+            box-shadow: 0px 6px 12px -5px #000000;
+            border-top-right-radius: 0;
+            left: 0;
+            display: block;
+          "
+          *ngIf="menuExpanded === 4"
+        >
+          <div class="container">
+            <div class="row my-4">
+              <div
+                class="col-md-6 col-lg-6 mb-3 mb-lg-0"
+                *ngFor="let category of Catagories; let i = index"
+              >
+                <div
+                  class="list-group list-group-flush"
+                  *ngFor="let category of Catagories[i]"
+                >
+                <a
+                [routerLink]="['/marketdata']"
+                [queryParams]="{ detail: category.title }"
+                class="list-group-item list-group-item-action"
+                ><li class="fas fa-caret-right pe-2">
+                  {{category.title}}
+                </li></a>
+                </div>
               </div>
-              
+              <div class="col-md-6 col-lg-6 mb-3 mb-lg-0">
+                <div class="list-group list-group-flush">
+                  <a
+                  [routerLink]="['/marketdata']"
+                  [queryParams]="{ data: 'Tableau' }"
+                  class="list-group-item list-group-item-action"
+                  ><li class="fas fa-caret-right pe-2">
+                    {{'Tableau' | translate}}
+                  </li></a>
+                  <a
+                  [routerLink]="['/marketdata']"
+                  [queryParams]="{ data: 'Dailyhighandlow' }"
+                  class="list-group-item list-group-item-action"
+                  ><li class="fas fa-caret-right pe-2">
+                    {{'Daily High and Low Price' | translate}}
+                  </li></a
+                >
+                </div>
+               
+              </div>
+           
             </div>
           </div>
-        </li>
-
-        <li class="nav-item  position-static">
-          <a href="/contact"
-            class="nav-link  navbar-items"
-            role="button"
-          >
-            Contact Us
-          </a>
-       
+        </div>
         </li>
 
         <li class="nav-item dropdown position-static">
@@ -227,38 +254,141 @@
             id="navbarDropdown2"
             role="button"
           >
-            Career
+            {{ "Ecx-academy" | translate }}
           </a>
           <!-- Dropdown menu -->
           <div
             class="dropdown-menu w-100 mt-0 nav-bar-item-dropdown"
             aria-labelledby="navbarDropdown"
-            style="border-top-left-radius: 0; 
-            box-shadow:0px 6px 12px -5px #000000;
-            border-top-right-radius: 0; left: 0;display: block;"
+            style="
+              border-top-left-radius: 0;
+              box-shadow: 0px 6px 12px -5px #000000;
+              border-top-right-radius: 0;
+              left: 0;
+              display: block;
+            "
             *ngIf="menuExpanded === 5"
-            
           >
-            <div class="container" >
+            <div class="container">
               <div class="row my-4">
-                <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                  <div  class="list-group list-group-flush">
-                    <a id="fg" href="" class="list-group-item list-group-item-action"><i
-                         class="fas fa-caret-right pe-2"></i>Job Opening</a>
-                    <a href="" class="list-group-item list-group-item-action"><i
-                        class="fas fa-caret-right pe-2"></i>Online Application</a>
-                    <a href="" class="list-group-item list-group-item-action"><i
-                        class="fas fa-caret-right pe-2"></i>Career Result</a>
-                  
+                <div
+                  class="col-md-6 col-lg-6 mb-3 mb-lg-0"
+                  *ngFor="let category of Catagories; let i = index"
+                >
+                  <div
+                    class="list-group list-group-flush"
+                    *ngFor="let category of Catagories[i]"
+                  >
+                    <a
+                      [routerLink]="['/ecx-academy']"
+                      [queryParams]="{ detail: category.title }"
+                      class="list-group-item list-group-item-action"
+                      ><li class="fas fa-caret-right pe-2">
+                        {{ category.title }}
+                      </li></a
+                    >
                   </div>
                 </div>
               </div>
-              
             </div>
           </div>
         </li>
 
-        <li class="nav-item  position-static">
+        <li class="nav-item dropdown position-static">
+          <a
+            (click)="toggleMenu(6)"
+            class="nav-link dropdown-toggle navbar-items"
+            id="navbarDropdown2"
+            role="button"
+          >
+            {{ "contact us" | translate }}
+          </a>
+          <!-- Dropdown menu -->
+          <div
+            class="dropdown-menu w-100 mt-0 nav-bar-item-dropdown"
+            aria-labelledby="navbarDropdown"
+            style="
+              border-top-left-radius: 0;
+              box-shadow: 0px 6px 12px -5px #000000;
+              border-top-right-radius: 0;
+              left: 0;
+              display: block;
+            "
+            *ngIf="menuExpanded === 6"
+          >
+            <div class="container">
+              <div class="row my-4">
+                <div
+                  class="col-md-6 col-lg-6 mb-3 mb-lg-0"
+                  *ngFor="let category of Catagories; let i = index"
+                >
+                  <div
+                    class="list-group list-group-flush"
+                    *ngFor="let category of Catagories[i]"
+                  >
+                    <a
+                      [routerLink]="['/contactus']"
+                      [queryParams]="{ detail: category.title }"
+                      class="list-group-item list-group-item-action"
+                      ><li class="fas fa-caret-right pe-2">
+                        {{ category.title }}
+                      </li></a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown position-static">
+          <a
+            (click)="toggleMenu(7)"
+            class="nav-link dropdown-toggle navbar-items"
+            id="navbarDropdown2"
+            role="button"
+          >
+            {{ "career" | translate }}
+          </a>
+          <!-- Dropdown menu -->
+          <div
+            class="dropdown-menu w-100 mt-0 nav-bar-item-dropdown"
+            aria-labelledby="navbarDropdown"
+            style="
+              border-top-left-radius: 0;
+              box-shadow: 0px 6px 12px -5px #000000;
+              border-top-right-radius: 0;
+              left: 0;
+              display: block;
+            "
+            *ngIf="menuExpanded === 7"
+          >
+            <div class="container">
+              <div class="row my-4">
+                <div
+                  class="col-md-6 col-lg-6 mb-3 mb-lg-0"
+                  *ngFor="let category of Catagories; let i = index"
+                >
+                  <div
+                    class="list-group list-group-flush"
+                    *ngFor="let category of Catagories[i]"
+                  >
+                    <a
+                      [routerLink]="['/career']"
+                      [queryParams]="{ detail: category.title }"
+                      class="list-group-item list-group-item-action"
+                      ><li class="fas fa-caret-right pe-2">
+                        {{ category.title }}
+                      </li></a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <!-- <li class="nav-item  position-static">
           <a
             class="nav-link navbar-items"
             id="navbarDropdown2"
@@ -268,9 +398,9 @@
             Packages
           </a>
       
-        </li>
+        </li> -->
 
-        <li class="nav-item  position-static">
+        <!-- <li class="nav-item  position-static">
           <a
             class="nav-link navbar-items"
             id="navbarDropdown2"
@@ -280,11 +410,29 @@
             Login
           </a>
       
-        </li>
+        </li> -->
 
-       
+        <li class="nav-item position-static ml-auto">
+          <a class="nav-link navbar-items" role="button">
+            <li class="nav-item">
+              <select
+                class="form-select"
+                (change)="ChangeLanguage($event)"
+                name=""
+                id=""
+              >
+                <option
+                  *ngFor="let item of Language"
+                  [value]="item.id + ',' + item.shortName"
+                  [selected]="item.shortName === ChoosedLanguage"
+                >
+                  {{ item.shortName }}
+                </option>
+              </select>
+            </li>
+          </a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
-

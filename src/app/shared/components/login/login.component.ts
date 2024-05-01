@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AbstractControlOptions,AbstractControl, FormBuilder, FormGroup,FormControl , Validators } from '@angular/forms';
 import { AuthService } from '../../../_service';
-import { UserService } from '../../../_service';
+
 
 
 @Component({

@@ -1,10 +1,10 @@
-<section *ngIf="isHome" id="ts-team" class="ts-team">
+<section *ngIf="isHome && commodities.length" id="ts-team" class="ts-team">
   <div class="container">
     <div class="row text-center">
       <div class="col-lg-12">
-        <h3 class="section-sub-title">Commodities</h3>
+        <h3 class="into-sub-title">{{'Commodities' | translate}}</h3>
         <div class="commodity" id="commodity">
-          <div class="comodityHolder">
+          <div class="">
             <owl-carousel-o [options]="customOptions">
               <ng-template carouselSlide *ngFor="let item of commodities">
                 <div class="cards">
@@ -22,7 +22,7 @@
                   <button 
                       [routerLink]="['/commodity']"
                       [queryParams]="{ contract: item.name }"
-                   >show more</button>
+                   >{{'show more' | translate}}</button>
                 </div>
               </ng-template>
               
@@ -74,27 +74,29 @@
               </div>
               <!-- Widget end -->
             </div>
-            <div class="widget">
-              <div class="widget Legends Desktop">
-                <h3 class="widget-title">Legends</h3>
-                <div class="legend-list">
-                  <ul class="nav service-menu">
-                    <li><label>Commodity Name  :  </label></li>
-                    <li><label>Symbol  :  </label></li>
-                    <li><label>Unit of Measurement  :  </label></li>
-                  </ul>
-              
+            <div class="sidebar sidebar-left">
+              <div class="widget">
+                <div class="widget Legends Desktop">
+                  <h4 class="widget-title">{{'Contract' | translate}}</h4>
+                  <div class="legend-list">
+                    
+                    <ul class="attachedList">
+                      <li>
+                        <img class="iconicImage" src="../../../assets/images/attach.jpg" /> &nbsp;
+                        <a
+                          (click)="DownloadFile(contract.data[0].fileName, data.name)"
+                          download
+                          href="{{ downloadroute }}"
+                          >{{ data.name }}</a
+                        >
+                      </li>
+                    </ul>
+                    
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="widget">
-              <div class="widget Legends Desktop">
-                <h3 class="widget-title">Contract</h3>
-                <div class="legend-list">
-                   <p>Download the Contract</p>
-                </div>
-              </div>
-            </div>
+           
     
          
             <!-- Sidebar end -->
@@ -132,33 +134,6 @@
           </div>
           <!-- Content Col end -->
         </div>
-        <div class="widget Legends mobile">
-          <h3 class="widget-title">Legends</h3>
-          <div class="legend-list">
-            <ul class="nav service-menu">
-              <div class="row">
-                 <li class="col-lg-12">Commodity Name</li>
-                 <li class="col-lg-12">reeg</li>
-                 <br/>
-              </div>
-              <div class="row">
-                <li class="col-lg-6">Symbol</li>
-                <li class="col-lg-6">rge</li>
-                <br/>
-             </div>
-
-             <div class="row">
-              <li class="col-lg-6">Unit of Measurement</li>
-              <li class="col-lg-6">erge</li>
-           </div>
-              <!-- <li><label>Commodity Name  :  </label></li>
-              <li><label>Symbol  :  </label></li>
-              <li><label>Unit of Measurement  :  </label></li> -->
-            </ul>
-        
-          </div>
-        </div>
-
         <div class="widget Legends mobile">
           <h3 class="widget-title">Contract</h3>
           <div class="legend-list">

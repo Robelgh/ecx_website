@@ -4,7 +4,10 @@ import { Observable, firstValueFrom } from 'rxjs';
 import { environment } from '../../environment/environment';
 import { Commodities } from '../_model/_commodities.model';
 
-const baseUrl = `${environment.apiUrl}/ParentLookup/lan/0229b6bf-405a-470c-97bb-701df4ad0dab`;
+const lang= localStorage.getItem('langId')
+const langName= localStorage.getItem('lang');
+
+const baseUrl = `${environment.apiUrl}/ParentLookup/lan/${lang}`;
 const baseUrlParent = `${environment.apiUrl}/ParentLookup/6c831f63-a1b3-48d8-851c-bea4aea61b84`;
 const baseUrlBoard = `${environment.apiUrl}/BoardOfDirector`;
 
@@ -16,6 +19,8 @@ export class MasterIdGetter {
 
   async getParent(params: string) {
     this.jsonDataResult = await firstValueFrom(this.http.get(baseUrl))
+
+    console.log(this.jsonDataResult)
     
      return this.jsonDataResult.data.filter(
         (x: any) =>

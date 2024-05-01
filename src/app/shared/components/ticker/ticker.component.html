@@ -1,11 +1,11 @@
-<div class="hwrap" style="margin-bottom: 20vh;">
+<div class="hwrap">
   <div *ngFor="let item of bannerCarousel" class="hmove">
         <div class="hitem">{{item.symbol}} &nbsp; {{item.clossingPrize}}  
           <i *ngIf="item.change > 0" class="fa fa-caret-up increaseIcon"></i>
           <i *ngIf="item.change < 0" class="fa fa-caret-down decreaseIcon" ></i>
           <i *ngIf="item.change === 0" class="fa fa-caret-up constantIcon" ></i>
-            <label *ngIf="item.change < 0">{{-1*item.change}}</label>
-            <label *ngIf="item.change >= 0">{{item.change}}</label>
+            <label *ngIf="item.change < 0">&nbsp;{{-1*item.change}}</label>
+            <label *ngIf="item.change >= 0">&nbsp;{{item.change}}</label>
         </div>
   </div>
 </div>

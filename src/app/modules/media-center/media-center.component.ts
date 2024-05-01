@@ -27,6 +27,7 @@ export class MediaCenterComponent {
   title!:string;
   selectedImage!: string; // Initial selected image
   getResponse: any = {};
+  tempData:any=[]
   galleryData: any = [];
   params: any;
   data: any = {};
@@ -42,6 +43,8 @@ export class MediaCenterComponent {
   downloadroute: string="";
   media: any = [];
   orderObj!: {};
+  detail: any=[]
+  parentTitle: any = localStorage.getItem('lang')== "አማ"? 'ሚድያ': 'media';
 
 
   constructor(
@@ -54,40 +57,80 @@ export class MediaCenterComponent {
   ) {}
 
   async ngOnInit() {
-
+    const lang= localStorage.getItem('langId')
     this.route.params.subscribe(async (params) => {
       
-      this.title = "media"
       this.getResponse = await this.service.getAllPublication();
-      this.publications = this.getResponse.data;
+      this.getResponse= await this.getResponse.data.filter(
+        (a: any) => a.langId === lang
+      )
+      this.publications = this.getResponse;
 
       this.getResponse = await this.service.getAllTrainingDocument();
-      this.trainingDocument = this.getResponse.data;
+      this.getResponse= await this.getResponse.data.filter(
+        (a: any) => a.langId === lang
+      )
+      this.trainingDocument = this.getResponse;
 
       this.getResponse = await this.service.getAllBrouchure();
-      this.brouchure = this.getResponse.data;
+      this.getResponse= await this.getResponse.data.filter(
+        (a: any) => a.langId === lang
+      )
+      this.brouchure = this.getResponse;
       
       this.getResponse = await this.service.getAllResearch();
-      this.research = this.getResponse.data;
+      this.getResponse= await this.getResponse.data.filter(
+        (a: any) => a.langId === lang
+      )
+      this.research = this.getResponse;
 
       this.getResponse = await this.service.getAllAnnouncements();
-      this.announcements = this.getResponse.data;
+      this.getResponse= await this.getResponse.data.filter(
+        (a: any) => a.langId === lang
+      )
+      this.announcements = this.getResponse;
 
-      this.getResponse = await this.service.getAllNews();
-      this.news = this.getResponse.data;
 
       this.getResponse = (await this.galleryService.getAll());
       this.getResponse.data = this.getResponse.data.filter((x:any)=> x.isCarousel
       == false);
       this.galleryData=this.getResponse.data;
       this.galleryData.length > 0 ?  this.selectedImage= this.galleryData[0].imgName:null
+
+      this.getResponse = await this.service.getAllNews();
+      this.getResponse= await this.getResponse.data.filter(
+        (a: any) => a.langId === lang
+      )
+      this.news=this.getResponse;
+
+      this.route.queryParamMap.subscribe(async (params) => {
+        if (
+          params.get('pages') != null ||
+          params.get('pages') != undefined
+        ) {
+          this.getResponse = await this.service.getAllNews();
+          this.pages = this.getResponse.data;
+          var detailData = await this.getResponse.data.filter(
+            (a: any) => a.title === params.get('pages')
+          )[0];
+          this.data = await this.getResponse.data.filter(
+            (a: any) => a.type === detailData.type
+          );
+          this.detail.push(detailData)
+          console.log(this.detail)
+          this.loading = false;
+        }
+        else
+        {
+          this.detail=[]
+        }
+      });
     });
   }
 
   DownloadFile(filenameorginal:string ,filenamenew:string):void{
 
-    // this.downloadroute=this.service.downloadFile(filenameorginal,filenamenew) 
-    console.log("hello")
+    this.downloadroute=this.service.downloadFile(filenameorginal,filenamenew) 
   }
 
   ShowImage(imageName:string ,):void{

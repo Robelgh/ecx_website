@@ -232,3 +232,28 @@ a {
   .user__info > small {
 	color: #666;
   }
+
+  @media (min-width: 970px) {
+	.mobile{
+	  display: none;
+	}
+  }
+  
+  @media (max-width: 970px) {
+	.Desktop{
+	  display: none;
+	}
+  }
+
+  .iconicImage
+{
+  width:2vh;
+  height: 2vh;
+}
+.attachedList
+{
+display: flex;
+justify-content: flex-start;
+align-items:flex-start;
+list-style: none;
+}

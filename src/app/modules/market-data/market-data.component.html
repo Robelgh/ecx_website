@@ -1,211 +1,415 @@
-<section *ngIf="isHome" id="project-area" class="project-area solid-bg">
- 
-   <div class="container">
-       
-          <div class="tabularHolder">
-              
-                  <div class="row text-center">
-                    <div class="col-lg-12">
-                    
-                      <h3 class="section-sub-title">Market Data</h3>
-                    </div>
-                  </div>
-                  <!--/ Title row end -->
-              
-                  <ng-container *ngIf="(asyncTabs | async) === null">
-                    Loading tabs...
-                    
-                  </ng-container>
-            
-                  <div class="searchHolder">
-                    <input class="mr-sm-2 searchInput" (keyup)="Filterchange($event)" type="search" placeholder="Search" aria-label="Search">
-                  </div>
-                  
-                  <mat-tab-group>
-                    <mat-tab *ngFor="let tab of asyncTabs | async">
-                      <ng-template mat-tab-label>{{tab.label}}</ng-template>
-                      <mat-card> 
-                        <table  matSort mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-                      
-                        <ng-container matColumnDef="Symbol">
-                          <th mat-sort-header mat-header-cell *matHeaderCellDef> symbol </th>
-                          <td mat-cell *matCellDef="let element; let i = index" (mouseover)="highlightRow(element,i)">
-                            <div class="">{{element.Symbol}}</div> 
-                            <div *ngIf="Descriptionelement == i" class="symbolDescription">description</div> 
-                          </td>
-                        </ng-container>
-                        
-                      
-                        <!-- Month Column -->
-                        <ng-container matColumnDef="WCODE">
-                          <th mat-sort-header mat-header-cell *matHeaderCellDef>Warehouse code</th>
-                          <td mat-cell *matCellDef="let element"> {{element.WarehouseCode}} </td>
-                        </ng-container>
-                      
-                        <!-- Open Column -->
-                        <ng-container matColumnDef="PYEAR">
-                          <th mat-sort-header mat-header-cell *matHeaderCellDef>Production Year</th>
-                          <td mat-cell *matCellDef="let element"> {{element.ProductionYear}} </td>
-                        </ng-container>
-                      
-                  
-            
-                        <!-- Low Column -->
-                        <ng-container matColumnDef="OP">
-                          <th mat-sort-header mat-header-cell *matHeaderCellDef>Open price</th>
-                          <td mat-cell *matCellDef="let element"> {{element.OpeningPrice}} </td>
-                        </ng-container>
-                      
-                        <!-- Last Column -->
-                        <ng-container matColumnDef="CP">
-                          <th mat-sort-header mat-header-cell *matHeaderCellDef>Closing price </th>
-                          <td mat-cell *matCellDef="let element"> {{element.ClosingPrice}} </td>
-                        </ng-container>
-            
-                                    <!-- Changes Column -->
-                        <ng-container matColumnDef="DH">
-                          <th mat-sort-header mat-header-cell *matHeaderCellDef>Daily high</th>
-                          <td mat-cell *matCellDef="let element">
-                              {{element.DayHigh}}
-                            </td>
-                        </ng-container>
-            
-                        <!-- Time Column -->
-                        <ng-container matColumnDef="DL">
-                          <th mat-sort-header mat-header-cell *matHeaderCellDef>Daily low</th>
-                          <td mat-cell *matCellDef="let element"> {{element.DayLow}} </td>
-                        </ng-container>
+<div *ngIf="isHome" class="container">
+  <main>
+    <div class="tab-list">
+      <ul *ngFor="let item of commodity.data; let i = index">
+        <input [id]="'tab' + i" type="radio" name="tabs" checked />
+        <label [for]="'tab' + i" (click)="assignCommodity(item.name)">{{
+          item.name
+        }}</label>
+      </ul>
+    </div>
 
-                        <!-- Time Column -->
-                        <ng-container matColumnDef="DIFF">
-                          <th mat-sort-header mat-header-cell *matHeaderCellDef>difference</th>
-                          <td mat-cell *matCellDef="let element">
-                                <i *ngIf="element.Difference > 0" class="fa fa-caret-up increaseIcon" aria-hidden="true"></i>
-                            <i *ngIf="element.Difference < 0" class="fa fa-caret-down decreaseIcon" aria-hidden="true"></i>
-                            <i *ngIf="element.Difference === 0" class="fa fa-caret-up constantIcon" aria-hidden="true"></i>
-                              <label *ngIf="element.Difference < 0">{{-1*element.Difference}}</label>
-                              <label *ngIf="element.Difference >= 0">{{element.Difference}}</label>
-                            </td>
-                        </ng-container>
+    <section>
+      <app-table [commodityChoosed]="commodityFirst" [isTabular]="true" [isDailyHighLow]="false"></app-table>
+    </section>
+  </main>
+</div>
 
-                            <!-- Time Column -->
-                        <ng-container matColumnDef="VQUINTAL">
-                          <th mat-sort-header mat-header-cell *matHeaderCellDef>volume in quintal</th>
-                          <td mat-cell *matCellDef="let element"> {{element.VolumeInQuintal}} </td>
-                        </ng-container>
-                        
-                            <!-- Time Column -->
-                        <ng-container matColumnDef="PC">
-                          <th mat-sort-header mat-header-cell *matHeaderCellDef>Previous closing</th>
-                          <td mat-cell *matCellDef="let element"> {{element.PreviousClosing}} </td>
-                        </ng-container>
-                      
-                        <!-- Links Column -->
-                        <ng-container matColumnDef="Links">
-                          <th mat-sort-header mat-header-cell *matHeaderCellDef> Links </th>
-                          <td mat-cell *matCellDef="let element">
-                            <a  [routerLink]="['/marketdata']"
-                                [queryParams]="{ detail: 'histogram'}" >
-                              <i class="fa fa-line-chart" aria-hidden="true"></i> Links
-                            </a>
-                          </td> 
-                        </ng-container>
-                      
-                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                        </table>
-                      </mat-card>
-                    
-                    </mat-tab>
-                  </mat-tab-group>
-                <br>
-                <mat-card-footer>
-            
-                    <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons></mat-paginator>
-            
-                </mat-card-footer>
-           </div>
-   </div>
-
-    <!--/ Container end -->
-</section><!-- Project area end -->
-
-<div *ngIf="!isHome" class="detailAll">
+<div *ngIf="!isHome && showgrapgh" class="detailAll">
   <div class="body-inner">
-
     <app-ticker></app-ticker>
-    <app-header></app-header> 
-    <app-breadcrumbs [title]="title"></app-breadcrumbs>
+    <app-header></app-header>
+    <app-breadcrumbs
+        [title]="data.title"
+        [parent]="parentTitle"
+        [image]="data.imgName"
+    ></app-breadcrumbs>
 
-  <section id="main-container" class="main-container">
-    <div class="container">
-      <div class="row">
+    <section id="main-container" class="main-container">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-3 col-lg-4">
+            <div class="sidebar sidebar-left">
+              <div class="widget">
+                <h3 class="widget-title">{{'catagories' | translate}}</h3>
+                <span
+                  *ngIf="loading"
+                  class="spinner-border spinner-border-sm mr-1"
+                ></span>
+                <ul
+                  *ngFor="let item of PageCatagories"
+                  class="nav service-menu"
+                >
+                  <li>
+                    <a
+                      [routerLink]="['/marketdata']"
+                      [queryParams]="{ detail: item.title }"
+                    >
+                      {{ item.title }}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <!-- Widget end -->
+            </div>
+            <div class="sidebar sidebar-left">
+              <div class="widget">
+                <h3 class="widget-title">{{'Data' | translate}}</h3>
+                <span
+                  *ngIf="loading"
+                  class="spinner-border spinner-border-sm mr-1"
+                ></span>
+                <ul class="nav service-menu">
+                  <li>
+                    <a
+                      [routerLink]="['/marketdata']"
+                      [queryParams]="{ data: 'Dailyhighandlow' }"
+                    >
+                      {{"Daily High and Low Price" | translate}}
+                    </a>
+                  </li>
+                </ul>
 
-        <div class="col-xl-3 col-lg-3">
-          <div class="sidebar sidebar-left">
-            <div class="widget">
-              <h3 class="widget-title">Categories</h3>
-              <ul class="nav service-menu">
-                 <li>
-                  <a class="learn-more d-inline-block" 
-                  [routerLink]="['/marketdata']"
-                  [queryParams]="{ detail: 'Daily High and Low Price'}"
-                  aria-label="service-details"> Daily High and Low Price </a>
-                </li>
-              </ul>
-              <ul class="nav service-menu">
-                <li>
-                  <a class="learn-more d-inline-block" 
-                  [routerLink]="['/marketdata']"
-                  [queryParams]="{ detail: 'Daily Trade Data'}"
-                  aria-label="service-details"> Daily Trade Data </a>
-                </li>
-              </ul>
-              <ul class="nav service-menu">
-                <li>
-                  <a class="learn-more d-inline-block" 
-                  [routerLink]="['/marketdata']"
-                  [queryParams]="{ detail: 'Historical Data'}"
-                  aria-label="service-details"> Historical Data </a>
-                </li>
-              </ul>
-              <ul class="nav service-menu">
-                <li>
-                  <a class="learn-more d-inline-block" 
-                  [routerLink]="['/marketdata']"
-                  [queryParams]="{ detail: 'Reports'}"
-                  aria-label="service-details"> Reports </a>
-                </li>
-              </ul>
-            </div><!-- Widget end -->
+
+                <ul class="nav service-menu">
+                  <li>
+                    <a
+                      [routerLink]="['/marketdata']"
+                      [queryParams]="{ data: 'Tableau' }"
+                    >
+                      {{"Tabular Data" | translate}}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <!-- Widget end -->
+            </div>
+            <!-- Sidebar end -->
+          </div>
+
+          <!-- Sidebar Col end -->
+
+          <div class="col-xl-9 col-lg-8">
+            <div class="content-inner-page">
+              <!-- <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> -->
+              <h2 class="column-title mrt-0">{{'Stock Chart for Symbol' | translate}}</h2>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <app-stock-chart></app-stock-chart>
+                </div>
+                <!-- col end -->
+              </div>
+              <!-- 1st row end-->
+            </div>
+            <!-- Content inner end -->
+
+            <!-- Main row end -->
+          </div>
+          <!-- Content Col end -->
+        </div>
+        <!-- Main row end -->
+
+        <div class="sidebar sidebar-left">
+          <div class="widget">
+            <h3 class="widget-title">{{"related" | translate}}</h3>
+          </div>
+        </div>
+
+        <!-- Main row end -->
+      </div>
+      <!-- Conatiner end -->
+    </section>
+    <!-- Main container end -->
+
+    <app-footer></app-footer>
+  </div>
+</div>
+<div *ngIf="!isHome && (showdailyhighandlow || showtabulardata || showgrapgh)" class="detailAll">
+  <div class="body-inner">
+    <app-ticker></app-ticker>
+    <app-header></app-header>
+    <app-breadcrumbs
+        [title]="data.title"
+        [parent]="parentTitle"
+        [image]="data.imgName"
+    ></app-breadcrumbs>
+
+    <section id="main-container" class="main-container">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-3 col-lg-4">
+            <div class="sidebar sidebar-left">
+              <div class="widget">
+                <h3 class="widget-title">{{'catagories' | translate}}</h3>
+                <span
+                  *ngIf="loading"
+                  class="spinner-border spinner-border-sm mr-1"
+                ></span>
+                <ul
+                  *ngFor="let item of PageCatagories"
+                  class="nav service-menu"
+                >
+                  <li>
+                    <a
+                      [routerLink]="['/marketdata']"
+                      [queryParams]="{ detail: item.title }"
+                    >
+                      {{ item.title }}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <!-- Widget end -->
+            </div>
+            <div class="sidebar sidebar-left">
+              <div class="widget">
+                <h3 class="widget-title">{{'Data' | translate}}</h3>
+                <span
+                  *ngIf="loading"
+                  class="spinner-border spinner-border-sm mr-1"
+                ></span>
+                <ul class="nav service-menu">
+                  <li>
+                    <a
+                      [routerLink]="['/marketdata']"
+                      [queryParams]="{ data: 'Dailyhighandlow' }"
+                    >
+                      {{"Daily High and Low Price" | translate}}
+                    </a>
+                  </li>
+                </ul>
 
 
-          </div><!-- Sidebar end -->
-        </div><!-- Sidebar Col end -->
+                <ul class="nav service-menu">
+                  <li>
+                    <a
+                      [routerLink]="['/marketdata']"
+                      [queryParams]="{ data: 'Tableau' }"
+                    >
+                      {{"Tabular Data" | translate}}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <!-- Widget end -->
+            </div>
+            <!-- Sidebar end -->
+          </div>
 
-        <div class="col-xl-8 col-lg-8">
-          <div class="row">
-            <div class="col-xl-12 col-lg-12">
-                 <div *ngIf="switcher == 'histogram'"><app-histogram></app-histogram></div>
-                 <div *ngIf="switcher == 'Daily Trade Data'"><app-daily-trade-data></app-daily-trade-data></div>
-                 <div *ngIf="switcher == 'Daily High and Low Price'"><app-daily-high-and-low-price></app-daily-high-and-low-price></div>
-                 <div *ngIf="switcher == 'Historical Data'"><app-historical-data></app-historical-data></div>
-                 <div *ngIf="switcher == 'Reports'"><app-reports></app-reports></div>
+          <!-- Sidebar Col end -->
+
+          <div class="col-xl-9 col-lg-8">
+            <div class="content-inner-page">
+              <!-- <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> -->
+              <h2 class="column-title mrt-0">{{title}}</h2>
+              <div *ngIf="showdailyhighandlow" class="row">
+                <div class="col-md-12"><app-table  [isTabular]="false" [isDailyHighLow]="true"></app-table></div>
+                <!-- col end -->
+              </div>
+              <div *ngIf="showtabulardata" class="row">
+                <div class="col-md-12">
+             
+                    <div class="tab-list">
+                      <ul *ngFor="let item of commodity.data; let i = index">
+                        <input [id]="'tab' + i" type="radio" name="tabs" checked />
+                        <label [for]="'tab' + i" (click)="assignCommodity(item.name)">{{
+                          item.name
+                        }}</label>
+                      </ul>
+                    </div>
+                
+                    <section>
+                      <app-table [commodityChoosed]="commodityFirst" [isTabular]="true" [isDailyHighLow]="false"></app-table>
+                    </section>
+                
+                </div>
+                <!-- col end -->
+              </div>
+         
+              
+            </div>
+            <!-- Content inner end -->
+
+            <!-- Main row end -->
+          </div>
+          <!-- Content Col end -->
+        </div>
+        <!-- Main row end -->
+      </div>
+      <!-- Conatiner end -->
+    </section>
+    <!-- Main container end -->
+
+    <app-footer></app-footer>
+  </div>
+</div>
+
+
+<div *ngIf="!isHome && !showstatic" class="detailAll">
+  <div class="body-inner">
+    <app-ticker></app-ticker>
+    <app-header></app-header>
+    <app-breadcrumbs
+      [title]="data.title"
+      [parent]="parentTitle"
+      [image]="data.imgName"
+    ></app-breadcrumbs>
+
+    <section id="main-container" class="main-container">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-3 col-lg-4">
+            <div class="sidebar sidebar-left">
+              <div class="widget">
+                <h3 class="widget-title">{{'catagories' | translate}}</h3>
+                <span
+                  *ngIf="loading"
+                  class="spinner-border spinner-border-sm mr-1"
+                ></span>
+                <ul
+                  *ngFor="let item of PageCatagories"
+                  class="nav service-menu"
+                >
+                  <li>
+                    <a
+                      [routerLink]="['/marketdata']"
+                      [queryParams]="{ detail: item.title }"
+                    >
+                      {{ item.title }}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <!-- Widget end -->
+            </div>
+            <div class="sidebar sidebar-left">
+              <div class="widget">
+                <h3 class="widget-title">{{'Data' | translate}}</h3>
+                <span
+                  *ngIf="loading"
+                  class="spinner-border spinner-border-sm mr-1"
+                ></span>
+                <ul class="nav service-menu">
+                  <li>
+                    <a
+                      [routerLink]="['/marketdata']"
+                      [queryParams]="{ data: 'Dailyhighandlow' }"
+                    >
+                      {{"Daily High and Low Price" | translate}}
+                    </a>
+                  </li>
+                </ul>
+
+
+                <ul class="nav service-menu">
+                  <li>
+                    <a
+                      [routerLink]="['/marketdata']"
+                      [queryParams]="{ data: 'Tableau' }"
+                    >
+                      {{"Tabular Data" | translate}}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <!-- Widget end -->
+            </div>
+            <!-- Sidebar end -->
+            
+          </div>
+          <!-- Sidebar Col end -->
+
+        
+
+          <div class="col-xl-9 col-lg-8">
+            <div class="content-inner-page">
+              <!-- <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> -->
+              <h2 class="column-title mrt-0">{{data.title}}</h2>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <p [innerHTML]="data?.description"> 
+                </div>
+                <!-- col end -->
+              </div>
+              <!-- 1st row end-->
+            </div>
+            <!-- Content inner end -->
+
+            <!-- Main row end -->
+          </div>
+       
+    
+        </div>
+        <!-- Main row end -->
+
+        <div *ngIf="pages.length" class="sidebar sidebar-left">
+          <div class="widget">
+            <h3 class="widget-title">{{'related' | translate}}</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div *ngFor="let item of pages" class="col-lg-4 col-md-6 mb-5">
+            <div class="card">
+              <div class="card__header">
+                <img
+                  loading="lazy"
+                  class=""
+                  [src]="imagePath + item.imgName"
+                  alt="project-slider-image"
+                />
+              </div>
+              <div class="card__body">
+                <span class="tag tag-brown">{{'market data' | translate}}</span>
+                <h5>{{ item.title }}</h5>
+                <p [innerHTML]="item.description.substring(0, 150) + '...' "> 
+              </div>
+              <div class="card__footer">
+                <div class="user">
+                  <a
+                    class="learn-more d-inline-block"
+                    [routerLink]="['/marketdata']"
+                    [queryParams]="{ pages: item.title +','+ item.catagoryId,}"
+                    aria-label="service-details"
+                    ><i class="fa fa-caret-right"></i>{{'show more' | translate}}</a
+                  >
+                </div>
+              </div>
             </div>
           </div>
-        </div><!-- Content Col end -->
+          <!-- Col 1 end -->
+        </div>
+        <!-- Main row end -->
+      </div>
+      <!-- Conatiner end -->
+    </section>
+    <!-- Main container end -->
 
-
-      </div><!-- Main row end -->
-    </div><!-- Conatiner end -->
-  </section><!-- Main container end -->
-
-   <app-footer></app-footer>
+    <app-footer></app-footer>
   </div>
 </div>
 
 
 
 
-  
- 
+
+
+<!-- <mat-tab-group>
+  <mat-tab *ngFor="let item of commodity.data">
+    <ng-template mat-tab-label>
+      <span class="commodity" (click)="assignCommodity(item.name)">
+        {{ item.name }}
+      </span>
+    </ng-template>
+    <div class="container marketDataHolder">
+      <span
+        *ngIf="loading"
+        class="MarketDataspinner spinner-border spinner-border-sm mr-1"
+      ></span>
+      <mat-card *ngIf="!loading">
+        <app-table    [commodityChoosed]="commodityFirst"></app-table>
+      </mat-card>
+    </div>
+  </mat-tab>
+</mat-tab-group> -->

@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Observable, firstValueFrom } from 'rxjs';
-import { GenericService } from '../../_service';
-import { MasterIdGetter } from '../../_service';
+import {
+  GenericService,
+  MasterIdGetter,
+  LanguageService,
+} from '../../_service';
 import { filter } from 'rxjs/operators';
 
 @Component({
@@ -16,20 +20,23 @@ export class AboutUsComponent {
     private route: ActivatedRoute,
     private router: Router,
     private service: GenericService,
-    private masterIdGetter: MasterIdGetter
+    private masterIdGetter: MasterIdGetter,
+    private LanguageService: LanguageService,
+    private translateService:TranslateService
   ) {}
 
   isHome!: boolean;
   isAbout!: boolean;
   isDetail!: boolean;
   loading!: boolean;
-  parentTitle: any=null;
+  parentTitle: any = null;
   switcher: boolean = false;
   catagoryId: any = null;
   getResponse: any = {};
   params: any;
   data: any = {};
   PageCatagories: any = [];
+  splitStrings: any = [];
   pages: any = [];
   parent: any = [];
   imagePath = this.service.getImagePath();
@@ -37,20 +44,30 @@ export class AboutUsComponent {
   orderObj!: {};
 
   async ngOnInit() {
-    this.parentTitle="about"
+    
     this.route.params.subscribe(async (params) => {
       // this.loading = true;
       this.isHome = this.router.url == '/';
       this.isAbout = this.router.url === '/about';
 
-      this.getResponse = await this.masterIdGetter.getParent('about');
+      switch (localStorage.getItem('lang')) {
+        case "eng":
+              this.getResponse = await this.masterIdGetter.getParent('about');
+              this.parentTitle = 'about';
+              break;
+        case "አማ":
+                this.getResponse = await this.masterIdGetter.getParent('ስለኛ');
+                this.parentTitle = 'ስለኛ';
+          break;
+          default:
+      }
       this.parent = this.getResponse[0];
 
       this.getResponse = await this.service.getAllPageCatagories(
         this.parent.id
       );
       this.PageCatagories = this.getResponse.data;
-     
+
       // this.service.setData(this.PageCatagories );
 
       this.route.queryParamMap.subscribe(async (params) => {
@@ -58,19 +75,23 @@ export class AboutUsComponent {
           this.data = await this.PageCatagories.filter(
             (a: any) => a.title === params.get('detail')
           )[0];
-          this.catagoryId = this.data.id;
           this.getResponse = await this.service.getAllPage(this.data.id);
           this.pages = this.getResponse.data;
           this.loading = false;
-        }
-
-       else if (params.get('pages') != null || params.get('pages') != undefined) {
-          this.data = await this.pages.filter(
-            (a: any) => a.title === params.get('pages')
-          )[0];
-          this.loading = false;
-        }
-         else {
+        } else if (
+          params.get('pages') != null ||
+          params.get('pages') != undefined
+        ) {
+            this.splitStrings = params.get('pages')?.split(',');
+            this.getResponse = await this.service.getAllPage(
+              this.splitStrings[1]
+            );
+            this.pages = this.getResponse.data;
+            this.data = await this.pages.filter(
+              (a: any) => a.title === this.splitStrings[0]
+            )[0];
+          
+        } else {
           this.data = this.parent;
           this.loading = false;
         }
@@ -91,7 +112,4 @@ export class AboutUsComponent {
     }, 0);
   }
 
-  detailChange() {
-    console.log('Detail Change');
-  }
 }

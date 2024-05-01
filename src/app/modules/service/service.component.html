@@ -1,32 +1,39 @@
-<div *ngIf="isHome">
+<div *ngIf="isHome && PageCatagories.length">
   <section id="main-container" class="main-container pb-2">
     <div class="container">
         <div class="row text-center">
             <div class="col-lg-12">
-              <h3 class="section-sub-title">Services</h3>
+              <h3 class="into-sub-title">{{'service' | translate}}</h3>
             </div>
         </div>
       <div class="row">
   
         <div *ngFor="let item of PageCatagories" class=" col-lg-4 col-md-6 mb-5">
-          <div class="ts-service-box">
-              <div class="ts-service-image-wrapper">
-                <img loading="lazy" class="img-fluid" 
-                [src]="imagePath + item.imgName" alt="project-slider-image" />
+          <div class="card">
+            <div class="card__header">
+              <img
+                loading="lazy"
+                class=""
+                [src]="imagePath + item.imgName"
+                alt="project-slider-image"
+              />
+            </div>
+            <div class="card__body">
+              <h5>{{ item.title }}</h5>
+              <p [innerHTML]="item?.description.substring(0, 150)">
+            </div>
+            <div class="card__footer">
+              <div class="user">
+                <a
+                  class="learn-more d-inline-block"
+                  [routerLink]="['/service']"
+                  [queryParams]="{ detail: item.title }"
+                  aria-label="service-details"
+                  ><i class="fa fa-caret-right"></i>{{'show more'| translate}}</a
+                >
               </div>
-              <div class="d-flex">
-                <div class="ts-service-info">
-                    <h3 class="service-box-title"><a routerLink="service">{{item.title}}</a></h3>
-                    <p>{{ (item?.description.length>200)? 
-                      (item?.description | slice:0:200)+'  .  .  .':
-                      (item?.description)}}</p>
-                    <a class="learn-more d-inline-block" 
-                       [routerLink]="['/service']"
-                       [queryParams]="{ detail: item.title}"
-                       aria-label="service-details"><i class="fa fa-caret-right"></i> Learn more</a>
-                </div>
-              </div>
-          </div><!-- Service1 end -->
+            </div>
+          </div>
         </div><!-- Col 1 end -->
   
     
@@ -42,6 +49,7 @@
     <app-header></app-header>
     <app-breadcrumbs
       [title]="data.title"
+      [parent]="parentTitle"
       [image]="data.imgName"
     ></app-breadcrumbs>
 
@@ -51,7 +59,7 @@
           <div class="col-xl-3 col-lg-4">
             <div class="sidebar sidebar-left">
               <div class="widget">
-                <h3 class="widget-title">Categories</h3>
+                <h3 class="widget-title">{{'catagories' | translate}}</h3>
                 <span
                   *ngIf="loading"
                   class="spinner-border spinner-border-sm mr-1"
@@ -83,7 +91,7 @@
 
               <div class="row">
                 <div class="col-md-12">
-                  <p>{{ data.description }}</p>
+                  <p [innerHTML]="data?.description"> 
                 </div>
                 <!-- col end -->
               </div>
@@ -113,7 +121,7 @@
 
         <div class="sidebar sidebar-left">
           <div class="widget">
-            <h3 class="widget-title">related</h3>
+            <h3 class="widget-title">{{'related' | translate}}</h3>
           </div>
         </div>
         <div class="row">
@@ -128,24 +136,18 @@
                 />
               </div>
               <div class="card__body">
-                <span class="tag tag-brown">Service</span>
-                <h4>{{ item.title }}</h4>
-                <p>
-                  {{
-                    item?.description.length > 200
-                      ? (item?.description | slice : 0 : 200) + "  .  .  ."
-                      : item?.description
-                  }}
-                </p>
+                <span class="tag tag-brown">{{'service' | translate}}</span>
+                <h5>{{ item.title }}</h5>
+                <p [innerHTML]="item.description.substring(0, 150) + '...' "> 
               </div>
               <div class="card__footer">
                 <div class="user">
                   <a
                     class="learn-more d-inline-block"
                     [routerLink]="['/service']"
-                    [queryParams]="{ pages: item.title }"
+                    [queryParams]="{ pages: item.title +','+ item.catagoryId,}"
                     aria-label="service-details"
-                    ><i class="fa fa-caret-right"></i> Learn more</a
+                    ><i class="fa fa-caret-right"></i>{{'show more'| translate}}</a
                   >
                 </div>
               </div>

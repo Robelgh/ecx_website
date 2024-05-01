@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +9,11 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Ethiopia Commodity Exchange';
   lists:boolean=false;
-  
-  onPrevClick(): void{
-  
+
+  constructor(private translateService: TranslateService){
+
+    this.translateService.setDefaultLang('en');
+    this.translateService.use(localStorage.getItem('lang') || 'eng')
   }
-    // $('.hero__categories__all').on('click', function(){
-    //     $('.hero__categories ul').slideToggle(400);
-    // });
+  
 }

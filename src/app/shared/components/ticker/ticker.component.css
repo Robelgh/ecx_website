@@ -1,5 +1,7 @@
 /* (A) FIXED WRAPPER */
 .hwrap {
+   position: absolute;
+   top: 0;
     display: flex;
     flex: row;
     overflow: hidden; /* HIDE SCROLL BAR */
@@ -23,12 +25,12 @@
   /* (C) ITEMS - INTO A LONG HORIZONTAL ROW */
   .hitem {
     flex-shrink: 0;
-    width: 150px;
+    width: 250px;
     /* margin:2vh; */
     /* box-sizing: border-box; */
     padding: 10px;
     text-align: center;
-    height:50px;
+    height:8vh;
   }
    
   /* (D) ANIMATION - MOVE ITEMS FROM RIGHT TO LEFT */

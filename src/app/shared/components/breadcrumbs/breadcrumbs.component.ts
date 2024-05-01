@@ -11,7 +11,7 @@ export class BreadcrumbsComponent {
   @Input() title: any;
   @Input() parent:any;
   @Input() image: any;
-  
+
 
   imageName:any;
 

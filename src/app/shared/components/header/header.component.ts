@@ -8,8 +8,8 @@ import {
 } from '@angular/core';
 import { first } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
-
-import { GenericService } from '../../../_service';
+import { TranslateService } from '@ngx-translate/core';
+import { GenericService,LanguageService } from '../../../_service';
 
 @Component({
   selector: 'app-header',
@@ -20,32 +20,34 @@ export class HeaderComponent {
   isHome!: boolean;
 
   Catagories!: any[];
-
+  Response: any={};
+  Language!:any[];
+  DefaultLanguage:any={};
+  ChoosedLanguage:any=null;
   numberOfColumns!: number;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private Service: GenericService
+    private Service: GenericService,
+    private LanguageService: LanguageService,
+    private TranslateService: TranslateService
   ) {}
 
-  ngOnInit(): void {
+  async ngOnInit() {
+
+    this.isHome = this.router.url == '/';
+
+    this.Response=await this.LanguageService.getLanguage();
+    this.Language=this.Response.data
+    this.DefaultLanguage=this.Language[0];
+
+   this.ChoosedLanguage= localStorage.getItem('lang' || this.DefaultLanguage.shortName)
+
     this.Service.sharedData.subscribe((data) => {
       this.Catagories = this.partitionIntoChunks(data.data);
     });
 
-    document.body.style.setProperty('--navbar-scroll', 'rgba(0, 0, 0, 0.5)');
-    document.body.style.setProperty('--navbar-scroll-text', 'white');
-    document.body.style.setProperty('--navbar-scroll-shadow', 'none');
-    document.body.style.setProperty('--img-back-ground', 'invert(100%)');
-
-    this.isHome = this.router.url === '/';
-
-    window.addEventListener('scroll', this.scroll, true);
-
-    document.body.style.setProperty('--navbar-scroll', 'white');
-    document.body.style.setProperty('--navbar-scroll-text', 'black');
-    document.body.style.setProperty('--add-collap', 'none');
   }
   menuExpanded = -1;
   //collpaseExpanded = false;
@@ -58,7 +60,7 @@ export class HeaderComponent {
       switch (this.menuExpanded) {
         case 0:
           this.Catagories=[]
-          this.Service.fetchCatagories('about')
+          localStorage.getItem('lang') == "አማ" ? this.Service.fetchCatagories('ስለኛ'):this.Service.fetchCatagories('about')
           var plus = 0;
           var module = this.Catagories.length % 4;
           this.Catagories.length % 4 == 0 ? (plus = 0) : (plus = 1);
@@ -67,7 +69,7 @@ export class HeaderComponent {
           break;
         case 1:
           this.Catagories=[]
-          this.Service.fetchCatagories('service')
+          localStorage.getItem('lang') == "አማ" ? this.Service.fetchCatagories('ኣገልግሎት'):this.Service.fetchCatagories('service')
           var plus = 0;
           var module = this.Catagories.length % 4;
           this.Catagories.length % 4 == 0 ? (plus = 0) : (plus = 1);
@@ -76,7 +78,7 @@ export class HeaderComponent {
 
           case 2:
             this.Catagories=[]
-            this.Service.fetchCatagories('media')
+            localStorage.getItem('lang') == "አማ" ? this.Service.fetchCatagories('ሚድያ'):this.Service.fetchCatagories('media')
             var plus = 0;
             var module = this.Catagories.length % 4;
             this.Catagories.length % 4 == 0 ? (plus = 0) : (plus = 1);
@@ -85,7 +87,7 @@ export class HeaderComponent {
 
           case 3:
             this.Catagories=[]
-            this.Service.fetchCatagories('customer support')
+            localStorage.getItem('lang') == "አማ" ? this.Service.fetchCatagories('አጋዥ መረጃ'):this.Service.fetchCatagories('customer support')
             var plus = 0;
             var module = this.Catagories.length % 4;
             this.Catagories.length % 4 == 0 ? (plus = 0) : (plus = 1);
@@ -93,7 +95,7 @@ export class HeaderComponent {
             break;
           case 4:
             this.Catagories=[]
-            this.Service.fetchCatagories('market data')
+             localStorage.getItem('lang') == "አማ" ? this.Service.fetchCatagories('የግብይት'):this.Service.fetchCatagories('market data')
             var plus = 0;
             var module = this.Catagories.length % 4;
             this.Catagories.length % 4 == 0 ? (plus = 0) : (plus = 1);
@@ -101,23 +103,30 @@ export class HeaderComponent {
             break; 
           case 5:
             this.Catagories=[]
-            this.Service.fetchCatagories('career')
+            localStorage.getItem('lang') == "አማ" ? this.Service.fetchCatagories('ኢሲኤክስ-ስልጠና'):this.Service.fetchCatagories('ecx-aca')
             var plus = 0;
             var module = this.Catagories.length % 4;
             this.Catagories.length % 4 == 0 ? (plus = 0) : (plus = 1);
             this.numberOfColumns = (this.Catagories.length - module) / 4 + plus;
             break;
-          case 4:
+          case 6:
             this.Catagories=[]
-            this.Service.fetchCatagories('contact us')
+            localStorage.getItem('lang') == "አማ" ? this.Service.fetchCatagories('ያግኙን'):this.Service.fetchCatagories('contact')
             var plus = 0;
             var module = this.Catagories.length % 4;
             this.Catagories.length % 4 == 0 ? (plus = 0) : (plus = 1);
             this.numberOfColumns = (this.Catagories.length - module) / 4 + plus;
-            break;       
-        // ... more cases
+            break;
+            case 7:
+              this.Catagories=[]
+              localStorage.getItem('lang') == "አማ" ? this.Service.fetchCatagories('ክፍት የስራ ቦታ'):this.Service.fetchCatagories('career')
+              var plus = 0;
+              var module = this.Catagories.length % 4;
+              this.Catagories.length % 4 == 0 ? (plus = 0) : (plus = 1);
+              this.numberOfColumns = (this.Catagories.length - module) / 4 + plus;
+              break;
+                       
         default:
-        // Code to execute if expression doesn't match any case
       }
     }, 0);
   }
@@ -146,9 +155,18 @@ export class HeaderComponent {
     }, 0);
   }
 
+  ChangeLanguage(language : any)
+  {
+    const splitStrings: string[] = language.target.value.split(',');
+
+    localStorage.setItem('lang', splitStrings[1] )
+    localStorage.setItem('langId', splitStrings[0] )
+    window.location.reload()
+
+  }
+
   @HostListener('window:click', ['$event'])
   listenToOutsideClick(event: PointerEvent) {
-    //document.body.style.setProperty('--add-chil',"none");
     this.menuExpanded = -1;
   }
 

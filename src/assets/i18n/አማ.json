@@ -1,0 +1,67 @@
+{
+    "home":"ዋና ገጽ",
+    "about us": "ስለኛ" ,
+    "service": "አገልግሎት",
+    "media" : "ሚድያ",
+    "customer support" : "አጋዥ መረጃ",
+    "market data":"የግብይት መረጃ",
+    "Ecx-academy":"ኢሲኤክስ-ስልጠና",
+    "contact us":"ያግኙን",
+    "career": "ክፍት የስራ ቦታ",
+    "catagories":"አማራችጮች",
+    "related":"ተዛማጅ",
+    "show more":"ቡዙ እይ",
+    "values":"መርሆች",
+    "objective":"ዓላማ",
+    "mission":"ግብ",
+    "vision":"ራእይ",
+    "commodities":"ምርቶች",
+    "Total Warehouses":"ጠቅላላ መጋዝኖች",
+    "Staff Members": "ሰራቶኞች",
+    "Total Trading Branches" : "ጠቅላላ የ ግብይት ማእከላት",
+    "visionDescription":"የኢትዮጵያ ምርት ገበያ ሚያዝያ 2008 ዓ.ም በኢትዮጵያ የተቋቋመ የምርት ገበያ ነው። የኢሴክስ በፈጠረው አዋጅ ውስጥ የተገለፀው አላማ የሻጮችን፣ የገዥዎችን፣ የአማላጆችን እና የህብረተሰቡን መብትና ጥቅም የሚያስጠብቅ ቀልጣፋ ዘመናዊ የግብይት ስርዓት መዘርጋቱን ማረጋገጥ ነው።",
+    "objectiveDescription":"የኢትዮጵያ ምርት ገበያ ሚያዝያ 2008 ዓ.ም በኢትዮጵያ የተቋቋመ የምርት ገበያ ነው። የኢሴክስ በፈጠረው አዋጅ ውስጥ የተገለፀው አላማ የሻጮችን፣ የገዥዎችን፣ የአማላጆችን እና የህብረተሰቡን መብትና ጥቅም የሚያስጠብቅ ቀልጣፋ ዘመናዊ የግብይት ስርዓት መዘርጋቱን ማረጋገጥ ነው።",
+    "missionDescription":"የኢትዮጵያ ምርት ገበያ ሚያዝያ 2008 ዓ.ም በኢትዮጵያ የተቋቋመ የምርት ገበያ ነው። የኢሴክስ በፈጠረው አዋጅ ውስጥ የተገለፀው አላማ የሻጮችን፣ የገዥዎችን፣ የአማላጆችን እና የህብረተሰቡን መብትና ጥቅም የሚያስጠብቅ ቀልጣፋ ዘመናዊ የግብይት ስርዓት መዘርጋቱን ማረጋገጥ ነው።",
+    "valueDescription":"የኢትዮጵያ ምርት ገበያ ሚያዝያ 2008 ዓ.ም በኢትዮጵያ የተቋቋመ የምርት ገበያ ነው። የኢሴክስ በፈጠረው አዋጅ ውስጥ የተገለፀው አላማ የሻጮችን፣ የገዥዎችን፣ የአማላጆችን እና የህብረተሰቡን መብትና ጥቅም የሚያስጠብቅ ቀልጣፋ ዘመናዊ የግብይት ስርዓት መዘርጋቱን ማረጋገጥ ነው።",
+
+    "Symbol":"የምርት መለያ",
+    "Warehouse code": "የመጋዝን መለያ",
+    "Production Year": "የምርት አመት",
+    "Day High": "የቀኑ ከፍተኛ",
+    "Day Low" : "የቀኑ ዝቅተኛ",
+    "Change":"ለውጥ",
+    "Closing price" : "የመዝግያ ዋጋ ",
+    "Previous Closing":"የበፊት መዝግያ ዋጋ",
+    "TradeDate":"የግብይት ቀን",
+    "market":"ግብይት",
+    "closed":"ዝግ",
+
+    "Commodities":"ምርቶች",
+
+    "Quick Links":"Quick Links amharic",
+    "Working Hour":"የስራ ሰዓት",
+    "Working Hours":"2:30 AM  - 5:30 PM",
+    "Monday - Friday": "ሰኞ - አርብ",
+
+    "address":"ኣድራሻ",
+    "Short Code":"አጭር የስልክ መስመር",
+    "SMS":"ኤስኤሜስ",
+
+    "Tabular Data":"ታብሉ ዳታ",
+    "Daily High and Low Price":"የቀኑ ከፍተኛና ዝቅተኛ",
+
+    "How to Apply":"How to Apply amharic",
+    "Instruction":"Instruction amharic",
+    "Subject of The Email":"Subject of The Email amharic",
+     
+    "Contract":"Contract amharic",
+
+    "News":"ዜና",
+    "Source":"ምንጭ",
+    "Gallery":"ጋለሪ",
+    "Photos":"ፎቶዎች",
+
+    "Stock Chart for Symbol":"Stock Chart for Symbol amharic",
+    "Data":"ዳታ",
+    "DeadLine":"ማብቅያ"
+}

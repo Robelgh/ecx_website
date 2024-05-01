@@ -4,69 +4,42 @@
       <div class="facts-wrapper">
         <div class="row">
           <div class="col-md-3 col-sm-3 ts-facts">
-            <div class="ts-facts-img">
-              <img
-                loading="lazy"
-                src="images/icon-image/fact1.png"
-                alt="facts-img"
-              />
-            </div>
             <div class="ts-facts-content">
               <h2 class="ts-facts-num">
                 <span class="counterUp" data-count="1789">30</span>
               </h2>
-              <h3 class="ts-facts-title">Total Warehouses</h3>
+              <h3 class="ts-facts-title">{{'Total Warehouses' | translate}}</h3>
             </div>
           </div>
           <!-- Col end -->
 
           <div class="col-md-3 col-sm-3 ts-facts mt-5 mt-sm-0">
-            <div class="ts-facts-img">
-              <img
-                loading="lazy"
-                src="images/icon-image/fact2.png"
-                alt="facts-img"
-              />
-            </div>
+
             <div class="ts-facts-content">
               <h2 class="ts-facts-num">
                 <span class="counterUp" data-count="647">550</span>
               </h2>
-              <h3 class="ts-facts-title">Staff Members</h3>
+              <h3 class="ts-facts-title">{{'Staff Members' | translate}}</h3>
             </div>
           </div>
           <!-- Col end -->
 
           <div class="col-md-3 col-sm-3 ts-facts mt-5 mt-md-0">
-            <div class="ts-facts-img">
-              <img
-                loading="lazy"
-                src="images/icon-image/fact3.png"
-                alt="facts-img"
-              />
-            </div>
             <div class="ts-facts-content">
               <h2 class="ts-facts-num">
                 <span class="counterUp" data-count="4000">20</span>
               </h2>
-              <h3 class="ts-facts-title">Total Trading Branches</h3>
+              <h3 class="ts-facts-title">{{'Total Trading Branches' | translate}}</h3>
             </div>
           </div>
           <!-- Col end -->
 
           <div class="col-md-3 col-sm-3 ts-facts mt-5 mt-md-0">
-            <div class="ts-facts-img">
-              <img
-                loading="lazy"
-                src="images/icon-image/fact4.png"
-                alt="facts-img"
-              />
-            </div>
             <div class="ts-facts-content">
               <h2 class="ts-facts-num">
                 <span class="counterUp" data-count="44">30</span>
               </h2>
-              <h3 class="ts-facts-title">Commodities</h3>
+              <h3 class="ts-facts-title">{{'commodities' | translate}}</h3>
             </div>
           </div>
           <!-- Col end -->
@@ -88,15 +61,9 @@
           ></span>
           <div class="ts-intro">
             <h3 class="into-sub-title">{{ parent.title }}</h3>
-            <p>
-              {{
-                parent?.description?.length > 200
-                  ? (parent?.description | slice : 0 : 200) + "  .  .  ."
-                  : parent?.description
-              }}
-            </p>
-            <button routerLink="about">show more</button>
+            <p class="aboutHomeDescription" [innerHTML]="parent.description.substring(0, 800)"> 
           </div>
+          <button *ngIf="parent.title.length" routerLink="about">{{'show more' | translate }}</button>
           <!-- Intro box end -->
 
           <div class="gap-20"></div>
@@ -131,15 +98,10 @@
         </div>
         <!-- Col end -->
 
-        <div class="col-lg-6 mt-4 mt-lg-0">
-          <h3 class="service-box-title">Values</h3>
+        <div *ngIf="parent.title.length" class="col-lg-6 mt-4 mt-lg-0">
+          <h3 class="service-box-title">{{'values' | translate}}</h3>
           <p>
-            The Ethiopia Commodity Exchange (ECX) is a commodities exchange
-            established April 2008 in Ethiopia. In Proclamation 2007-550, which
-            created the ECX, its stated objective was "to ensure the development
-            of an efficient modern trading system" that would "protect the
-            rights and benefits of sellers, buyers, intermediaries, and the
-            general public.
+           {{'valueDescription' | translate}} 
           </p>
 
           <div class="accordion accordion-group" id="our-values-accordion">
@@ -154,7 +116,7 @@
                     aria-expanded="true"
                     aria-controls="collapseOne"
                   >
-                    Objective
+                    {{'objective' | translate}}
                   </button>
                 </h2>
               </div>
@@ -167,12 +129,7 @@
                 data-parent="#our-values-accordion"
               >
                 <div class="card-body">
-                  The Ethiopia Commodity Exchange (ECX) is a commodities
-                  exchange established April 2008 in Ethiopia. In Proclamation
-                  2007-550, which created the ECX, its stated objective was "to
-                  ensure the development of an efficient modern trading system"
-                  that would "protect the rights and benefits of sellers,
-                  buyers, intermediaries, and the general public.
+                   {{'objectiveDescription' | translate}}
                 </div>
               </div>
             </div>
@@ -187,7 +144,7 @@
                     aria-expanded="false"
                     aria-controls="collapseTwo"
                   >
-                    Mission
+                    {{'mission' | translate}}
                   </button>
                 </h2>
               </div>
@@ -198,12 +155,7 @@
                 data-parent="#our-values-accordion"
               >
                 <div class="card-body">
-                  The Ethiopia Commodity Exchange (ECX) is a commodities
-                  exchange established April 2008 in Ethiopia. In Proclamation
-                  2007-550, which created the ECX, its stated objective was "to
-                  ensure the development of an efficient modern trading system"
-                  that would "protect the rights and benefits of sellers,
-                  buyers, intermediaries, and the general public.
+                 {{'missionDescription' | translate}}
                 </div>
               </div>
             </div>
@@ -219,7 +171,7 @@
                     aria-expanded="false"
                     aria-controls="collapseTwo"
                   >
-                    Vision
+                    {{'vision' | translate}}
                   </button>
                 </h2>
               </div>
@@ -230,9 +182,7 @@
                 data-parent="#our-values-accordion"
               >
                 <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life
-                  accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                  non cupidata
+                 {{'visionDescription'| translate}}
                 </div>
               </div>
             </div>
@@ -264,7 +214,7 @@
           <div class="col-xl-3 col-lg-4">
             <div class="sidebar sidebar-left">
               <div class="widget">
-                <h3 class="widget-title">Categories</h3>
+                <h3 class="widget-title">{{'catagories' | translate}}</h3>
                 <span
                   *ngIf="loading"
                   class="spinner-border spinner-border-sm mr-1"
@@ -278,25 +228,23 @@
                       [routerLink]="['/about']"
                       [queryParams]="{ detail: item.title }"
                     >
-                      {{ item.title }}
+                      {{ item.title  }}
                     </a>
                   </li>
                 </ul>
               </div>
-              <!-- Widget end -->
             </div>
-            <!-- Sidebar end -->
           </div>
-          <!-- Sidebar Col end -->
-
+      
+          <!-- data -->
           <div class="col-xl-9 col-lg-8">
             <div class="content-inner-page">
-              <!-- <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> -->
+        
               <h2 class="column-title mrt-0">{{ data.title }}</h2>
 
               <div class="row">
                 <div class="col-md-12">
-                  <p>{{ data.description }}</p>
+                  <p [innerHTML]="data.description">
                 </div>
                 <!-- col end -->
               </div>
@@ -316,17 +264,14 @@
                 </div>
               </div>
             </div>
-            <!-- Content inner end -->
-
-            <!-- Main row end -->
           </div>
-          <!-- Content Col end -->
-        </div>
-        <!-- Main row end -->
 
+        </div>
+
+        <!-- pages -->
         <div class="sidebar sidebar-left">
           <div class="widget">
-            <h3 class="widget-title">related</h3>
+            <h3 class="widget-title">{{'related' | translate}}</h3>
           </div>
         </div>
         <div class="row">
@@ -341,24 +286,18 @@
                 />
               </div>
               <div class="card__body">
-                <span class="tag tag-brown">about</span>
-                <h4>{{ item.title }}</h4>
-                <p>
-                  {{
-                    item?.description.length > 200
-                      ? (item?.description | slice : 0 : 200) + "  .  .  ."
-                      : item?.description
-                  }}
-                </p>
+                <span class="tag tag-brown">{{'about us' | translate}}</span>
+                <h5>{{ item.title }}</h5>
+                <p [innerHTML]="item?.description.substring(0, 200)"> 
               </div>
               <div class="card__footer">
                 <div class="user">
                   <a
                     class="learn-more d-inline-block"
                     [routerLink]="['/about']"
-                    [queryParams]="{ pages: item.title }"
+                    [queryParams]="{ pages: item.title +','+ item.catagoryId,}"
                     aria-label="service-details"
-                    ><i class="fa fa-caret-right"></i> Learn more</a
+                    ><i class="fa fa-caret-right seemore"></i>{{'show more' | translate}}</a
                   >
                 </div>
               </div>
@@ -366,9 +305,7 @@
           </div>
           <!-- Col 1 end -->
         </div>
-        <!-- Main row end -->
       </div>
-      <!-- Conatiner end -->
     </section>
     <!-- Main container end -->
 

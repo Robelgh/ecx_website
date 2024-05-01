@@ -1,0 +1,75 @@
+{
+    "home":"Home",
+    "about us": "About us",
+    "service": "Service",
+    "media":"Media",
+    "customer support":"Customer Support",
+    "market data":"Market data",
+    "Ecx-academy":"Ecx-academy",
+    "contact us":"Contact us",
+    "career":"Career",
+    "catagories":"Catagories",
+    "related":"Related",
+    "show more":"show more",
+    "DeadLine":"DeadLine",
+    "values":"Values",
+    "objective":"Objective",
+    "mission":"Mission",
+    "vision":"Vision",
+    "Total Warehouses":"Total Warehouses",
+    "Staff Members":"Staff Members",
+    "commodities":"Commodities",
+    "visionDescription":"The Ethiopia Commodity Exchange (ECX) is a commodities exchange established April 2008 in Ethiopia. In Proclamation 2007-550, which created the ECX, its stated objective was to ensure the development of an efficient modern trading system that would protect the rights and benefits of sellers, buyers, intermediaries, and the general public.",
+    "objectiveDescription":"The Ethiopia Commodity Exchange (ECX) is a commodities exchange established April 2008 in Ethiopia. In Proclamation 2007-550, which created the ECX, its stated objective was to ensure the development of an efficient modern trading system that would protect the rights and benefits of sellers, buyers, intermediaries, and the general public.",
+    "missionDescription":"The Ethiopia Commodity Exchange (ECX) is a commodities exchange established April 2008 in Ethiopia. In Proclamation 2007-550, which created the ECX, its stated objective was to ensure the development of an efficient modern trading system that would protect the rights and benefits of sellers, buyers, intermediaries, and the general public.",
+    "valueDescription":"The Ethiopia Commodity Exchange (ECX) is a commodities exchange established April 2008 in Ethiopia. In Proclamation 2007-550, which created the ECX, its stated objective was to ensure the development of an efficient modern trading system that would protect the rights and benefits of sellers, buyers, intermediaries, and the general public.",
+
+    "Symbol":"Symbol",
+    "Warehouse code": "Warehouse code",
+    "Production Year": "Production Year",
+    "Day High": "Day High",
+    "Day Low" : "Day Low",
+    "Change":"Change",
+    "Closing Closing" : "Closing price",
+    "Previous Closing":"Previous Closing",
+    "TradeDate":"Trade Date",
+    "market":"Market",
+    "closed":"Closed",
+
+    "Commodities":"Commodities",
+
+    "Quick Links":"Quick Links",
+    "Working Hour":"Working Hours",
+    "Working Hours":"8:30 AM  - 5:30 PM",
+    "Monday - Friday": "Monday - Friday",
+
+    "address":"Address",
+    "Short Code":"Short Code",
+    "SMS":"SMS",
+   
+
+    "Tabular Data":"Tabular Data",
+    "Daily High and Low Price":"Daily High and Low Price",
+
+    "How to Apply":"How to Apply",
+    "Instruction":"Instruction",
+    "Subject of The Email":"Subject of The Email",
+     
+    "Contract":"Contract",
+
+
+    "Publications":"Publications",
+    "Training Dcuments":"Training Dcuments",
+    "Brouchure":"Brouchure",
+    "Research":"Research",
+    "Announcement":"Announcement",
+
+    "News":"News",
+    "Source":"Source",
+    "Gallery":"Gallery",
+    "Photos":"Photos",
+
+    "Stock Chart for Symbol":"Stock Chart for Symbol",
+    "Data":"Data"
+
+}

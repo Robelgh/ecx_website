@@ -32,6 +32,7 @@ export class BannerCarouselComponent implements OnInit {
   @Input() autoSlide= false;
   @Input() slideInterval=10000;
 
+
   getResponse:any={};
   bannerCarousel:any=[];
   imagePath = this.service.getImagePath();
@@ -42,6 +43,7 @@ export class BannerCarouselComponent implements OnInit {
   async ngOnInit() {
 
     // this.loading = true;
+
     this.getResponse = (await this.service.getAll());
     this.getResponse.data = this.getResponse.data.filter((x:any)=> x.isCarousel
     == true);

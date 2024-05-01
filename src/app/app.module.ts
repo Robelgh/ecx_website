@@ -3,15 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule,HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EcxWebsiteModule } from './apps/ecx_website/ecx-website/ecx-website.module';
 import { EcxWebsiteComponent } from './apps/ecx_website/ecx-website/ecx-website.component';
 import { SharedModule } from './shared/shared.module';
-import { MarketComponentsModule } from './modules/market-components/market-components.module';
 
-import { HistogramComponent } from './modules/market-components/histogram/histogram.component';
 import { MarketDataComponent } from './modules/market-data/market-data.component';
 import { HeaderComponent } from './shared/components/header/header.component';
+import { FooterComponent} from './shared/components/footer/footer.component'
 import { BreadcrumbsComponent } from './shared/components/breadcrumbs/breadcrumbs.component';
 import { AboutUsComponent } from './modules/about-us/about-us.component';
 import { CommoditiesComponent } from './modules/commodities/commodities.component';
@@ -23,6 +22,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 
 import { MatTableModule } from '@angular/material/table';
@@ -31,13 +32,24 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MediaCenterComponent } from './modules/media-center/media-center.component';
-import { ResourcesComponent } from './modules/resources/resources.component';
 import { PackagesComponent } from './modules/packages/packages.component';
 import { CheckoutComponent } from './modules/checkout/checkout.component';
-// import { WarehouseServiceComponent } from './modules/warehouse/warehouse-service/warehouse-service.component';
 
-import { RegistrationComponent } from './modules/registration/registration.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { CustomerSupportComponent } from './modules/customer-support/customer-support.component';
+import { CareerComponent } from './modules/career/career.component';
+
+import { TableComponent } from './shared/components/table/table.component';
+import { ContactusComponent } from './modules/contactus/contactus.component';
+import { EcxAcademyComponent } from './modules/ecx-academy/ecx-academy.component';
+
+import { GoogleMapsModule } from '@angular/google-maps';
+
+export function HttpLoaderFactory(http:HttpClient)
+{
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -47,16 +59,20 @@ import { CustomerSupportComponent } from './modules/customer-support/customer-su
     AboutUsComponent,
     CommoditiesComponent,
     HeaderComponent,
+    FooterComponent,
     BreadcrumbsComponent,
     ServiceComponent,
     MediaCenterComponent,
-    ResourcesComponent,
     PackagesComponent,
     CheckoutComponent,
+    TableComponent,
     // WarehouseServiceComponent,
-
-    RegistrationComponent,
     CustomerSupportComponent,
+    CareerComponent,
+    ContactusComponent,
+    EcxAcademyComponent,
+    
+    
   ],
   imports: [
     BrowserModule,
@@ -64,9 +80,22 @@ import { CustomerSupportComponent } from './modules/customer-support/customer-su
     AppRoutingModule,
     EcxWebsiteModule,
     SharedModule,
-    MarketComponentsModule,
     NgChartsModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+
+    GoogleMapsModule,
+
+    TranslateModule.forRoot(
+      {
+          loader:{
+            provide:TranslateLoader,
+            useFactory:HttpLoaderFactory,
+            deps:[HttpClient]
+          },
+      }
+    ),
 
     MatTabsModule,
     MatTableModule,
@@ -80,6 +109,7 @@ import { CustomerSupportComponent } from './modules/customer-support/customer-su
     CarouselModule
   ],
   providers: [
+    HttpClient,
     { provide: NgChartsConfiguration, useValue: { generateColors: false } },
   ],
   bootstrap: [AppComponent],
@@ -87,12 +117,13 @@ import { CustomerSupportComponent } from './modules/customer-support/customer-su
     CommoditiesComponent,
     ServiceComponent,
     MediaCenterComponent,
-    ResourcesComponent,
     PackagesComponent,
     CheckoutComponent,
+    CareerComponent,
+    ContactusComponent,
+    EcxAcademyComponent,
     // WarehouseServiceComponent,
-  
-    RegistrationComponent,
+
   ],
 })
 export class AppModule {}

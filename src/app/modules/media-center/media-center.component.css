@@ -154,3 +154,19 @@ list-style: none;
 {
     margin-bottom: 10vh;
 }
+
+@media (min-width: 970px) {
+  .mobile{
+    display: none;
+  }
+}
+
+@media (max-width: 970px) {
+  .Desktop{
+    display: none;
+  }
+}
+.source
+{
+  cursor:default !important;
+}
